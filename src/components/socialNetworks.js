@@ -12,6 +12,8 @@ const SocialNetworks = props => {
     >
       <a
         href={`https://instagram.com/${instagram}`}
+        target="_blank"
+        rel="noopener noreferrer"
         style={{
           fontSize: `${iconSize}rem`,
           color: "inherit",
@@ -23,6 +25,8 @@ const SocialNetworks = props => {
       </a>
       <a
         href={`https://www.linkedin.com/in/${linkedIn}`}
+        target="_blank"
+        rel="noopener noreferrer"
         style={{
           fontSize: `${iconSize}rem`,
           color: "inherit",
@@ -34,6 +38,8 @@ const SocialNetworks = props => {
       </a>
       <a
         href={`https://github.com/${github}`}
+        target="_blank"
+        rel="noopener noreferrer"
         style={{
           fontSize: `${iconSize}rem`,
           color: "inherit",

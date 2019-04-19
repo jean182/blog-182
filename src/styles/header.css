@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  border-bottom: 1px solid var(--primaryText);
+  justify-content: space-between;
+}
+
+.header__logo {
+  margin-top: 0;
+  color: var(--primaryTheme);
+}

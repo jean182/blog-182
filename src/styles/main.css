@@ -1,0 +1,58 @@
+html.color-theme-in-transition,
+html.color-theme-in-transition *,
+html.color-theme-in-transition *:before,
+html.color-theme-in-transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
+}
+
+html {
+  --primaryTheme: #d23669;
+
+  --primaryBg: #fff;
+  --secondaryBg: #31639c;
+
+  --primaryText: #212121;
+  --secondaryText: #7b7b7b;
+
+  --primaryButtonText: #fff;
+
+  --primaryBorderBg: #efefef;
+
+  --activeSelectionBg: rgba(162, 162, 162, 0.1);
+
+  --primaryShadowBg: rgba(204, 204, 204, 0.7);
+}
+
+html[data-theme="dark"] {
+  --primaryTheme: #ffa7c4;
+  --primaryBg: #1a1a1d;
+  --secondaryBg: #8bb9dd;
+  --primaryText: rgba(255, 255, 255, 0.8);
+  --secondaryText: rgba(255, 255, 255, 0.6);
+  --primaryButtonText: #fff;
+  --primaryBorderBg: #292929;
+  --activeSelectionBg: rgba(0, 0, 0, 0.18);
+  --primaryShadowBg: rgba(8, 8, 8, 0.7);
+}
+
+body {
+  background: var(--primaryBg);
+  color: var(--primaryText);
+  font-weight: 400;
+}
+
+a {
+  color: var(--secondaryBg);
+}
+
+.article__link {
+  color: var(--secondaryBg);
+  box-shadow: none;
+}
+
+.link-unstyled {
+  box-shadow: none;
+  text-decoration: none;
+  color: inherit;
+}
