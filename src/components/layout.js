@@ -13,15 +13,18 @@ class Layout extends React.Component {
   }
 
   componentWillMount() {
-    let theme = JSON.parse(localStorage.getItem("theme"))
-    this.setState({ theme })
-    document.documentElement.setAttribute("data-theme", theme)
+    if (typeof window !== "undefined") {
+      let theme = JSON.parse(localStorage.getItem("theme"))
+      this.setState({ theme })
+      document.documentElement.setAttribute("data-theme", theme)
+    }
   }
   toggleTheme = () => {
     const theme = this.state.theme === "light" ? "dark" : "light"
     this.setState({ theme })
     document.documentElement.setAttribute("data-theme", theme)
-    localStorage.setItem("theme", JSON.stringify(theme))
+    typeof window !== "undefined" &&
+      localStorage.setItem("theme", JSON.stringify(theme))
   }
 
   render() {
