@@ -1,0 +1,45 @@
+.article {
+  padding: 40px 60px 0;
+  width: calc(100% - 350px);
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.article__head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.article__head__text {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--primaryText);
+}
+
+.article__head__nav__text {
+  padding: 0 10px;
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--primaryText);
+}
+
+.article__head__nav__button {
+  font-size: 20px;
+  color: var(--primaryTheme);
+  padding: 2px 5px;
+}
+
+.article__content {
+  height: calc(100% - 40px);
+  overflow: auto;
+}
+
+.article__content__title {
+  color: var(--primaryText);
+}
+
+.article__content__text {
+  color: var(--secondaryText);
+}

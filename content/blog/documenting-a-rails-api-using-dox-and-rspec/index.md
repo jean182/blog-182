@@ -1,10 +1,10 @@
 ---
 title: Documenting a rails API using Dox and RSpec
 date: "2019-02-28T20:05:00.169Z"
-description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
+description: Generating documentation in a rails API
 ---
 
-Hi in this post I would like to talk about a gem called dox, on college I’m creating a rails backend which is going to be consumed by an android app, and one of the requirements I was asked for this project was to document the API, all of the endpoints and things that the API sends and receive in order to work.
+Hi in this post I would like to talk about a gem called [dox](https://github.com/infinum/dox), on college I’m creating a rails backend which is going to be consumed by an android app, and one of the requirements I was asked for this project was to document the API, all of the endpoints and things that the API sends and receive in order to work.
 
 I never did something like that before but the first thing that came to my mind when I was doing the research, was that, of course rails is going to have a gem that can generate documentation for the API endpoints out of the box, after digging it for a few hours, I discover other gems that did the same but they did not fit on my requirements, or the usage of them was not one I was willing to, for example referencing them on the controller or creating a new subfolder in the spec directory with new tests just for the gem.
 
@@ -142,7 +142,7 @@ Finally to create your documentation you need to run this command:
 
 That will create a new md file called apispec under public/api/docs/v1 and that will have an MD file containing all the documentation generated, you can create more resources and if you run the command it will be generated on that file as well.
 
-So having an md file is great but what about mapping that md file to an html file? Sure we can do that with other tools, dox support three different renderers out of the box(Apiary, Aglio, Snowboard) and they are the ones in charge of creating an awesome page using that md file that we’ve just created. In this example I decided to use aglio, I have not try the others but they seem pretty cool as well.
+So having an md file is great but what about mapping that md file to an html file? Sure we can do that with other tools, dox support three different renderers out of the box([Apiary](https://apiary.io/), [Aglio](https://apiary.io/), [Snowboard](https://github.com/bukalapak/snowboard)) and they are the ones in charge of creating an awesome page using that md file that we’ve just created. In this example I decided to use aglio, I have not try the others but they seem pretty cool as well.
 
 For aglio you need to have node installed and npm, so you need to install it like a global package in order to use it everywhere, like in our rails project.
 
@@ -156,8 +156,8 @@ After that you will have and index.html file in the folder where your md file is
 
 As you can see it generated a nice page for documentation, that is pretty easy to make, very quick to integrate to your existing project and it makes your unit tests even more useful as now they can help you to map a documentation.
 
-I used this repo for guidance.
+I used this [repo](https://github.com/infinum/dox-demo) for guidance.
 
-My generated repo for this tutorial.
+My generated [repo](https://github.com/jeanm182/Book-Example) for this tutorial.
 
-You can see my college project documentation using dox here (still in progress) with more resources.
+You can see my college project documentation using dox [here](https://ticoplaces.herokuapp.com/api/docs/v1/) (still in progress) with more resources.

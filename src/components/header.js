@@ -1,84 +1,42 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
+import Switch from "./switch"
+import "../styles/header.css"
 
 const Header = props => {
   const rootPath = `${__PATH_PREFIX__}/`
-  const { location, title } = props
+  const { location, title, isOn, toggleTheme } = props
   return (
-    <header
-      style={{
-        display: "flex",
-        borderBottom: "1px solid black",
-        justifyContent: "space-between",
-      }}
-    >
+    <header className="header">
       <nav>
         {location.pathname === rootPath ? (
           <h1
+            className="header__logo"
             style={{
               marginBottom: rhythm(1.5),
-              marginTop: 0,
             }}
           >
-            <Link
-              style={{
-                boxShadow: `none`,
-                textDecoration: `none`,
-                color: `inherit`,
-              }}
-              to={`/`}
-            >
-              {title}
+            <Link className="link-unstyled" to={`/`}>
+              {`<${title} />`}
             </Link>
           </h1>
         ) : (
           <h1
+            className="header__logo"
             style={{
               fontFamily: `Montserrat, sans-serif`,
               marginTop: 0,
             }}
           >
-            <Link
-              style={{
-                boxShadow: `none`,
-                textDecoration: `none`,
-                color: `inherit`,
-              }}
-              to={`/`}
-            >
-              Blog
+            <Link className="link-unstyled" to={`/`}>
+              {title}
             </Link>
           </h1>
         )}
       </nav>
-      <nav>
-        <ul
-          style={{
-            display: "flex",
-            listStyleType: "none",
-            justifyContent: "flex-end",
-          }}
-        >
-          {location.pathname !== "/about" && (
-            <li style={{ paddingRight: "8px" }}>
-              <Link
-                to={`/about`}
-                style={{
-                  ...scale(0.5),
-                  boxShadow: `none`,
-                  textDecoration: `none`,
-                  color: `inherit`,
-                  fontWeight: "bold",
-                }}
-              >
-                About
-              </Link>
-            </li>
-          )}
-        </ul>
-      </nav>
+      <Switch isOn={isOn} handleToggle={toggleTheme} />
     </header>
   )
 }
@@ -86,6 +44,8 @@ const Header = props => {
 Header.propTypes = {
   location: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
+  isOn: PropTypes.bool.isRequired,
+  toggleTheme: PropTypes.func.isRequired,
 }
 
 export default Header
