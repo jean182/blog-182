@@ -22,7 +22,7 @@ class BlogPostTemplate extends React.Component {
         <div className="article__content">
           <h1 className="article__content__title">{post.frontmatter.title}</h1>
           <p
-            className="article__content__title"
+            className="article-misc"
             style={{
               ...scale(-1 / 5),
               display: `block`,
@@ -30,7 +30,7 @@ class BlogPostTemplate extends React.Component {
               marginTop: rhythm(-1),
             }}
           >
-            {post.frontmatter.date}
+            {post.frontmatter.date} - {post.fields.readingTime.text}
           </p>
           <div
             className="article__content__text"
@@ -91,6 +91,11 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+      }
+      fields {
+        readingTime {
+          text
+        }
       }
     }
   }

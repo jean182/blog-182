@@ -1,8 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Switch from "./switch"
 import { Link } from "gatsby"
 import { rhythm } from "../utils/typography"
-import Switch from "./switch"
+import { FiMoon, FiSun } from "react-icons/fi"
 import "../styles/header.css"
 
 const Header = props => {
@@ -16,6 +17,7 @@ const Header = props => {
             className="header__logo"
             style={{
               marginBottom: rhythm(1.5),
+              marginTop: 0,
             }}
           >
             <Link className="link-unstyled" to={`/`}>
@@ -36,7 +38,18 @@ const Header = props => {
           </h1>
         )}
       </nav>
-      <Switch isOn={isOn} handleToggle={toggleTheme} />
+      <nav style={{ display: "flex", justifyContent: "spaceBetween" }}>
+        <div style={{ marginTop: "-0.5px", paddingRight: "0.5rem" }}>
+          {isOn ? (
+            <FiMoon style={{ color: "#f5f3ce", fontSize: "1.5rem" }} />
+          ) : (
+            <FiSun style={{ color: "#ecbd2c", fontSize: "1.5rem" }} />
+          )}
+        </div>
+        <div>
+          <Switch isOn={isOn} handleToggle={toggleTheme} />
+        </div>
+      </nav>
     </header>
   )
 }

@@ -10,10 +10,11 @@ html {
   --primaryTheme: #d23669;
 
   --primaryBg: #fff;
-  --secondaryBg: #31639c;
+  --primaryLink: #31639c;
 
   --primaryText: #212121;
   --secondaryText: #7b7b7b;
+  --mutedText: #6c757d;
 
   --primaryButtonText: #fff;
 
@@ -27,7 +28,7 @@ html {
 html[data-theme="dark"] {
   --primaryTheme: #ffa7c4;
   --primaryBg: #1a1a1d;
-  --secondaryBg: #8bb9dd;
+  --primaryLink: #8bb9dd;
   --primaryText: rgba(255, 255, 255, 0.8);
   --secondaryText: rgba(255, 255, 255, 0.6);
   --primaryButtonText: #fff;
@@ -43,11 +44,11 @@ body {
 }
 
 a {
-  color: var(--secondaryBg);
+  color: var(--primaryLink);
 }
 
 .article__link {
-  color: var(--secondaryBg);
+  color: var(--primaryLink);
   box-shadow: none;
 }
 
