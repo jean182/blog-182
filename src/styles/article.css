@@ -37,7 +37,11 @@
 }
 
 .article__content__title {
-  color: var(--primaryText);
+  color: var(--primaryTheme);
+}
+
+.article-misc {
+  color: var(--mutedText);
 }
 
 .article__content__text {

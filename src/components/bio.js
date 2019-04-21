@@ -32,11 +32,19 @@ function Bio() {
               }}
             />
             <p>
-              Written by <strong>{author}</strong> who lives in Costa Rica.
-              {` `}
-              <a href={`https://instagram.com/${social.instagram}`}>
-                Follow me on instagram
-              </a>
+              Built and mantained by{` `}
+              <strong>
+                {` `}
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://instagram.com/${social.instagram}`}
+                >
+                  {author}
+                </a>
+              </strong>
+              <br />
+              Nobody likes you when you're twenty three
             </p>
           </div>
         )
