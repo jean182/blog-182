@@ -2,41 +2,19 @@ import React from "react"
 import PropTypes from "prop-types"
 import Switch from "./switch"
 import { Link } from "gatsby"
-import { rhythm } from "../utils/typography"
 import { FiMoon, FiSun } from "react-icons/fi"
 import "../styles/header.css"
 
 const Header = props => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const { location, title, isOn, toggleTheme } = props
+  const { title, isOn, toggleTheme } = props
   return (
     <header className="header">
       <nav>
-        {location.pathname === rootPath ? (
-          <h1
-            className="header__logo"
-            style={{
-              marginBottom: rhythm(1.5),
-              marginTop: 0,
-            }}
-          >
-            <Link className="link-unstyled" to={`/`}>
-              {`<${title} />`}
-            </Link>
-          </h1>
-        ) : (
-          <h1
-            className="header__logo"
-            style={{
-              fontFamily: `Montserrat, sans-serif`,
-              marginTop: 0,
-            }}
-          >
-            <Link className="link-unstyled" to={`/`}>
-              {title}
-            </Link>
-          </h1>
-        )}
+        <h1 className="header__logo">
+          <Link className="link-unstyled" to={`/`}>
+            {title}
+          </Link>
+        </h1>
       </nav>
       <nav style={{ display: "flex", justifyContent: "spaceBetween" }}>
         <div style={{ marginTop: "-0.5px", paddingRight: "0.5rem" }}>
