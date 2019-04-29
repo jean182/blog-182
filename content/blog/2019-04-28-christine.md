@@ -7,11 +7,9 @@ description: Perfect example that inanimate objects can scare you.
 
 # "This is the story of a lover's triangle... It was bad from the start and it got worse in a hurry."
 
-I normally don't read books, but this one was a pleasure to read, I saw the movie last year and it was so good that I decided to purchase the book. I felt that the movie did not tell me a lot of things I wanted to(it's a movie of course), so I bought the spanish version of the book and I ended buying the english version as well, 
+I normally don't read books, but this one was a pleasure to read, I saw the movie last year and it was so good that I decided to purchase the book. I felt that the movie did not tell me a lot of things I wanted to(it's a movie of course), so I bought the spanish version of the book and I ended buying the english version as well which I also read.
 
- I also read.
-
-Reading is not my thing and I don't consider myself as an avid reader, but I do think reading is a very important habit, and I would love to have it, but... I think I have other priorities or hobbies I prefer(sorry I'm an attention seeker and I needed to talk about me). Anyways here it goes.
+Reading is not my thing and I don't consider myself as an avid reader, but I do think reading is a very important habit, and I would love to have it but... I think I have other priorities and hobbies I prefer(sorry I'm an attention seeker and I needed to talk about me). Anyways here it goes.
 
 Christine in a short summary, is teenage horror drama, that involves **Arnie** the protagonist(kind of) and his best friend **Dennis** the antagonist(it is a matter of perspectives but I think Dennis was the antagonist here), a girl named **Leigh**, and of course we can forget the star itself, which is **Christine** a 1958 plymouth fury possesed by her first owner(Roland "Rollie" Lebay). 
 
