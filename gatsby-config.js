@@ -15,8 +15,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/src/pages`,
+        name: `pages`,
       },
     },
     {
@@ -36,6 +36,7 @@ module.exports = {
               maxWidth: 590,
             },
           },
+          `gatsby-remark-autolink-headers`,
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
@@ -76,6 +77,13 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-i18n',
+      options: {
+        langKeyDefault: 'en',
+        useLangKeyLayout: false,
       },
     },
     `gatsby-plugin-netlify-cms`,

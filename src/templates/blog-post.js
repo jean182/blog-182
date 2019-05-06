@@ -4,14 +4,59 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Translations from "../components/translations"
 import { rhythm, scale } from "../utils/typography"
+import {
+  codeToLanguage,
+  createLanguageLink,
+  loadFontsForCode,
+} from '../utils/i18n';
 import "../styles/article.css"
+
+const GITHUB_USERNAME = 'gaearon';
+const GITHUB_REPO_NAME = 'overreacted.io';
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
+    let {
+      previous,
+      next,
+      slug,
+      translations,
+      translatedLinks,
+    } = this.props.pageContext;
+    const lang = post.fields.langKey;
+
+    let html = post.html;
+    translatedLinks.forEach(link => {
+      function escapeRegExp(str) {
+        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      }
+      let translatedLink = '/' + lang + link;
+      html = html.replace(
+        new RegExp('"' + escapeRegExp(link) + '"', 'g'),
+        '"' + translatedLink + '"'
+      );
+    });
+
+    translations = translations.slice();
+    translations.sort((a, b) => {
+      return codeToLanguage(a) < codeToLanguage(b) ? -1 : 1;
+    });
+
+    loadFontsForCode(lang);
+    const languageLink = createLanguageLink(slug, lang);
+    const enSlug = languageLink('en');
+    const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${enSlug.slice(
+      1,
+      enSlug.length - 1
+    )}/index${lang === 'en' ? '' : '.' + lang}.md`;
+    const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
+      `https://overreacted.io${enSlug}`
+    )}`;
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -32,6 +77,14 @@ class BlogPostTemplate extends React.Component {
           >
             {post.frontmatter.date} - {post.fields.readingTime.text}
           </p>
+          {translations.length > 0 && (
+            <Translations
+              translations={translations}
+              editUrl={editUrl}
+              languageLink={languageLink}
+              lang={lang}
+            />
+          )}
           <div
             className="article__content__text"
             dangerouslySetInnerHTML={{ __html: post.html }}
@@ -96,6 +149,8 @@ export const pageQuery = graphql`
         readingTime {
           text
         }
+        slug
+        langKey
       }
     }
   }
