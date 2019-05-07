@@ -86,7 +86,6 @@ module.exports = {
         useLangKeyLayout: false,
       },
     },
-    `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-catch-links`,
   ],
 }

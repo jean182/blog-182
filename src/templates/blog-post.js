@@ -1,4 +1,5 @@
 import React from "react"
+import get from "lodash/get"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
@@ -16,7 +17,7 @@ import "../styles/article.css"
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
+    const siteTitle = get(this.props, "data.site.siteMetadata.title")
     let {
       previous,
       next,
@@ -24,10 +25,12 @@ class BlogPostTemplate extends React.Component {
       translations,
       translatedLinks,
     } = this.props.pageContext
-    const lang = post.fields.langKey
+    const lang = post.fields.langKey || ""
 
+    // Replace original links with translated when available.
     let html = post.html
     translatedLinks.forEach(link => {
+      // jeez
       function escapeRegExp(str) {
         return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
       }
@@ -44,6 +47,7 @@ class BlogPostTemplate extends React.Component {
     })
 
     loadFontsForCode(lang)
+    // TODO: this curried function is annoying
     const languageLink = createLanguageLink(slug, lang)
 
     return (
