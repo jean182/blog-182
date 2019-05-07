@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Panel from "../components/panel"
 import { rhythm } from "../utils/typography"
 import "../styles/main.css"
 
@@ -11,7 +12,7 @@ class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const langKey = this.props.pageContext.langKey;
+    const langKey = this.props.pageContext.langKey
     const posts = data.allMarkdownRemark.edges
 
     return (
@@ -21,18 +22,18 @@ class BlogIndex extends React.Component {
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
         <Bio />
-        {langKey !== 'en' && langKey !== 'ru' && (
-          <div>
-            These articles have been{' '}
+        {langKey !== "en" && langKey !== "ru" && (
+          <Panel>
+            These articles have been{" "}
             <a
-              href="https://github.com/gaearon/overreacted.io#contributing-translations"
+              href="https://github.com/jean182/blog-182"
               target="_blank"
               rel="noopener noreferrer"
             >
-              translated by the me
-              </a>
+              translated by me
+            </a>
             .
-            </div>
+          </Panel>
         )}
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
@@ -75,7 +76,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       filter: { fields: { langKey: { eq: $langKey } } }
       sort: { fields: [frontmatter___date], order: DESC }
-      ) {
+    ) {
       edges {
         node {
           excerpt

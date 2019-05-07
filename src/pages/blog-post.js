@@ -10,53 +10,41 @@ import {
   codeToLanguage,
   createLanguageLink,
   loadFontsForCode,
-} from '../utils/i18n';
+} from "../utils/i18n"
 import "../styles/article.css"
-
-const GITHUB_USERNAME = 'gaearon';
-const GITHUB_REPO_NAME = 'overreacted.io';
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
     let {
       previous,
       next,
       slug,
       translations,
       translatedLinks,
-    } = this.props.pageContext;
-    const lang = post.fields.langKey;
+    } = this.props.pageContext
+    const lang = post.fields.langKey
 
-    let html = post.html;
+    let html = post.html
     translatedLinks.forEach(link => {
       function escapeRegExp(str) {
-        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
       }
-      let translatedLink = '/' + lang + link;
+      let translatedLink = "/" + lang + link
       html = html.replace(
-        new RegExp('"' + escapeRegExp(link) + '"', 'g'),
+        new RegExp('"' + escapeRegExp(link) + '"', "g"),
         '"' + translatedLink + '"'
-      );
-    });
+      )
+    })
 
-    translations = translations.slice();
+    translations = translations.slice()
     translations.sort((a, b) => {
-      return codeToLanguage(a) < codeToLanguage(b) ? -1 : 1;
-    });
+      return codeToLanguage(a) < codeToLanguage(b) ? -1 : 1
+    })
 
-    loadFontsForCode(lang);
-    const languageLink = createLanguageLink(slug, lang);
-    const enSlug = languageLink('en');
-    const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${enSlug.slice(
-      1,
-      enSlug.length - 1
-    )}/index${lang === 'en' ? '' : '.' + lang}.md`;
-    const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
-      `https://overreacted.io${enSlug}`
-    )}`;
+    loadFontsForCode(lang)
+    const languageLink = createLanguageLink(slug, lang)
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -80,14 +68,13 @@ class BlogPostTemplate extends React.Component {
           {translations.length > 0 && (
             <Translations
               translations={translations}
-              editUrl={editUrl}
               languageLink={languageLink}
               lang={lang}
             />
           )}
           <div
             className="article__content__text"
-            dangerouslySetInnerHTML={{ __html: post.html }}
+            dangerouslySetInnerHTML={{ __html: html }}
           />
           <hr
             style={{

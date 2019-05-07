@@ -80,12 +80,13 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-i18n',
+      resolve: "gatsby-plugin-i18n",
       options: {
-        langKeyDefault: 'en',
+        langKeyDefault: "en",
         useLangKeyLayout: false,
       },
     },
     `gatsby-plugin-netlify-cms`,
+    `gatsby-plugin-catch-links`,
   ],
 }
