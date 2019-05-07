@@ -23,9 +23,9 @@ class Translations extends React.Component {
                   {l === lang ? (
                     <b>{codeToLanguage(l)}</b>
                   ) : (
-                    <Link to={languageLink(l)}>{codeToLanguage(l)}</Link>
-                  )}
-                  {i === readerTranslations.length - 1 ? "" : " • "}
+                      <Link to={languageLink(l)}>{codeToLanguage(l)}</Link>
+                    )}
+                  {i === readerTranslations.length - 1 ? "" : " ⋮ "}
                 </React.Fragment>
               ))}
             </span>
@@ -35,7 +35,7 @@ class Translations extends React.Component {
               <br />
               <br />
               <Link to={languageLink("en")}>Read the original</Link>
-              {" • "}
+              {" ⋮ "}
               <Link to={`/${lang}`}>View all translated posts</Link>{" "}
             </>
           )}

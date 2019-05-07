@@ -10,6 +10,7 @@ function Panel({ children, style = {} }) {
         padding: "0.75em",
         background: "var(--inlineCode-bg)",
         wordBreak: "keep-all",
+        marginBottom: "1rem",
         ...style,
       }}
     >

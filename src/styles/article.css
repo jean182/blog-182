@@ -1,3 +1,4 @@
+
 .article {
   padding: 40px 60px 0;
   width: calc(100% - 350px);
@@ -33,7 +34,6 @@
 
 .article__content {
   height: calc(100% - 40px);
-  overflow: auto;
 }
 
 .article__content__title {
