@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Panel from "../components/panel"
 import { rhythm } from "../utils/typography"
 import "../styles/main.css"
 
@@ -11,6 +12,7 @@ class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
+    const langKey = this.props.pageContext.langKey
     const posts = data.allMarkdownRemark.edges
 
     return (
@@ -20,6 +22,19 @@ class BlogIndex extends React.Component {
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
         <Bio />
+        {langKey !== "en" && langKey !== "ru" && (
+          <Panel>
+            These articles have been{" "}
+            <a
+              href="https://github.com/jean182/blog-182"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              translated by me
+            </a>
+            .
+          </Panel>
+        )}
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
@@ -52,18 +67,22 @@ class BlogIndex extends React.Component {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query {
+  query($langKey: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { fields: { langKey: { eq: $langKey } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           excerpt
           fields {
             slug
+            langKey
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")

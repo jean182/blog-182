@@ -1,5 +1,5 @@
 ---
-title: ¿What to expect?
+title: What to expect?
 date: 2019-04-21T04:25:19.427Z
 description: Overview of this blog
 ---

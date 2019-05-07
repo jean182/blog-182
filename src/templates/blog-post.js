@@ -1,17 +1,54 @@
 import React from "react"
+import get from "lodash/get"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Translations from "../components/translations"
 import { rhythm, scale } from "../utils/typography"
+import {
+  codeToLanguage,
+  createLanguageLink,
+  loadFontsForCode,
+} from "../utils/i18n"
 import "../styles/article.css"
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
+    const siteTitle = get(this.props, "data.site.siteMetadata.title")
+    let {
+      previous,
+      next,
+      slug,
+      translations,
+      translatedLinks,
+    } = this.props.pageContext
+    const lang = post.fields.langKey || ""
+
+    // Replace original links with translated when available.
+    let html = post.html
+    translatedLinks.forEach(link => {
+      // jeez
+      function escapeRegExp(str) {
+        return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+      }
+      let translatedLink = "/" + lang + link
+      html = html.replace(
+        new RegExp('"' + escapeRegExp(link) + '"', "g"),
+        '"' + translatedLink + '"'
+      )
+    })
+
+    translations = translations.slice()
+    translations.sort((a, b) => {
+      return codeToLanguage(a) < codeToLanguage(b) ? -1 : 1
+    })
+
+    loadFontsForCode(lang)
+    // TODO: this curried function is annoying
+    const languageLink = createLanguageLink(slug, lang)
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -32,9 +69,16 @@ class BlogPostTemplate extends React.Component {
           >
             {post.frontmatter.date} - {post.fields.readingTime.text}
           </p>
+          {translations.length > 0 && (
+            <Translations
+              translations={translations}
+              languageLink={languageLink}
+              lang={lang}
+            />
+          )}
           <div
             className="article__content__text"
-            dangerouslySetInnerHTML={{ __html: post.html }}
+            dangerouslySetInnerHTML={{ __html: html }}
           />
           <hr
             style={{
@@ -96,6 +140,8 @@ export const pageQuery = graphql`
         readingTime {
           text
         }
+        slug
+        langKey
       }
     }
   }
