@@ -25,7 +25,7 @@ class BlogIndex extends React.Component {
         {langKey !== "en" && langKey !== "ru" && (
           <Panel>
             These articles have been{" "}
-            <a
+            <a style={{ color: "var(--fallBackLink)" }}
               href="https://github.com/jean182/blog-182"
               target="_blank"
               rel="noopener noreferrer"

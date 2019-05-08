@@ -23,7 +23,7 @@ class Translations extends React.Component {
                   {l === lang ? (
                     <b>{codeToLanguage(l)}</b>
                   ) : (
-                      <Link to={languageLink(l)}>{codeToLanguage(l)}</Link>
+                      <Link style={{ color: "var(--fallBackLink)" }} to={languageLink(l)}>{codeToLanguage(l)}</Link>
                     )}
                   {i === readerTranslations.length - 1 ? "" : " ⋮ "}
                 </React.Fragment>
@@ -33,10 +33,11 @@ class Translations extends React.Component {
           {lang !== "en" && (
             <>
               <br />
-              <br />
-              <Link to={languageLink("en")}>Read the original</Link>
-              {" ⋮ "}
-              <Link to={`/${lang}`}>View all translated posts</Link>{" "}
+              <div style={{ justifyContent: "space-around" }}>
+                <Link style={{ color: "var(--fallBackLink)" }} to={languageLink("en")}>Read the original</Link>
+                {" ⋮ "}
+                <Link style={{ color: "var(--fallBackLink)" }} to={`/${lang}`}>View all translated posts</Link>{" "}
+              </div>
             </>
           )}
         </Panel>
