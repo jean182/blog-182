@@ -4,8 +4,8 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Panel from "../components/panel"
 import { rhythm } from "../utils/typography"
+import { formatPostDate } from "../utils/helpers"
 import "../styles/main.css"
 
 class BlogIndex extends React.Component {
@@ -22,19 +22,6 @@ class BlogIndex extends React.Component {
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
         <Bio />
-        {langKey !== "en" && langKey !== "ru" && (
-          <Panel>
-            These articles have been{" "}
-            <a style={{ color: "var(--fallBackLink)" }}
-              href="https://github.com/jean182/blog-182"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              translated by me
-            </a>
-            .
-          </Panel>
-        )}
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
@@ -49,7 +36,8 @@ class BlogIndex extends React.Component {
                 </Link>
               </h3>
               <small>
-                {node.frontmatter.date} - {node.fields.readingTime.text}
+                {formatPostDate(node.frontmatter.date, langKey)} -{" "}
+                {node.fields.readingTime.text}
               </small>
               <p
                 dangerouslySetInnerHTML={{

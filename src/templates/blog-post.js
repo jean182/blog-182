@@ -12,7 +12,11 @@ import {
   createLanguageLink,
   loadFontsForCode,
 } from "../utils/i18n"
+import { formatPostDate } from "../utils/helpers"
 import "../styles/article.css"
+
+const GITHUB_USERNAME = "jean182"
+const GITHUB_REPO_NAME = "blog-182"
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -49,6 +53,11 @@ class BlogPostTemplate extends React.Component {
     loadFontsForCode(lang)
     // TODO: this curried function is annoying
     const languageLink = createLanguageLink(slug, lang)
+    const enSlug = languageLink("en")
+    const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${enSlug.slice(
+      1,
+      enSlug.length - 1
+    )}/index${lang === "en" ? "" : "." + lang}.md`
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -67,10 +76,12 @@ class BlogPostTemplate extends React.Component {
               marginTop: rhythm(-1),
             }}
           >
-            {post.frontmatter.date} - {post.fields.readingTime.text}
+            {formatPostDate(post.frontmatter.date, lang)} -{" "}
+            {post.fields.readingTime.text}
           </p>
           {translations.length > 0 && (
             <Translations
+              editUrl={editUrl}
               translations={translations}
               languageLink={languageLink}
               lang={lang}

@@ -26,6 +26,7 @@ html {
   --inlineCode-text: #1a1a1a;
   --panelText: #856404;
   --panelBg: #fff9e0;
+  --panelBorder: hsla(0, 0%, 0%, 0.2);
   --fallBackLink: #31639c;
 }
 
@@ -42,6 +43,7 @@ html[data-theme="dark"] {
   --inlineCode-text: #1a1a1a;
   --panelBg: #d1ecf1;
   --panelText: #0c5460;
+  --panelBorder: hsla(201, 100%, 50%, 0.78);
 }
 
 body {
@@ -68,5 +70,5 @@ a {
 .panel {
   color: var(--panelText);
   background-color: var(--panelBg);
-  border-color: #f5c6cb;
+  border-color: var(--panelBorder);
 }
