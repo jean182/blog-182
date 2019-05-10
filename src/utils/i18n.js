@@ -13,6 +13,9 @@ export const createLanguageLink = (slug, lang) => {
 export const loadFontsForCode = code => {
   switch (code) {
     case "es":
+    case "fr":
+    case "it":
+    case "pt-br":
     default:
       break
   }
