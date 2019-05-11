@@ -12,7 +12,9 @@ Dox fue la escogida sobre las otras, porque genera la documentación basandose e
 
 Primero que nada tenemos que inicializar el proyecto:
 
-`$ rails new book-app --api -T --database=postgresql`
+```bash
+$ rails new book-app --api -T --database=postgresql
+```
 
 Despues ocupamos integrar RSpec y dox en nuestro Gemfile:
 
@@ -28,9 +30,13 @@ end
 
 Luego correr los siguientes comandos para instalar las dependencias:
 
-`$ bundle install`
+```bash
+$ bundle install
+```
 
-`$ rails generate rspec:install`
+```bash
+$ rails generate rspec:install
+```
 
 Sí estas leyendo esto, debes estar familiarizado con integrar RSpec con rails, ya que no voy a estar mostrando como hacerlo, solo los pasos necesarios para integrar Dox en la aplicación.
 
@@ -59,9 +65,13 @@ end
 
 Eso es basicamente todo lo necesario para configurarlo, entonces generemos un scaffold y corramos la migración del mismo para documentarlo:
 
-`$ rails g scaffold Book title plot:text`
+```bash
+$ rails g scaffold Book title plot:text
+```
 
-`$ rails db:migrate`
+```bash
+$ rails db:migrate
+```
 
 Sí todo funciono, se tuvieron que generar los tests con RSpec, en este caso vamos a utilizar el controlador generado con el scaffold, sin modificar nada por motivos de enseñanza. La clave para utilizar Dox es que necesitas especificar cual endpoint se quiere documentar usando el spec del controlador que como hicimos un sacaffold fue generado automaticamente.
 
@@ -140,7 +150,9 @@ Tenga en cuenta que la acción index que creamos en spec/docs/books.rb le dice a
 
 Finalmente para generar la documentación tenemos que correr esto:
 
-`$ bundle exec rspec spec --tag apidoc -f Dox::Formatter --order defined --out public/api/docs/v1/apispec.md`
+```bash
+$ bundle exec rspec spec --tag apidoc -f Dox::Formatter --order defined --out public/api/docs/v1/apispec.md
+```
 
 Esto va crear un nuevo archivo md en public/api/docs/v1 con toda la documentación generada, cada vez que se genere una nueva acción se debe correr el comando de nuevo para sobreescribir el actual.
 
@@ -150,7 +162,9 @@ Aglio necesita de node y npm para ser instalado como un paquete global o como de
 
 Si Aglio esta como comando global solo debes correr lo siguiente:
 
-`$ aglio --include-path / -i public/api/docs/v1/apispec.md -o public/api/docs/v1/index.html`
+```bash
+$ aglio --include-path / -i public/api/docs/v1/apispec.md -o public/api/docs/v1/index.html
+```
 
 Despues de eso se deberia generar un archivo que esta en el folder de public/api/docs/v1/ y si se abre esa ruta cuando el server esta corriendo se deberia ver algo similar a esto:
 

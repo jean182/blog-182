@@ -12,7 +12,9 @@ Dox was the one that I chose out of the others, because it generates all the doc
 
 First of all we need to set the project:
 
-`$ rails new book-app --api -T --database=postgresql`
+```bash
+$ rails new book-app --api -T --database=postgresql
+```
 
 After that we will need to integrate RSpec and dox in our Gemfile:
 
@@ -28,9 +30,13 @@ end
 
 And then run the following commands to install it:
 
-`$ bundle install`
+```bash
+$ bundle install
+```
 
-`$ rails generate rspec:install`
+```bash
+$ rails generate rspec:install
+```
 
 If you’re reading this you should be familiar with the RSpec installation, I would not be doing a lot of RSpec related configuration, just the neccesary steps to integrate dox with your app.
 
@@ -59,9 +65,13 @@ end
 
 That’s pretty much all the config we need to, so let’s generate a scaffold and run the migration to have something to document:
 
-`$ rails g scaffold Book title plot:text`
+```bash
+$ rails g scaffold Book title plot:text
+```
 
-`$ rails db:migrate`
+```bash
+$ rails db:migrate
+```
 
 So if everything worked you should see that the scaffold generated tests, in this case we will use the controller generated test, for learning purposes. The key for using Dox is that you need to specify which endpoint you want to document using your controller spec which if you’re scaffolding it will generate the whole resource.
 
@@ -118,7 +128,7 @@ This is a simple file structure, you can create your own if you want to, these a
 
 In order to use dox we need to add it to our controller which is the one in charge of testing the actions above. We must add this file to the controller spec file, like this:
 
-```ruby
+```ruby{3,7}
 # spec/controllers/books_controller_spec.rb
 RSpec.describe BooksController, type: :controller do
   include Docs::Books::Api # This referencing the document :api in the books.rb file in our docs folder
@@ -138,7 +148,9 @@ Notice that we import the index we created under spec/docs/books.rb and that is 
 
 Finally to create your documentation you need to run this command:
 
-`$ bundle exec rspec spec --tag apidoc -f Dox::Formatter --order defined --out public/api/docs/v1/apispec.md`
+```bash
+$ bundle exec rspec spec --tag apidoc -f Dox::Formatter --order defined --out public/api/docs/v1/apispec.md
+```
 
 That will create a new md file called apispec under public/api/docs/v1 and that will have an MD file containing all the documentation generated, you can create more resources and if you run the command it will be generated on that file as well.
 
@@ -148,7 +160,9 @@ For aglio you need to have node installed and npm, so you need to install it lik
 
 If you have it as a global package you need to run this command.
 
-`$ aglio --include-path / -i public/api/docs/v1/apispec.md -o public/api/docs/v1/index.html`
+```bash
+$ aglio --include-path / -i public/api/docs/v1/apispec.md -o public/api/docs/v1/index.html
+```
 
 After that you will have and index.html file in the folder where your md file is located public/api/docs/v1/ and if you open that file or go to that route when your server is running you should see something like this:
 
