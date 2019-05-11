@@ -6,9 +6,9 @@ description: Nobody likes you when you're twenty three
 
 `youtube: https://www.youtube.com/watch?v=K7l5ZeVVoCA`
 
-I know, the key moment arrived, the turning point, the ** twenty-three ** have arrived, I know it's not the big thing, just one super X year for most people. But for me it's a key moment because it's when my favorite band says that nobody is going to like you.
+I know, the key moment arrived, the turning point, the **twenty-three** have arrived, I know it's not the big thing, just one super X year for most people. But for me it's a key moment because it's when my favorite band says that nobody is going to like you.
 
-I have always made fun of the adults in their forties, those who dress up for a ** Jueves de calle ** and embarrass their children when they take them to school; but I am discovering that the 23 are a similar crisis(at least for me). The syndrome of ** Peter Pan **, (which was going to be the original name of _what's my age again_, the song that I'm doing all this drama for), is the fact of not maturing, not behaving like an adult person , evading problems and denying the fact that you know you're getting older.
+I have always made fun of the adults in their forties, those who dress up for a **Jueves de ky** and embarrass their children when they take them to school; but I am discovering that the 23 are a similar crisis(at least for me). The syndrome of **Peter Pan**, (which was going to be the original name of _what's my age again_, the song that I'm doing all this drama for), is the fact of not maturing, not behaving like an adult person , evading problems and denying the fact that you know you're getting older.
 
 Now, I feel that my mental age, is not the one of a young adult of 23 years, maybe it is like a guy fresh out of school, to say some things, my favorite saga is American Pie, I really like Jackass, eat and drink as if there were no tomorrow, the black comedy and toilet humor, el bananero, the procrastination, not taking things seriously, among many others.
 
@@ -19,9 +19,9 @@ As a young person just beginning adult life, why would I think about the change?
 On the other hand there is also the obligation to be an adult, to fulfill a social construction, which forces us to have certain requirements for being "successful", which in the end is very relative and ambiguous.
 By this I mean that it is usually expected of a person of my age, to be already graduated, starting his working life, with car, a girlfriend, a good looking boy, among others. This is huge topic to discuss but basically in my current situation a lot of this I do not meet or is half-hearted, which sometimes causes a feeling of failure and helplessness.
 
-Someones birthday is something very pleasant because people remember the ** existence ** of that someone, but it also implies a blow to reality, of how much an I'm taking advantage of my youth and that I'm enjoying it.
+Someones birthday is something very pleasant because people remember the **existence** of that someone, but it also implies a blow to reality, of how much an I'm taking advantage of my youth and that I'm enjoying it.
 
-## To end...
+### Wrapping up
 
 I could try to be someone else, leave and treat my non-existent beard, read books, become vegan, listen to progressive rock, drink craft beer, go to Escalante neighborhood, or I could be addicted to exercise, hire a nutritionist and believe I'm better than others because I carry a Healthy lifestyle, or maybe, you could see a series in a day, or go every Thursday to the **ky**.
 
