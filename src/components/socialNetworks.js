@@ -17,7 +17,6 @@ const SocialNetworks = props => {
         style={{
           fontSize: `${iconSize}rem`,
           color: "inherit",
-          boxShadow: "none",
           marginRight: `0.5rem`,
         }}
       >
@@ -30,7 +29,6 @@ const SocialNetworks = props => {
         style={{
           fontSize: `${iconSize}rem`,
           color: "inherit",
-          boxShadow: "none",
           marginRight: `0.5rem`,
         }}
       >
@@ -43,7 +41,6 @@ const SocialNetworks = props => {
         style={{
           fontSize: `${iconSize}rem`,
           color: "inherit",
-          boxShadow: "none",
           marginRight: `0.5rem`,
         }}
       >
