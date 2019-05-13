@@ -173,5 +173,11 @@ module.exports = {
       },
     },
     `gatsby-plugin-catch-links`,
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: 'https://hotmail.us20.list-manage.com/subscribe/post?u=99a0004437c27dd67681c3dcb&amp;id=395ed69915',
+      },
+    },
   ],
 }

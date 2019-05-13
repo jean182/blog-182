@@ -13,3 +13,8 @@ export const formatPostDate = (date, lang) => {
   ].filter(Boolean);
   return date.toLocaleDateString(...args);
 }
+
+export const getSubscriptioPreferenceUrl = (message) => {
+  const position = message.indexOf("<a");
+  return message.slice(position);
+}
