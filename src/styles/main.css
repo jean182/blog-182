@@ -34,6 +34,8 @@ html {
   --codeYellow: #ffcc99;
   --codePurple: #9966cc;
   --codeToken: #71eeb8;
+  /* Subscription */
+  --subscriptionBg: #fff;
 }
 
 html[data-theme="dark"] {
@@ -57,6 +59,8 @@ html[data-theme="dark"] {
   --codeYellow: #ffefad;
   --codePurple: #cc99ff;
   --codeToken: #addb67;
+  /* Subscription */
+  --subscriptionBg: #282c34;
 }
 
 body {
@@ -263,26 +267,25 @@ pre[data-line] {
 }
 
 .newsletter {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, Montserrat, sans-serif;
-  border-radius: 0.2rem;
-  background-color: var(--primaryBg); 
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Montserrat,
+    sans-serif;
+  border-radius: 0.5rem;
+  background-color: var(--subscriptionBg);
   box-shadow: 0 2px 15px 0 var(--primaryTheme);
-  margin-bottom: 1rem;
-  padding: 1rem;
 }
 
 .form-control {
   display: block;
   width: 100%;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
   color: var(--mutedText);
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
-  border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .form-group {
