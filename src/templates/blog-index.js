@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import { formatPostDate } from "../utils/helpers"
+import "bootstrap-4-grid/css/grid.min.css"
 import "../styles/main.css"
 
 class BlogIndex extends React.Component {

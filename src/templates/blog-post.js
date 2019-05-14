@@ -6,6 +6,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Translations from "../components/translations"
+import Newsletter from "../components/newsletter"
 import { rhythm, scale } from "../utils/typography"
 import {
   codeToLanguage,
@@ -97,6 +98,7 @@ class BlogPostTemplate extends React.Component {
             }}
           />
         </div>
+        <Newsletter />
         <Bio />
 
         <ul
