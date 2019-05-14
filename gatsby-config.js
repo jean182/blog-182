@@ -92,28 +92,28 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
-                const siteUrl = site.siteMetadata.siteUrl;
+                const siteUrl = site.siteMetadata.siteUrl
                 const postText = `
               <div style="margin-top=55px; font-style: italic;">(This is an article posted to my blog at niceguysfinishlast.dev. You can read it online by <a href="${siteUrl +
-                  edge.node.fields.slug}">clicking here</a>.)</div>
-            `;
+                edge.node.fields.slug}">clicking here</a>.)</div>
+            `
 
-                let html = edge.node.html;
+                let html = edge.node.html
                 // Hacky workaround for https://github.com/gaearon/overreacted.io/issues/65
                 html = html
                   .replace(/href="\//g, `href="${siteUrl}/`)
                   .replace(/src="\//g, `src="${siteUrl}/`)
                   .replace(/"\/static\//g, `"${siteUrl}/static/`)
-                  .replace(/,\s*\/static\//g, `,${siteUrl}/static/`);
+                  .replace(/,\s*\/static\//g, `,${siteUrl}/static/`)
 
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': html + postText }],
-                });
-              });
+                  custom_elements: [{ "content:encoded": html + postText }],
+                })
+              })
             },
             query: `
             {
@@ -139,7 +139,7 @@ module.exports = {
               }
             }
           `,
-            output: '/rss.xml',
+            output: "/rss.xml",
             title: "Nice Guys Finish last RSS Feed",
           },
         ],
@@ -174,9 +174,10 @@ module.exports = {
     },
     `gatsby-plugin-catch-links`,
     {
-      resolve: 'gatsby-plugin-mailchimp',
+      resolve: "gatsby-plugin-mailchimp",
       options: {
-        endpoint: 'https://hotmail.us20.list-manage.com/subscribe/post?u=99a0004437c27dd67681c3dcb&amp;id=395ed69915',
+        endpoint:
+          "https://hotmail.us20.list-manage.com/subscribe/post?u=99a0004437c27dd67681c3dcb&amp;id=395ed69915",
       },
     },
   ],

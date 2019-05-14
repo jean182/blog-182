@@ -2,10 +2,7 @@ import React from "react"
 import Panel from "./panel"
 import { Link } from "gatsby"
 import { codeToLanguage } from "../utils/i18n"
-
-const systemFont = `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif`
+import { systemFont } from "../utils/helpers"
 
 class Translations extends React.Component {
   render() {
