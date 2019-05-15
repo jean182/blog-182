@@ -1,6 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
+import i18n from "../locales/i18n"
 
 import { rhythm } from "../utils/typography"
 
@@ -32,7 +33,8 @@ function Bio() {
               }}
             />
             <p>
-              Built and mantained by{` `}
+              {i18n.t("bio.main")}
+              {` `}
               <strong>
                 {` `}
                 <a
@@ -44,7 +46,7 @@ function Bio() {
                 </a>
               </strong>
               <br />
-              Nobody likes you when you're twenty three
+              {i18n.t("bio.secondary")}
             </p>
           </div>
         )

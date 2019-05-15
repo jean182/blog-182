@@ -1,6 +1,7 @@
 import React from "react"
 import SocialNetworks from "./socialNetworks"
 import { useStaticQuery, graphql } from "gatsby"
+import i18n from "../locales/i18n"
 
 const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -26,7 +27,7 @@ const Footer = () => {
       }}
     >
       <div>
-        © {new Date().getFullYear()}, Built with
+        © {new Date().getFullYear()}, {i18n.t("footer.description")}
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
         {` `} by {author}

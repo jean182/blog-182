@@ -1,0 +1,23 @@
+{
+  "appName": "Nice Guys Finish Last",
+  "bio": {
+    "main": "Créé et maintenu par",
+    "secondary": "Personne ne t'aime quand tu as vingt-trois"
+  },
+  "newsletter": {
+    "title": "Bulletin",
+    "description": "Si vous voulez recevoir mes dernières publications, n'oubliez pas de vous abonner",
+    "name": "Nom",
+    "email": "Courrier Électronique",
+    "submit": "S'abonner"
+  },
+  "footer": {
+    "description": "Créé avec"
+  },
+  "translations": {
+    "translationAvailable": "Disponible en",
+    "readOriginal": "Lire l'original",
+    "improveTranslation": "Améliorer cette traduction",
+    "viewAll": "Voir toutes les publications traduites"
+  }
+}

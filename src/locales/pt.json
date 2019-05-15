@@ -1,0 +1,23 @@
+{
+  "appName": "Nice Guys Finish Last",
+  "bio": {
+    "main": "Criado e mantido por",
+    "secondary": "Ninguém te ama quando você tem vinte e três"
+  },
+  "newsletter": {
+    "title": "Boletim Informativo",
+    "description": "Se você deseja obter minhas publicações mais recentes, não se esqueça de se inscrever",
+    "name": "Nome",
+    "email": "Correio Eletrônico",
+    "submit": " Subscrever"
+  },
+  "footer": {
+    "description": "Criado com"
+  },
+  "translations": {
+    "translationAvailable": "Disponível em",
+    "readOriginal": "Leia o original",
+    "improveTranslation": "Melhore esta tradução",
+    "viewAll": "Veja todas as publicações traduzidas"
+  }
+}

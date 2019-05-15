@@ -17,3 +17,19 @@ export const formatPostDate = (date, lang) => {
   ].filter(Boolean)
   return date.toLocaleDateString(...args)
 }
+
+export const formatReadingTime = (minutes, lang) => {
+  const roundMinutes = Math.ceil(minutes)
+  switch (lang) {
+    case "es":
+      return `${roundMinutes} min de lectura`
+    case "fr":
+      return `${roundMinutes} min de lecture`
+    case "it":
+      return `${roundMinutes} min di lettura`
+    case "pt-br":
+      return `${roundMinutes} min de leitura`
+    default:
+      return `${roundMinutes} min read`
+  }
+}

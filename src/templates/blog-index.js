@@ -5,7 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
-import { formatPostDate } from "../utils/helpers"
+import { formatPostDate, formatReadingTime } from "../utils/helpers"
 import "bootstrap-4-grid/css/grid.min.css"
 import "../styles/main.css"
 
@@ -38,7 +38,7 @@ class BlogIndex extends React.Component {
               </h3>
               <small>
                 {formatPostDate(node.frontmatter.date, langKey)} -{" "}
-                {node.fields.readingTime.text}
+                {formatReadingTime(node.fields.readingTime.minutes, langKey)}
               </small>
               <p
                 dangerouslySetInnerHTML={{
@@ -80,7 +80,7 @@ export const pageQuery = graphql`
           }
           fields {
             readingTime {
-              text
+              minutes
             }
           }
         }

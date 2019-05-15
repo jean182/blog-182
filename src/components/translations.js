@@ -1,6 +1,7 @@
 import React from "react"
 import Panel from "./panel"
 import { Link } from "gatsby"
+import i18n from "../locales/i18n"
 import { codeToLanguage } from "../utils/i18n"
 import { systemFont } from "../utils/helpers"
 
@@ -14,7 +15,7 @@ class Translations extends React.Component {
         <Panel style={{ fontFamily: systemFont }}>
           {translations.length > 0 && (
             <span>
-              <span>Available in: </span>
+              <span>{i18n.t("translations.translationAvailable")}: </span>
               {readerTranslations.map((l, i) => (
                 <React.Fragment key={l}>
                   {l === lang ? (
@@ -40,7 +41,7 @@ class Translations extends React.Component {
                 style={{ color: "var(--fallBackLink)" }}
                 to={languageLink("en")}
               >
-                Read the original
+                {i18n.t("translations.readOriginal")}
               </Link>
               {" ⋮ "}
               <a
@@ -49,11 +50,11 @@ class Translations extends React.Component {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Improve this translation
+                {i18n.t("translations.improveTranslation")}
               </a>
               {" ⋮ "}
               <Link style={{ color: "var(--fallBackLink)" }} to={`/${lang}`}>
-                View all translated posts
+                {i18n.t("translations.viewAll")}
               </Link>{" "}
             </>
           )}

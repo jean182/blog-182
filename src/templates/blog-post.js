@@ -13,7 +13,7 @@ import {
   createLanguageLink,
   loadFontsForCode,
 } from "../utils/i18n"
-import { formatPostDate } from "../utils/helpers"
+import { formatPostDate, formatReadingTime } from "../utils/helpers"
 import "../styles/article.css"
 
 const GITHUB_USERNAME = "jean182"
@@ -78,7 +78,7 @@ class BlogPostTemplate extends React.Component {
             }}
           >
             {formatPostDate(post.frontmatter.date, lang)} -{" "}
-            {post.fields.readingTime.text}
+            {formatReadingTime(post.fields.readingTime.minutes, lang)}
           </p>
           {translations.length > 0 && (
             <Translations
@@ -151,7 +151,7 @@ export const pageQuery = graphql`
       }
       fields {
         readingTime {
-          text
+          minutes
         }
         slug
         langKey
