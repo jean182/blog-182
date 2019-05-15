@@ -25,4 +25,16 @@ This is the live [site](https://niceguysfinishlast.dev)
 
     _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
 
-    Open the `blog182` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+    Open the `blog182` directory in your code editor of choice and edit `src/templates/blog-index.js`. Save your changes and the browser will update in real time!
+
+## Contributing with translations
+
+In order to help translating you should know how to fork a github project and you should b somewhat familiar with markdown. If not you can follow this guides. If you don't know anything but you wish to help feel free to contact me.
+
+On each of my posts there's an link to contribute with translations, you should be redirected to the markdown file and you can fork the project and edit the file. Then you should make a PR.
+
+Guides
+
+- [How to fork a repo](https://help.github.com/en/articles/fork-a-repo)
+
+- [Markdown Guide](https://www.markdownguide.org/)

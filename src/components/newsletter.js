@@ -30,7 +30,6 @@ export default class Newsletter extends Component {
     const response = await addToMailchimp(email, { name: name })
     const { result, msg } = response
     this.setState(() => ({ response: { result, msg }, name: "", email: "" }))
-    console.log(this.state.response)
   }
   render() {
     const { name, email, response } = this.state
