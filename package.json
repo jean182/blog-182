@@ -10,7 +10,7 @@
   "dependencies": {
     "bluebird": "^3.5.4",
     "bootstrap-4-grid": "^2.4.1",
-    "gatsby": "^2.3.16",
+    "gatsby": "^2.5.5",
     "gatsby-image": "^2.0.37",
     "gatsby-plugin-catch-links": "^2.0.13",
     "gatsby-plugin-feed": "^2.1.0",
