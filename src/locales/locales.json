@@ -23,32 +23,6 @@
     "improveTranslation": "Improve this translation",
     "viewAll": "View all translated posts"
   },
-  "en": {
-    "appName": "Nice Guys Finish Last",
-    "bio": {
-      "main": "Built and mantained by",
-      "secondary": "Nobody likes you when you're twenty three"
-    },
-    "newsletter": {
-      "title": "Newsletter",
-      "description": "If you want to get my latest posts don't forget to subscribe",
-      "name": "Name",
-      "email": "Email",
-      "submit": " Subscribe"
-    },
-    "footer": {
-      "description": "Built with"
-    },
-    "post": {
-      "readingTime": "min read"
-    },
-    "translations": {
-      "translationAvailable": "Available in",
-      "readOriginal": "Read the original",
-      "improveTranslation": "Improve this translation",
-      "viewAll": "View all translated posts"
-    }
-  },
   "es": {
     "bio": {
       "main": "Creado y mantenido por",
