@@ -1,11 +1,12 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import i18n from "../locales/i18n"
 
 import { rhythm } from "../utils/typography"
 
-function Bio() {
+function Bio({ currentLanguage }) {
   return (
     <StaticQuery
       query={bioQuery}
@@ -33,7 +34,7 @@ function Bio() {
               }}
             />
             <p>
-              {i18n.t("bio.main")}
+              {i18n.t(`${currentLanguage}.bio.main`)}
               {` `}
               <strong>
                 {` `}
@@ -46,7 +47,7 @@ function Bio() {
                 </a>
               </strong>
               <br />
-              {i18n.t("bio.secondary")}
+              {i18n.t(`${currentLanguage}.bio.secondary`)}
             </p>
           </div>
         )
@@ -74,5 +75,9 @@ const bioQuery = graphql`
     }
   }
 `
+
+Bio.propTypes = {
+  currentLanguage: PropTypes.string.isRequired,
+}
 
 export default Bio

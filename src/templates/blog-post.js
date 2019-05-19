@@ -98,8 +98,8 @@ class BlogPostTemplate extends React.Component {
             }}
           />
         </div>
-        <Newsletter />
-        <Bio />
+        <Newsletter currentLanguage={lang} />
+        <Bio currentLanguage={lang} />
 
         <ul
           style={{
