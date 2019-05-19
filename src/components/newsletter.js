@@ -1,10 +1,11 @@
 import React, { Component } from "react"
+import PropTypes from "prop-types"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 import { IoMdMailOpen } from "react-icons/io"
 import i18n from "../locales/i18n"
-import MailChimpHandler from "./mailChimpHandler"
+import MailChimpHandler from "./mailchimp-handler"
 
-export default class Newsletter extends Component {
+class Newsletter extends Component {
   constructor(props) {
     super(props)
 
@@ -34,6 +35,7 @@ export default class Newsletter extends Component {
   }
   render() {
     const { name, email, response } = this.state
+    const { currentLanguage } = this.props
     return (
       <div>
         {response.msg !== undefined && (
@@ -42,14 +44,16 @@ export default class Newsletter extends Component {
         <div className="row newsletter px-sm-4 py-4 mb-3 mr-sm-0 ml-sm-0">
           <div className="col-sm">
             <div className="d-flex justify-content-between align-items-center">
-              <h3 className="m-0">{i18n.t("newsletter.title")}</h3>
+              <h3 className="m-0">
+                {i18n.t(`${currentLanguage}.newsletter.title`)}
+              </h3>
               <IoMdMailOpen
                 style={{ color: "var(--primaryTheme)", fontSize: "2.5rem" }}
               />
             </div>
             <div className="mt-4">
               <p>
-                {i18n.t("newsletter.description")}{" "}
+                {i18n.t(`${currentLanguage}.newsletter.description`)}{" "}
                 <span role="img" aria-label="slightly-smiling-face">
                   🙂
                 </span>
@@ -61,7 +65,7 @@ export default class Newsletter extends Component {
               <div className="form-group">
                 <input
                   className="form-control"
-                  placeholder={i18n.t("newsletter.name")}
+                  placeholder={i18n.t(`${currentLanguage}.newsletter.name`)}
                   onChange={this.onNameChange}
                   type="text"
                   value={name}
@@ -71,7 +75,7 @@ export default class Newsletter extends Component {
               <div className="form-group">
                 <input
                   className="form-control"
-                  placeholder={i18n.t("newsletter.email")}
+                  placeholder={i18n.t(`${currentLanguage}.newsletter.email`)}
                   onChange={this.onEmailChange}
                   type="email"
                   value={email}
@@ -82,7 +86,7 @@ export default class Newsletter extends Component {
                 <input
                   className="btn btn-block"
                   type="submit"
-                  value={i18n.t("newsletter.submit")}
+                  value={i18n.t(`${currentLanguage}.newsletter.submit`)}
                 />
               </div>
             </form>
@@ -92,3 +96,9 @@ export default class Newsletter extends Component {
     )
   }
 }
+
+Newsletter.propTypes = {
+  currentLanguage: PropTypes.string.isRequired,
+}
+
+export default Newsletter

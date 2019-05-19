@@ -15,7 +15,9 @@ class Translations extends React.Component {
         <Panel style={{ fontFamily: systemFont }}>
           {translations.length > 0 && (
             <span>
-              <span>{i18n.t("translations.translationAvailable")}: </span>
+              <span>
+                {i18n.t(`${lang}.translations.translationAvailable`)}:{" "}
+              </span>
               {readerTranslations.map((l, i) => (
                 <React.Fragment key={l}>
                   {l === lang ? (
@@ -41,7 +43,7 @@ class Translations extends React.Component {
                 style={{ color: "var(--fallBackLink)" }}
                 to={languageLink("en")}
               >
-                {i18n.t("translations.readOriginal")}
+                {i18n.t(`${lang}.translations.readOriginal`)}
               </Link>
               {" ⋮ "}
               <a
@@ -50,11 +52,11 @@ class Translations extends React.Component {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {i18n.t("translations.improveTranslation")}
+                {i18n.t(`${lang}.translations.improveTranslation`)}
               </a>
               {" ⋮ "}
               <Link style={{ color: "var(--fallBackLink)" }} to={`/${lang}`}>
-                {i18n.t("translations.viewAll")}
+                {i18n.t(`${lang}.translations.viewAll`)}
               </Link>{" "}
             </>
           )}
