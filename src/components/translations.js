@@ -1,8 +1,7 @@
 import React from "react"
 import Panel from "./panel"
 import { Link } from "gatsby"
-import i18n from "../locales/i18n"
-import { codeToLanguage } from "../utils/i18n"
+import { translate, codeToLanguage } from "../utils/i18n"
 import { systemFont } from "../utils/helpers"
 
 class Translations extends React.Component {
@@ -16,7 +15,7 @@ class Translations extends React.Component {
           {translations.length > 0 && (
             <span>
               <span>
-                {i18n.t(`${lang}.translations.translationAvailable`)}:{" "}
+                {translate(lang, "translations.translationAvailable")}:{" "}
               </span>
               {readerTranslations.map((l, i) => (
                 <React.Fragment key={l}>
@@ -43,7 +42,7 @@ class Translations extends React.Component {
                 style={{ color: "var(--fallBackLink)" }}
                 to={languageLink("en")}
               >
-                {i18n.t(`${lang}.translations.readOriginal`)}
+                {translate(lang, "translations.readOriginal")}
               </Link>
               {" ⋮ "}
               <a
@@ -52,11 +51,11 @@ class Translations extends React.Component {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {i18n.t(`${lang}.translations.improveTranslation`)}
+                {translate(lang, "translations.improveTranslation")}
               </a>
               {" ⋮ "}
               <Link style={{ color: "var(--fallBackLink)" }} to={`/${lang}`}>
-                {i18n.t(`${lang}.translations.viewAll`)}
+                {translate(lang, "translations.viewAll")}
               </Link>{" "}
             </>
           )}

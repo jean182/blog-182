@@ -1,4 +1,5 @@
 import { supportedLanguages } from "./../../i18n"
+import locales from "../locales/locales"
 
 export const codeToLanguage = code =>
   supportedLanguages[code].replace(/ /g, " " /* nbsp */)
@@ -19,4 +20,12 @@ export const loadFontsForCode = code => {
     default:
       break
   }
+}
+
+export const translate = (lang, value) => {
+  let path = value.split(".")
+  lang !== "en" && path.unshift(lang)
+  return path.reduce(function(previous, current) {
+    return previous ? previous[current] : null
+  }, locales)
 }

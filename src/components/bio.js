@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
-import i18n from "../locales/i18n"
+import { translate } from "../utils/i18n"
 
 import { rhythm } from "../utils/typography"
 
@@ -34,7 +34,7 @@ function Bio({ currentLanguage }) {
               }}
             />
             <p>
-              {i18n.t(`${currentLanguage}.bio.main`)}
+              {translate(currentLanguage, "bio.main")}
               {` `}
               <strong>
                 {` `}
@@ -47,7 +47,7 @@ function Bio({ currentLanguage }) {
                 </a>
               </strong>
               <br />
-              {i18n.t(`${currentLanguage}.bio.secondary`)}
+              {translate(currentLanguage, "bio.secondary")}
             </p>
           </div>
         )

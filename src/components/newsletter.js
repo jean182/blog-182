@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import PropTypes from "prop-types"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 import { IoMdMailOpen } from "react-icons/io"
-import i18n from "../locales/i18n"
+import { translate } from "../utils/i18n"
 import MailChimpHandler from "./mailchimp-handler"
 
 class Newsletter extends Component {
@@ -45,7 +45,7 @@ class Newsletter extends Component {
           <div className="col-sm">
             <div className="d-flex justify-content-between align-items-center">
               <h3 className="m-0">
-                {i18n.t(`${currentLanguage}.newsletter.title`)}
+                {translate(currentLanguage, "newsletter.title")}
               </h3>
               <IoMdMailOpen
                 style={{ color: "var(--primaryTheme)", fontSize: "2.5rem" }}
@@ -53,7 +53,7 @@ class Newsletter extends Component {
             </div>
             <div className="mt-4">
               <p>
-                {i18n.t(`${currentLanguage}.newsletter.description`)}{" "}
+                {translate(currentLanguage, "newsletter.description")}{" "}
                 <span role="img" aria-label="slightly-smiling-face">
                   🙂
                 </span>
@@ -65,7 +65,7 @@ class Newsletter extends Component {
               <div className="form-group">
                 <input
                   className="form-control"
-                  placeholder={i18n.t(`${currentLanguage}.newsletter.name`)}
+                  placeholder={translate(currentLanguage, "newsletter.name")}
                   onChange={this.onNameChange}
                   type="text"
                   value={name}
@@ -75,7 +75,7 @@ class Newsletter extends Component {
               <div className="form-group">
                 <input
                   className="form-control"
-                  placeholder={i18n.t(`${currentLanguage}.newsletter.email`)}
+                  placeholder={translate(currentLanguage, "newsletter.email")}
                   onChange={this.onEmailChange}
                   type="email"
                   value={email}
@@ -86,7 +86,7 @@ class Newsletter extends Component {
                 <input
                   className="btn btn-block"
                   type="submit"
-                  value={i18n.t(`${currentLanguage}.newsletter.submit`)}
+                  value={translate(currentLanguage, "newsletter.submit")}
                 />
               </div>
             </form>
