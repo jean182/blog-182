@@ -61,7 +61,11 @@ class BlogPostTemplate extends React.Component {
     )}/index${lang === "en" ? "" : "." + lang}.md`
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout
+        currentLanguage={lang}
+        location={this.props.location}
+        title={siteTitle}
+      >
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}

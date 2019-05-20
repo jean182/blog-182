@@ -12,7 +12,7 @@
     "submit": " Subscribe"
   },
   "footer": {
-    "description": "Built with"
+    "description": "Made with a lot of love by"
   },
   "post": {
     "readingTime": "min read"
@@ -36,7 +36,7 @@
       "submit": "Suscribirse"
     },
     "footer": {
-      "description": "Creado con"
+      "description": "Hecho con mucho amor por"
     },
     "translations": {
       "translationAvailable": "Disponible en",
@@ -58,7 +58,7 @@
       "submit": "S'abonner"
     },
     "footer": {
-      "description": "Créé avec"
+      "description": "Fait avec beaucoup d'amour par"
     },
     "translations": {
       "translationAvailable": "Disponible en",
@@ -80,7 +80,7 @@
       "submit": " Abbonarsi"
     },
     "footer": {
-      "description": "Creato con"
+      "description": "Fatto con molto amore da"
     },
     "translations": {
       "translationAvailable": "Disponibile in",
@@ -102,7 +102,7 @@
       "submit": " Subscrever"
     },
     "footer": {
-      "description": "Criado com"
+      "description": "Feito com muito amor por"
     },
     "translations": {
       "translationAvailable": "Disponível em",

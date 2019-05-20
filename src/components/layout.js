@@ -30,7 +30,7 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { location, title, children } = this.props
+    const { location, title, children, currentLanguage } = this.props
     const { theme } = this.state
     const isOn = theme !== "light" ? true : false
     return (
@@ -50,7 +50,7 @@ class Layout extends React.Component {
           toggleTheme={this.toggleTheme}
         />
         <main>{children}</main>
-        <Footer />
+        <Footer currentLanguage={currentLanguage} />
       </div>
     )
   }
