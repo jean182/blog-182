@@ -36,6 +36,7 @@ html {
   --codeToken: #71eeb8;
   /* Subscription */
   --subscriptionBg: #fff;
+  --aliensExists: #0f5620;
 }
 
 html[data-theme="dark"] {
@@ -61,6 +62,7 @@ html[data-theme="dark"] {
   --codeToken: #addb67;
   /* Subscription */
   --subscriptionBg: #282c34;
+  --aliensExists: #abc13a;
 }
 
 body {

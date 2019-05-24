@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { GiUfo } from "react-icons/gi"
+import { GiUfo, GiPerson } from "react-icons/gi"
 import "../styles/void.css"
 
 class NotFoundPage extends React.Component {
@@ -19,17 +19,9 @@ class NotFoundPage extends React.Component {
             <h1
               className="m-0"
               style={{
-                textAlign: "center",
-                fontSize: "16rem",
-              }}
-            >
-              <GiUfo />
-            </h1>
-            <h1
-              className="m-0"
-              style={{
                 fontFamily: `Montserrat, sans-serif`,
                 textAlign: "center",
+                color: "var(--primaryText)",
               }}
             >
               404
@@ -40,10 +32,32 @@ class NotFoundPage extends React.Component {
                 fontFamily: `Montserrat, sans-serif`,
                 fontWeight: "bold",
                 textAlign: "center",
+                color: "var(--primaryText)",
               }}
             >
               You've entered the void
             </h3>
+            <h1
+              className="m-0"
+              style={{
+                textAlign: "center",
+                fontSize: "10rem",
+                color: "var(--aliensExists)",
+              }}
+            >
+              <GiUfo />
+            </h1>
+            <h1
+              className="m-0"
+              style={{
+                textAlign: "center",
+                fontSize: "5rem",
+                color: "var(--primarytext)",
+              }}
+            >
+              <GiPerson />
+            </h1>
+            <span>Believe</span>
           </div>
         </Layout>
       </div>
