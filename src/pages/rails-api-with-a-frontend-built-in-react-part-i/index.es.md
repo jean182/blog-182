@@ -1,6 +1,6 @@
 ---
 title: Rails API con un a frontend hecho en React, Parte I.
-date: 2018-24-29T16:25:37.046Z
+date: 2019-05-24T11:23:12.427Z
 description: Creando el API
 ---
 
