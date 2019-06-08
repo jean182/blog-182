@@ -1,6 +1,6 @@
 ---
 title: Rails API with a frontend built in React, Part III.
-date: 2019-05-30T11:23:12.427Z
+date: 2019-06-07T11:23:12.427Z
 description: Building the movie and actors resources
 ---
 
