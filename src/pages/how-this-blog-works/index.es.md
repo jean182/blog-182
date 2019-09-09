@@ -64,7 +64,7 @@ En este caso estoy consultando el nombre de mi sitio y el del autor del sitio, q
   "data": {
     "site": {
       "siteMetadata": {
-        "title": "Nice Guys Finish Last",
+        "title": "Loser Kid",
         "author": "Jean Aguilar"
       }
     }
@@ -112,7 +112,7 @@ exports.supportedLanguages = {
 
 Actualmente solo hay cuatro lenguajes soportados, pero añadir uno nuevo es bastante fácil, a no ser que la tipografía no este soportada, la cual puede ser un dolor en el trasero.
 
-Dicho esto hay otro archivo llamado *i18n.js*😱😱😱mi culpa, lo sé, este contiene helpers para utilizar fonts distintos dependiendo del lenguaje, si es aplicable(ahora no hay ningun lenguaje que requiera un font personalizado), existe otro método para cambiar el URL del slug(un slug es un URL lindo), si estas leyendo un post traducido, por ejemplo todas las traducciones en español se encuentran en _https://niceguysfinishlast.dev/es/_ y el ultimo método es para mostrar el nombre del lenguaje de una manera bonita, en vez de utilizar el key del lenguaje, utilizamos el valor, por ejemplo en vez de mostrar _es_ se va a mostrar el valor _"Español"_.
+Dicho esto hay otro archivo llamado *i18n.js*😱😱😱mi culpa, lo sé, este contiene helpers para utilizar fonts distintos dependiendo del lenguaje, si es aplicable(ahora no hay ningun lenguaje que requiera un font personalizado), existe otro método para cambiar el URL del slug(un slug es un URL lindo), si estas leyendo un post traducido, por ejemplo todas las traducciones en español se encuentran en _https://www.loserkid.io//es/_ y el ultimo método es para mostrar el nombre del lenguaje de una manera bonita, en vez de utilizar el key del lenguaje, utilizamos el valor, por ejemplo en vez de mostrar _es_ se va a mostrar el valor _"Español"_.
 
 ![estructura-md](/md-structure.png "Estructura del lenguaje")
 

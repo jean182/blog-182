@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Nice Guys Finish Last`,
+    title: `Loser Kid`,
     author: `Jean Aguilar`,
     description: `The most awesome blog.`,
-    siteUrl: `https://niceguysfinishlast.dev`,
+    siteUrl: `https://www.loserkid.io/`,
     social: {
       twitter: `jeanm182`,
       instagram: `jeanm182`,
@@ -126,8 +126,8 @@ module.exports = {
                   node {
                     excerpt(pruneLength: 250)
                     html
-                    fields { 
-                      slug   
+                    fields {
+                      slug
                     }
                     frontmatter {
                       title
@@ -140,7 +140,7 @@ module.exports = {
             }
           `,
             output: "/rss.xml",
-            title: "Nice Guys Finish last RSS Feed",
+            title: "Loser Kid RSS Feed",
           },
         ],
       },
@@ -148,7 +148,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Nice Guys Finish Last`,
+        name: `Loser Kid`,
         short_name: `NGFL`,
         start_url: `/`,
         background_color: `#ffffff`,

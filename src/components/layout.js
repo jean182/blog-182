@@ -13,7 +13,7 @@ class Layout extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (isRunningInBrowser()) {
       let theme = JSON.parse(localStorage.getItem("theme"))
       if (theme !== null) {
