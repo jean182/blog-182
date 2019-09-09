@@ -64,7 +64,7 @@ In this case I'm querying my site name and the author of the site which is me, g
   "data": {
     "site": {
       "siteMetadata": {
-        "title": "Nice Guys Finish Last",
+        "title": "Loser Kid",
         "author": "Jean Aguilar"
       }
     }
@@ -112,7 +112,7 @@ exports.supportedLanguages = {
 
 Currently there are just four languages supported but adding a new one is easy, unless the typography is no yet supported, which can be a pain in the ass.
 
-With that being said there's another file called *i18n.js*😱😱😱 my bad I know, and that file contains helpers to use certain fonts for a language, if applicable(right now there's no language which requires custom fonts), a method to change the slug(a slug is a nice url) URL if you're reading a translated post, for example all spanish translations should be on _https://niceguysfinishlast.dev/es/_, and the last method is for displaying the language name in a nice way, instead of using the key of the language, use the value, example instead of displaying _es_ it is going to display the value _"Español"_
+With that being said there's another file called *i18n.js*😱😱😱 my bad I know, and that file contains helpers to use certain fonts for a language, if applicable(right now there's no language which requires custom fonts), a method to change the slug(a slug is a nice url) URL if you're reading a translated post, for example all spanish translations should be on _https://www.loserkid.io//es/_, and the last method is for displaying the language name in a nice way, instead of using the key of the language, use the value, example instead of displaying _es_ it is going to display the value _"Español"_
 
 ![md-structure](/md-structure.png "Language structure")
 
