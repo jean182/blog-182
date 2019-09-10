@@ -4,6 +4,12 @@ date: 2019-09-09T11:23:12.427Z
 description: Fetching data from our API
 ---
 
+More on this series
+
+[Part I](/rails-api-with-a-frontend-built-in-react-part-i/) ⋮
+[Part II](/rails-api-with-a-frontend-built-in-react-part-ii/) ⋮
+[Part III](/rails-api-with-a-frontend-built-in-react-part-iii/)
+
 In this part of the series we will connect the frontend with our API,
 recapitulating the previous chapter we allow our API to receive requests from any origin, and that will allow us to run our front in port 3001, while simultaneously run our API in port 3000.
 

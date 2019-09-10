@@ -24,7 +24,7 @@ class Translations extends React.Component {
                   ) : (
                     <Link
                       style={{ color: "var(--fallBackLink)" }}
-                      to={languageLink(l)}
+                      to={`/${languageLink(l)}`}
                     >
                       {codeToLanguage(l)}
                     </Link>

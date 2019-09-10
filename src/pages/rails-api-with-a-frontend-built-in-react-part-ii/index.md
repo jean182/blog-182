@@ -4,6 +4,11 @@ date: 2019-05-28T11:23:12.427Z
 description: Setting up React
 ---
 
+More on this series:
+[Part I](/rails-api-with-a-frontend-built-in-react-part-i/) ⋮
+[Part III](/rails-api-with-a-frontend-built-in-react-part-iii/) ⋮
+[Part IV](/rails-api-with-a-frontend-built-in-react-part-iv/)
+
 This is part two of my series and instead of continuing with the API I will start building the frontend, that is because doing the same sucks and I want to change the regular way of doing tutorials.
 
 I'm not a guru in React so we will be using create-react-app because it is the easier way to set up everything and we will be setting up the other libraries to make our project works.

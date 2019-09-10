@@ -4,6 +4,11 @@ date: 2019-05-24T11:23:12.427Z
 description: Creando el API
 ---
 
+Más de estas series:
+[Parte II](/rails-api-with-a-frontend-built-in-react-part-ii/) ⋮
+[Parte III](/rails-api-with-a-frontend-built-in-react-part-iii/) ⋮
+[Parte IV](/rails-api-with-a-frontend-built-in-react-part-iv/)
+
 Cuando estaba aprendiendo React, estaba un poco decepcionado porque no pude encontrar un buen tutorial de como integrar rails con react. Los unicos que encontré utilizaban todo dentro de rails(un app regular en rails con webpacker y rails-react). A pesar de que ese enfoque es bastante bueno y rápido de setear, no funciona como un API, sigue siendo una aplicación monolítica(todo esta en el app, el backend y el frontend). Al final con mucha investigación pude aprender como integrar estas herramientas, no fue tan dificil como yo creía y al ser un API, el proceso debe ser el mismo que cualquier otro framework o herramienta que envíe o reciba en formato JSON.
 
 Entonces en estas series, les voy a enseñar como hacer un API en rails y conectarla con react, además voy a usar redux y redux-saga, las cuales son una de mis herramientas favoritas cuando uso React, voy a hacer unit tests y usar un linter para el API. No soy ningun erudito con las herramientas pero hacer un API básico con un frontend bonito si es algo que creo que les puedo enseñar.

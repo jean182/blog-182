@@ -4,6 +4,11 @@ date: 2019-05-28T11:23:12.427Z
 description: Creando el app en React
 ---
 
+Más de estas series:
+[Parte I](/rails-api-with-a-frontend-built-in-react-part-i/) ⋮
+[Parte III](/rails-api-with-a-frontend-built-in-react-part-iii/) ⋮
+[Parte IV](/rails-api-with-a-frontend-built-in-react-part-iv/)
+
 Esta es la parte 2 de la serie y en vez de continuar con el API, voy a empezar con el frontend, esto es porque hacer lo mismo es aburrido y quiero cambiar la manera de hacer tutoriales.
 
 No soy ningun gurú en React entonces voy a usar `create-react-app` porque es la manera mas facil de setear el proyecto, ademas de otras librerías que también vamos a utilizar para que el proyecto funcione.

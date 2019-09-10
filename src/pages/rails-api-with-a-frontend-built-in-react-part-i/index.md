@@ -4,6 +4,11 @@ date: 2019-05-24T11:23:12.427Z
 description: Setting up the API
 ---
 
+More on this series:
+[Part II](/rails-api-with-a-frontend-built-in-react-part-ii/) ⋮
+[Part III](/rails-api-with-a-frontend-built-in-react-part-iii/) ⋮
+[Part IV](/rails-api-with-a-frontend-built-in-react-part-iv/)
+
 When I was learning react I was kind of dissapointed because I could not get a good tutorial on how to integrate rails with react. The only ones I found were using everything inside of rails(building a regular based rails app with weebpacker and react-rails). While this approach is cool and fast to set up, it does not work as a regular API, it is just a regular monolithic app(everything is contained in the app, the backend and the frontend). At the end with lot of research I managed to learn how to integrate those tools, it was not as hard as I thought and because it is an API it should be the same if we use another framework or tool that sends and receives JSONs.
 
 So in this series I'll be showing you how to build a rails API, and connect that to react, plus I'll be using redux and redux saga which are one of my favorite tools to use when I'm using react and I'll be doing unit tests and using a linter for the rails API. I'm not a master in any of those tools but setting up a basic API with a nice frontend is something I can show you.

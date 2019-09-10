@@ -4,6 +4,11 @@ date: 2019-06-07T11:23:12.427Z
 description: Building the movie and actors resources
 ---
 
+More on this series:
+[Part I](/rails-api-with-a-frontend-built-in-react-part-i/) ⋮
+[Part II](/rails-api-with-a-frontend-built-in-react-part-ii/) ⋮
+[Part IV](/rails-api-with-a-frontend-built-in-react-part-iv/)
+
 In this post we will be adding a Movie resource to our API. Let's modify our routes file in config/routes.rb
 
 ```ruby
