@@ -37,6 +37,7 @@ html {
   /* Subscription */
   --subscriptionBg: #fff;
   --aliensExists: #0f5620;
+  --inlineCode-bg: rgba(255, 229, 100, 0.2);
 }
 
 html[data-theme="dark"] {
@@ -49,7 +50,7 @@ html[data-theme="dark"] {
   --primaryBorderBg: #292929;
   --activeSelectionBg: rgba(0, 0, 0, 0.18);
   --primaryShadowBg: rgba(8, 8, 8, 0.7);
-  --inlineCode-text: #1a1a1a;
+  --inlineCode-text: #fff;
   --panelBg: #d1ecf1;
   --panelText: #0c5460;
   --panelBorder: hsla(201, 100%, 50%, 0.78);
@@ -63,6 +64,7 @@ html[data-theme="dark"] {
   /* Subscription */
   --subscriptionBg: #282c34;
   --aliensExists: #abc13a;
+  --inlineCode-bg: #373c49;
 }
 
 body {

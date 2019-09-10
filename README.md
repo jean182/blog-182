@@ -1,6 +1,6 @@
 # Blog 182
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/0ceb158c-3283-414f-9371-029a8e22d50e/deploy-status)](https://app.netlify.com/sites/niceguysfinishlast/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0ceb158c-3283-414f-9371-029a8e22d50e/deploy-status)](https://app.netlify.com/sites/loserkid/deploys)
 
 This is my minimalistic blog based on gatsby starter template and Dan Abramov's [blog](https://overreacted.io).
 
