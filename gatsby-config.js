@@ -152,7 +152,7 @@ module.exports = {
         short_name: `Loserkid`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#ffa7c4`,
+        theme_color: `#d23669`,
         display: `minimal-ui`,
         icon: `content/assets/blog-icon.png`,
       },

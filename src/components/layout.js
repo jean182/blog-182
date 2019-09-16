@@ -12,6 +12,11 @@ class Layout extends React.Component {
       theme = JSON.parse(localStorage.getItem("theme")) || "light"
       if (theme !== null) {
         document.documentElement.setAttribute("data-theme", theme)
+        const metaThemeColor = document.querySelector("meta[name=theme-color]")
+        metaThemeColor.setAttribute(
+          "content",
+          theme === "light" ? "#d23669" : "#ffa7c4"
+        )
       }
     }
     super(props)
@@ -26,6 +31,13 @@ class Layout extends React.Component {
     this.setState({ theme, isOn: theme !== "light" ? true : false })
     document.documentElement.setAttribute("data-theme", theme)
     isRunningInBrowser() && localStorage.setItem("theme", JSON.stringify(theme))
+    if (isRunningInBrowser) {
+      const metaThemeColor = document.querySelector("meta[name=theme-color]")
+      metaThemeColor.setAttribute(
+        "content",
+        theme === "light" ? "#d23669" : "#ffa7c4"
+      )
+    }
   }
 
   render() {
