@@ -7,22 +7,20 @@ import Footer from "./footer"
 
 class Layout extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {
-      theme: "light",
-      isOn: false,
-    }
-  }
-
-  componentWillMount() {
+    let theme = "light"
     if (isRunningInBrowser()) {
-      let theme = JSON.parse(localStorage.getItem("theme"))
+      theme = JSON.parse(localStorage.getItem("theme")) || "light"
       if (theme !== null) {
-        this.setState({ theme, isOn: theme !== "light" ? true : false })
         document.documentElement.setAttribute("data-theme", theme)
       }
     }
+    super(props)
+    this.state = {
+      theme,
+      isOn: theme !== "light" ? true : false,
+    }
   }
+
   toggleTheme = () => {
     const theme = this.state.theme === "light" ? "dark" : "light"
     this.setState({ theme, isOn: theme !== "light" ? true : false })

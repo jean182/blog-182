@@ -25,6 +25,7 @@ class BlogIndex extends React.Component {
         <SEO
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+          lang={langKey}
         />
         <Bio currentLanguage={langKey} />
         {posts.map(({ node }) => {
