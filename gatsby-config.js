@@ -149,7 +149,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Loser Kid`,
-        short_name: `NGFL`,
+        short_name: `Loserkid`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#ffa7c4`,
