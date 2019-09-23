@@ -8,16 +8,16 @@ import "../styles/header.css"
 const Header = props => {
   const { title, isOn, toggleTheme } = props
   return (
-    <header className="header">
-      <nav>
-        <h1 className="header__logo">
+    <header className="d-flex align-items-center align-items-center justify-content-between">
+      <nav className="d-flex align-items-center">
+        <h1 className="mx-0 px-0">
           <Link className="link-unstyled" to={`/`}>
             {title}
           </Link>
         </h1>
       </nav>
-      <nav style={{ display: "flex", justifyContent: "spaceBetween" }}>
-        <div style={{ marginTop: "-0.5px", paddingRight: "0.5rem" }}>
+      <nav className="d-flex align-items-center justify-content-between">
+        <div className="mt-2 pr-2">
           {isOn ? (
             <FiMoon style={{ color: "#f5f3ce", fontSize: "1.5rem" }} />
           ) : (
