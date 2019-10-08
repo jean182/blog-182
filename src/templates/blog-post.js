@@ -14,7 +14,6 @@ import {
   loadFontsForCode,
 } from "../utils/i18n"
 import { formatPostDate, formatReadingTime } from "../utils/helpers"
-import "../styles/article.css"
 
 const GITHUB_USERNAME = "jean182"
 const GITHUB_REPO_NAME = "blog-182"
@@ -71,10 +70,9 @@ class BlogPostTemplate extends React.Component {
           description={post.frontmatter.description || post.excerpt}
           lang={lang}
         />
-        <div className="article__content">
-          <h1 className="article__content__title">{post.frontmatter.title}</h1>
+        <div>
+          <h1>{post.frontmatter.title}</h1>
           <p
-            className="article-misc"
             style={{
               ...scale(-1 / 5),
               display: `block`,
@@ -94,7 +92,6 @@ class BlogPostTemplate extends React.Component {
             />
           )}
           <div
-            className="article__content__text"
             dangerouslySetInnerHTML={{ __html: html }}
           />
           <hr

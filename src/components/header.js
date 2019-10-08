@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import Switch from "./switch"
 import { Link } from "gatsby"
 import { FiMoon, FiSun } from "react-icons/fi"
-import "../styles/header.css"
 
 const Header = props => {
   const { title, isOn, toggleTheme } = props

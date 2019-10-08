@@ -2,7 +2,6 @@ import React from "react"
 import Toggle from "react-toggle"
 import PropTypes from "prop-types"
 import "react-toggle/style.css"
-import "../styles/switch.css"
 
 const Switch = props => {
   const { isOn, handleToggle } = props

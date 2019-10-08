@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import { formatPostDate, formatReadingTime } from "../utils/helpers"
 import "bootstrap-4-grid/css/grid.min.css"
-import "../styles/main.css"
+import "../styles/main.scss"
 
 class BlogIndex extends React.Component {
   render() {
