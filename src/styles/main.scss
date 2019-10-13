@@ -50,27 +50,19 @@ h6 {
 }
 
 .btn {
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   background-color: var(--primaryTheme);
   color: white;
   font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 1.2rem;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 2px 15px 0 var(--primaryTheme);
+  }
 }
 
 .btn-block {
   display: block;
   width: 100%;
-}
-
-.grid-container {
-  display: flex;
-  grid-template-columns: auto auto auto;
-  padding: 10px;
-}
-.grid-item {
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
 }

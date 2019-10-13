@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import get from "lodash/get"
 import { Link, graphql } from "gatsby"
 
@@ -18,7 +18,7 @@ import { formatPostDate, formatReadingTime } from "../utils/helpers"
 const GITHUB_USERNAME = "jean182"
 const GITHUB_REPO_NAME = "blog-182"
 
-class BlogPostTemplate extends React.Component {
+class BlogPostTemplate extends Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = get(this.props, "data.site.siteMetadata.title")

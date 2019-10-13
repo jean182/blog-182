@@ -1,11 +1,11 @@
-import React from "react"
+import React, { Component } from "react"
 
 import { rhythm } from "../utils/typography"
 import { isRunningInBrowser } from "../utils/helpers"
 import Header from "./header"
 import Footer from "./footer"
 
-class Layout extends React.Component {
+class Layout extends Component {
   constructor(props) {
     let theme = "light"
     if (isRunningInBrowser()) {
@@ -30,8 +30,8 @@ class Layout extends React.Component {
     const theme = this.state.theme === "light" ? "dark" : "light"
     this.setState({ theme, isOn: theme !== "light" ? true : false })
     document.documentElement.setAttribute("data-theme", theme)
-    isRunningInBrowser() && localStorage.setItem("theme", JSON.stringify(theme))
     if (isRunningInBrowser) {
+      localStorage.setItem("theme", JSON.stringify(theme))
       const metaThemeColor = document.querySelector("meta[name=theme-color]")
       metaThemeColor.setAttribute(
         "content",

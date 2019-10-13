@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
@@ -9,7 +9,7 @@ import { formatPostDate, formatReadingTime } from "../utils/helpers"
 import "bootstrap-4-grid/css/grid.min.css"
 import "../styles/main.scss"
 
-class BlogIndex extends React.Component {
+class BlogIndex extends Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title

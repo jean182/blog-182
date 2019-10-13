@@ -1,10 +1,10 @@
-import React from "react"
+import React, { Component } from "react"
 import Panel from "./panel"
 import { Link } from "gatsby"
 import { translate, codeToLanguage } from "../utils/i18n"
 import { systemFont } from "../utils/helpers"
 
-class Translations extends React.Component {
+class Translations extends Component {
   render() {
     let { translations, lang, languageLink, editUrl } = this.props
     let readerTranslations = translations.filter(lang => lang !== "ru")
