@@ -41,7 +41,7 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { location, title, children, currentLanguage } = this.props
+    const { title, children, currentLanguage } = this.props
     const { isOn } = this.state
     return (
       <div
@@ -55,7 +55,6 @@ class Layout extends React.Component {
       >
         <Header
           title={title}
-          location={location}
           isOn={isOn}
           toggleTheme={this.toggleTheme}
         />

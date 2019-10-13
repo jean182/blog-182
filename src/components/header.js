@@ -32,7 +32,6 @@ const Header = props => {
 }
 
 Header.propTypes = {
-  location: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   isOn: PropTypes.bool.isRequired,
   toggleTheme: PropTypes.func.isRequired,

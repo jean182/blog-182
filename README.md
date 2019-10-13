@@ -6,7 +6,7 @@ This is my minimalistic blog based on gatsby starter template and Dan Abramov's 
 
 Feel free to fork it, and make it better.
 
-This is the live [site](https://www.loserkid.io/)
+This is the live [site](https://loserkid.io/)
 
 ## 🚀 Quick start
 
