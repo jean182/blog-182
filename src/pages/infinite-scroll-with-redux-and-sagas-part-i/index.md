@@ -4,6 +4,9 @@ date: 2019-10-14T11:19:41.427Z
 description: Part I Setting up redux.
 ---
 
+More on this series:
+[Part II](/infinite-scroll-with-redux-and-sagas-part-ii/)
+
 Lately I've been trying to create a pokedex, using redux, to practice the core concepts and try new things from an UI perspective.
 
 Even though I will create a simple version of the dex I'm currently building, you will have grasp on what's the method I use to query large datasets, like for example the **+700** pokemon available. Lets get started.
