@@ -10,7 +10,7 @@ const Header = props => {
     <header className="header">
       <nav>
         <h1 className="header__logo">
-          <Link className="link-unstyled" to={`/`}>
+          <Link className="link-unstyled title-header" to={`/`}>
             {title}
           </Link>
         </h1>
