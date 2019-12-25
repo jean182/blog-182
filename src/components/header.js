@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 import { FiMoon, FiSun } from "react-icons/fi"
 
 const Header = props => {
-  const { title, isOn, toggleTheme } = props
+  const { isOn, title, theme, toggleTheme } = props
   return (
     <header className="header">
       <nav>
@@ -17,7 +17,7 @@ const Header = props => {
       </nav>
       <nav style={{ display: "flex", justifyContent: "spaceBetween" }}>
         <div style={{ marginTop: "-0.5px", paddingRight: "0.5rem" }}>
-          {isOn ? (
+          {theme === "dark" ? (
             <FiMoon style={{ color: "#f5f3ce", fontSize: "1.5rem" }} />
           ) : (
             <FiSun style={{ color: "#ecbd2c", fontSize: "1.5rem" }} />

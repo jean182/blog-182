@@ -1,36 +1,19 @@
-import React, { Component } from "react"
+import React, { useEffect, useState } from "react"
 
 import { rhythm } from "../utils/typography"
 import { isRunningInBrowser } from "../utils/helpers"
 import Header from "./header"
 import Footer from "./footer"
 
-class Layout extends Component {
-  constructor(props) {
-    let theme = "light"
-    if (isRunningInBrowser()) {
-      theme = JSON.parse(localStorage.getItem("theme")) || "light"
-      if (theme !== null) {
-        document.documentElement.setAttribute("data-theme", theme)
-        const metaThemeColor = document.querySelector("meta[name=theme-color]")
-        metaThemeColor.setAttribute(
-          "content",
-          theme === "light" ? "#d23669" : "#ffa7c4"
-        )
-      }
-    }
-    super(props)
-    this.state = {
-      theme,
-      isOn: theme !== "light" ? true : false,
-    }
-  }
+function Layout(props) {
+  let findTheme =  "light"
+  if (isRunningInBrowser()) findTheme = JSON.parse(localStorage.getItem("theme")) || "light"
+  const [theme, setTheme] = useState(findTheme);
+  const [isOn, setIsOn] = useState(theme === "dark");
 
-  toggleTheme = () => {
-    const theme = this.state.theme === "light" ? "dark" : "light"
-    this.setState({ theme, isOn: theme !== "light" ? true : false })
-    document.documentElement.setAttribute("data-theme", theme)
-    if (isRunningInBrowser) {
+  useEffect(() => {
+    if (isRunningInBrowser()) {
+      document.documentElement.setAttribute("data-theme", theme)
       localStorage.setItem("theme", JSON.stringify(theme))
       const metaThemeColor = document.querySelector("meta[name=theme-color]")
       metaThemeColor.setAttribute(
@@ -38,12 +21,16 @@ class Layout extends Component {
         theme === "light" ? "#d23669" : "#ffa7c4"
       )
     }
+  });
+
+  function toggleTheme() {
+    setTheme(prevState => prevState === "light" ? "dark" : "light")
+    setIsOn(prevState => !prevState)
   }
 
-  render() {
-    const { title, children, currentLanguage } = this.props
-    const { isOn } = this.state
-    return (
+  const { title, children, currentLanguage } = props
+
+  return (
       <div
         style={{
           marginLeft: `auto`,
@@ -55,14 +42,14 @@ class Layout extends Component {
       >
         <Header
           title={title}
+          theme={theme}
           isOn={isOn}
-          toggleTheme={this.toggleTheme}
+          toggleTheme={toggleTheme}
         />
         <main>{children}</main>
         <Footer currentLanguage={currentLanguage} />
       </div>
-    )
-  }
+  )
 }
 
 export default Layout
