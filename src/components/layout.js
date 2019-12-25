@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-
+import { consoleWarning } from "../utils/helpers"
 import { rhythm } from "../utils/typography"
 import Header from "./header"
 import Footer from "./footer"
@@ -9,9 +9,7 @@ function Layout(props) {
   try {
     findTheme = JSON.parse(localStorage.getItem("theme")) || "light"
   } catch (error) {
-    console.error(
-      `${error.message}, you're probably not running this in the browser`
-    )
+    consoleWarning(error);
   }
   const [theme, setTheme] = useState(findTheme)
   const [isOn, setIsOn] = useState(theme === "dark")
@@ -26,9 +24,7 @@ function Layout(props) {
         theme === "light" ? "#356CB5" : "#f76c6c"
       )
     } catch (error) {
-      console.error(
-        `${error.message}, you're probably not running this in the browser`
-      )
+      consoleWarning(error);
     }
   })
 

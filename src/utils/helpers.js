@@ -2,8 +2,8 @@ export const systemFont = `system-ui, -apple-system, BlinkMacSystemFont, "Segoe 
 "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
 "Droid Sans", "Helvetica Neue", sans-serif`
 
-export const isRunningInBrowser = () =>
-  typeof window !== "undefined" ? true : false
+export const consoleWarning = (error) =>
+  console.warn(`warning ${error.message}, you're probably not running this in the browser`);
 
 export const formatPostDate = (date, lang) => {
   if (typeof Date.prototype.toLocaleDateString !== "function") {
