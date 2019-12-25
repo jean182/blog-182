@@ -18,7 +18,7 @@ function Layout(props) {
       const metaThemeColor = document.querySelector("meta[name=theme-color]")
       metaThemeColor.setAttribute(
         "content",
-        theme === "light" ? "#d23669" : "#ffa7c4"
+        theme === "light" ? "#356CB5" : "#f76c6c"
       )
     }
   });
