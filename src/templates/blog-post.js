@@ -91,9 +91,7 @@ class BlogPostTemplate extends Component {
               lang={lang}
             />
           )}
-          <div
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
+          <div dangerouslySetInnerHTML={{ __html: html }} />
           <hr
             style={{
               marginBottom: rhythm(1),
