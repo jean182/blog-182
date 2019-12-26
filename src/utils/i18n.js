@@ -26,6 +26,9 @@ export const translate = (lang, value) => {
   let path = value.split(".")
   lang !== "en" && path.unshift(lang)
   return path.reduce(function(previous, current) {
-    return previous ? previous[current] : null
+    const translation = previous ? previous[current] : null
+    return translation !== undefined
+      ? translation
+      : `Missing translation for ${lang}.${value}`
   }, locales)
 }

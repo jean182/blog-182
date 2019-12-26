@@ -9,7 +9,7 @@ function Layout(props) {
   try {
     findTheme = JSON.parse(localStorage.getItem("theme")) || "light"
   } catch (error) {
-    consoleWarning(error);
+    consoleWarning(error)
   }
   const [theme, setTheme] = useState(findTheme)
   const [isOn, setIsOn] = useState(theme === "dark")
@@ -24,7 +24,7 @@ function Layout(props) {
         theme === "light" ? "#356CB5" : "#f76c6c"
       )
     } catch (error) {
-      consoleWarning(error);
+      consoleWarning(error)
     }
   })
 
