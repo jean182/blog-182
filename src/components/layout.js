@@ -26,7 +26,7 @@ function Layout(props) {
     } catch (error) {
       consoleWarning(error)
     }
-  })
+  }, [theme])
 
   function toggleTheme() {
     setTheme(prevState => (prevState === "light" ? "dark" : "light"))
