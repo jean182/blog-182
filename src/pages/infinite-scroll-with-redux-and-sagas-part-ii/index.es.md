@@ -1,40 +1,40 @@
 ---
-title: Infinite scrolling using redux and sagas, Part II.
+title: Scroll infinito usando redux y redux-saga, Parte II.
 date: 2019-10-16T11:22:25.427Z
-description: Part II Setting up the frontend.
+description: Parte II Configurando el frontend.
 ---
 
-More on this series:
-[Part I](/infinite-scroll-with-redux-and-sagas-part-i/) ⋮
-[Part III](/infinite-scroll-with-redux-and-sagas-part-iii/)
+Más de estas series:
+[Parte I](/infinite-scroll-with-redux-and-sagas-part-i/) ⋮
+[Parte III](/infinite-scroll-with-redux-and-sagas-part-iii/)
 
-For this part we'll be focusing on the component setup, and the srolling part and fetching data when the scroll is at the bottom.
+Para esta parte nos vamos a concentrar en la configuracion del component, el scrolling y hacer requests adicionales si el scroll llega al final.
 
-Our component structure will be the following:
+La estructura de nuestros componentes va ser la siguiente:
 
-* Provider (React-redux wrapper.)
-  * PokemonList (Component with scrolling logic and api calls)
-      * PokemonListItem (Stateless component just for displaying the pokemon)
+* Provider (contenedor de React-redux.)
+  * PokemonList (Componente con la lógica del scrolling y llamadas al api)
+      * PokemonListItem (Componente sin estado para mostrar el pokemon)
 
-We will add the following dependencies as well, one is for having a content loader for the first time load, second it bootstrap for its awesome grid system, lodash is for the ease of validating if the redux array is empty and node sass to have the bootstrap core import in our scss file.
+Vamos a añadir las siguientes dependencias, una es para tener un content loader para la carga por primera vez, la segunda es `bootstrap`, que tiene un grid asombroso, lodash es para facilitar la validacion si el arreglo que viene de redux esta vacio o no y la ultima es `node-sass` que es para tener el import de bootstrap en nuestro archivo scss.
 
 ```bash
 yarn add react-content-loader bootstrap lodash node-sass
 ```
 
-We will rename our `app.css` to `app.scss` and we will add this import at the beginning, now with this require we will be able to use the bootstrap grid and core components.
+Vamos a renombrar nuestro archivo `app.css` a `app.scss` y vamos a añadir esto al inicio del archivo, para poder utilizar el grid de bootstrap y sus componentes.
 
 ```scss
 @import "~bootstrap/scss/bootstrap";
 ```
 
-When we have this ready lets create a new file for the PokemonList component
+Cuando tengamos esto, creemos un nuevo archivo para el componente `PokemonList`
 
 ```bash
 touch src/components/PokemonList.js
 ```
 
-First we'll start connecting redux with the component, the component will dispatch two redux actions creators `loadPokemonList` and `loadMorePokemon` also we will set an state for our component which is going to keep count of the pagination, to send the params to our endpoint
+Vamos a empezar conectando nuestro componente con redux, el componente va hacer un dispatch, osea va ejecutar dos **action creators**(los creamos en el tutorial anterior) `loadPokemonList` y `loadMorePokemon`, ademas vamos a ponerle un estado a nuestro componente que va mantener la cuenta de la paginación, para poder enviarle parametros a nuestro endpoint.
 
 ```jsx
 import _ from "lodash";
@@ -75,9 +75,9 @@ export default connect(
 )(PokemonList);
 ```
 
-Notice how we are adding the redux state, to handle all the use cases of our API, for example the loading and error attributes. Also we use bindActionCreators function to define the name of our action creators in the component, those will be available in the component props.
+Notaste que añadimos con el `mapStateToProps` el estado de redux, para poder manejar todos los casos de uso, como por ejemplo el estado de carga y error, también usamos la función `bindActionCreators` que nos permite poner otro nombre a nuestros action creators y permite utilizar ese nombre que definimos en nuestro componente, ya que van a estar en los props del mismo.
 
-Now we are going to add the first fetch on the `componentDidMount` because we want to perform the fetch when our component mounts.
+Ahora vamos a añadir el primer fetch en el metodo `componentDidMount` porque ahí es donde queremos que se ejecute el primer fetch, apenas monte el componente.
 
 ```jsx
   componentDidMount() {
@@ -86,15 +86,15 @@ Now we are going to add the first fetch on the `componentDidMount` because we wa
   }
 ```
 
-As I mentioned, I rename the loadMorePokemon to `fetchActionCreator` and it is available in the props so we're just calling that function inside the `componentDidMount`. This will trigger all the redux flow that will either bring a success response, or return an error message.
+Como mencione antes, renombramos el `loadMorePokemon` a `fetchActionCreator` y este va estar disponible en los props, entonces solo estamos llamando esa función dentro del `componentDidMount`. Esto va a hacer un *dispatch* de la acción y va ejecutar todo el flow de redux, que nos va retornar ya sea la lista de pokemon o un mensaje de error.
 
-So to handle the initial load, I'm going to create a new component that is going to use the library `react-content-loader` so the user we'll see a content loader on screen
+Entonces, para manejar el estado inicial, vamos a crear un componente nuevo que va usar la libreria `react-content-loader`, para que el usuario vea contenido cargando en la pantalla.
 
 ```bash
 touch src/components/ListItemLoader.js
 ```
 
-Please check the docs if you have trouble reading this component
+Por favor revisa la documentación de la libreria si tienes problemas leyendo esto.
 
 ```jsx
 import React from "react";
@@ -142,7 +142,7 @@ const ListItemLoader = () => {
 export default ListItemLoader;
 ```
 
-Now we will modify our `PokemonList` component to display this new component when we have do our initial load.
+Ahora vamos a modificar nuestro componente `PokemonList` para mostrar este nuevo componente, cuando hacemos la carga inicial.
 
 ```jsx
   render() {
@@ -157,9 +157,9 @@ Now we will modify our `PokemonList` component to display this new component whe
   }
 ```
 
-Here we're using the props from redux, notice that we are going to show the ListItemLoader just on the first load, when we implement the scrolling we will use something else, we also have an error if just in case something happens and we're just returning the array length if we get the correct response.
+Aquí solo utilizamos los props de redux, estamos mostrando el `ListItemLoader` solo en la carga inicial, cuando implementamos el scrolling, vamos a usar otra cosa, tambien tenemos una condición por si el error muestra algo, por ahora solo estamos mostrando la longitud del arreglo, para ver que la respuesta es correcta.
 
-Now we'll modify the `App.js` component to add the Provider wrapper and our newly created component.
+Ahora vamos a modificar el componente `App.js` para añadir el componente `Provider` y el componente que acabamos de crear.
 
 ```jsx
 import React from 'react';
@@ -183,13 +183,13 @@ function App() {
 export default App;
 ```
 
-Here we're just wrapping our code in the Provider and using the store function that we just created.
+Aquí solo metemos todo nuestro contenido dentro del `Provider` y usamos función que creamos en el tutorial pasado para pasarle el store a el `Provider`.
 
-Now we should see something like this on the initial load and our count afterwards should be 20 because that's what we defined in the endpoint:
+Ahora deberiamos ver algo como esto en nuestra carga inicial y nuestra cuenta deberia de ser 20, porque eso es lo que definimos en el endpoint.
 
 ![React-content-loader](./react-content-loader.png)
 
-Pretty cool right, now let's do the logic for our scrolling, this was taken from an example from this [post](https://www.kempsterrrr.xyz/handling-scroll-events-in-react/) a condition that checks if our scroll has reach the end of the container where it belongs.
+Bastante chiva verdad, ahora vamos a hacer la lógica para el scrolling, esto fue tomado de un ejemplo en este [post](https://www.kempsterrrr.xyz/handling-scroll-events-in-react/), es una condición que revisa si el scroll a llegado al final del contenedor al que pertenece.
 
 ```jsx
   handleScroll = event => {
@@ -204,7 +204,8 @@ Pretty cool right, now let's do the logic for our scrolling, this was taken from
     }
   };
 ```
-If we are at the end the condition is met and we will trigger the `loadMoreActionCreator` that will request for more pokemon and we will increment the currenCount by 20, so if we go to the bottom of the container again we will fetch for more pokemon. now that we have everything, our render method should look like this.
+
+Si hacemos scroll y llegamos al final, esa condición se va a cumplir y va a ejecutar el `loadMoreActionCreator` que va a hacer un request por mas pokemon y vamos a incrementar el `currentCount` + 20. Ahora que tenemos todo listo, nuestro método `render` deberia verse como esto.
 
 ```jsx
   render() {
@@ -245,7 +246,7 @@ If we are at the end the condition is met and we will trigger the `loadMoreActio
   }
 ```
 
-There are a few thing happening, we created a main `div` that has two `div` one is the one that contains the `<PokemonListItem>`which we will add later and the other one is to display a loading icon if the loading changes, which is the expected behavior if we scroll to the bottom of the `div` since a new request will be triggered. get id is a helper that we will add as well. Lets do that `touch src/helpers/pokemonUtils.js`
+Estan pasando varias cosas, primero creamos un `div` principal que contiene dos `div`, uno contiene el componente `<PokemonListItem>` que vamos a crear despues, y el otro es para mostrar un icono de carga, si el estado de loading cambia, el cual es un comportamiento esperado si llegamos al final del `div`, ya que un nuevo request va ser ejecutado. `getId` es un helper que vamos a añadir, creemos este archivo para eso `touch src/helpers/pokemonUtils.js`
 
 ```js
 export const getId = url => {
@@ -256,7 +257,7 @@ export const getId = url => {
 };
 ```
 
-This just takes the url attribute from the response data and it returns the id that is associated to it. Now the `PokemonListItem` is a fairly easy component, it looks like this:
+Esto solo toma el url que recibimos como parte del response y lo parsea para obtener el id que viene al final. Ahora `PokemonListItem` es un componente bastante fácil de hacer y se ve como esto:
 
 ```jsx
 import _ from "lodash";
@@ -282,10 +283,10 @@ const PokemonListItem = ({ id, name }) => {
 export default PokemonListItem;
 ```
 
-That's why the getId  method comes in handy is important because we will show the pokemon image which is available in github.
+Por eso el método de `getId` nos viene a ser util, porque ahora vamos a mostrar la imagen del pokemon, que se encuentra disponible en github.
 
-If you follow everything step by step you should see something like this:
+Si seguiste todo paso a paso deberias ver algo como esto:
 
 ![Infinite Scroll](./infinite-scroll.gif)
 
-So here it is, this is the way I figure out for fetching large datasets, 9gag uses a similar way to fetch its content and I think is a pretty awesome way to do it if you don't want to add a paginator. This is the [repo](https://github.com/jean182/infinite-scroll) if you want to see all the implementation.
+Entonces, eso es todo, esta es la manera que se me ocurrio para hacer un fetch a una lista larga de objetos, 9gag utiliza una forma similar para mostrar su contenido y creo que es bastante bueno si no quieres utilizar un paginador. Este es el repo [repo](https://github.com/jean182/infinite-scroll) si quieres ver la implementación completa.
