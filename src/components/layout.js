@@ -10,7 +10,6 @@ function Layout(props) {
     windowTheme = window.__theme
   }
   const [theme, setTheme] = useState(windowTheme)
-  const [isOn, setIsOn] = useState(theme === "dark")
 
   useEffect(() => {
     try {
@@ -33,7 +32,6 @@ function Layout(props) {
         event.target.checked ? 'dark' : 'light'
       )
     }
-    setIsOn(prevState => !prevState)
   }
 
   const { title, children, currentLanguage } = props
@@ -50,7 +48,7 @@ function Layout(props) {
       <Header
         title={title}
         theme={theme}
-        isOn={isOn}
+        isOn={theme === 'dark'}
         toggleTheme={toggleTheme}
       />
       <main>{children}</main>

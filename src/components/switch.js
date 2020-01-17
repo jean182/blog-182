@@ -5,7 +5,7 @@ import "react-toggle/style.css"
 
 const Switch = props => {
   const { isOn, handleToggle } = props
-  return <Toggle defaultChecked={isOn} icons={false} onChange={handleToggle} />
+  return <Toggle checked={isOn} icons={false} onChange={handleToggle} />
 }
 
 Switch.propTypes = {
