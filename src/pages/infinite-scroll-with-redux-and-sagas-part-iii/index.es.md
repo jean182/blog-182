@@ -16,8 +16,6 @@ Entonces empecemos a hacer los cambios respectivos, primer con la parte de redux
 
 Inicialmente la aplicación llevaba la cuenta para hacer el fetch de mas pokemon en el lado de react, para esta iteración lo voy a pasar al store de redux, ¿por qué, se preguntaran?, la respuesta es esta, Si queremos tener un filtro para realizar mas operaciones como, buscar por nombre o ordenar por número y nombre, tiene sentido tener un estado adicional para guardar esos datos y filtrar acorde a eso, ya que se puede utilizar en cualquier parte de la aplicación, vamos a crear un modulo nuevo que se llama `filters.js` el cual va tener el estado de `count`.
 
-Initially the app kept the counter for fetching more pokemon on the react side, here I'm going to pass that to the redux store, but why you'll be wondering? The answer is this one, I want to have a filter that can have more functionality, like searching by text, or sorting by name and as the pokemon list is coming from redux, it makes sense to store it there, since we will have the ability to use it anywhere. I'm going to create a new reducer called `filters.js` and that will have the count state.
-
 ```js
 const INCREMENT = "pokemon-frontend/filters/INCREMENT";
 
@@ -69,8 +67,6 @@ export const pokemonListFilterSelector = createSelector(
 En la función `pokemonListFilterSelector` estamos pasando los selectores que creamos antes, las funciones que contienen la parte del estado global que queremos utilizar, luego filtramos el `pokemonList` usando el valor de `count`. Usamos la función `createSelector`que nos la da **reselect**, acore a su documentación dice esto `Takes one or more selectors, or an array of selectors, computes their values and passes them as arguments to resultFunc`. Esto significa que basado en los selectores pasados, va retornar un valor nuevo con los resultados de esa función.
 
 Bien ahora que tenemos el filtrado list, podriamos hacer un `dispatch` del `increment` **action creator** en nuestro componente y eso haria el truco, pero para hacer las cosas mas lindas y no perder la funcionalidad original, voy a crear dos acciones en el modulo `pokemonList`, para sacarle ventaja a las sagas.
-
-Cool now we have the filtering done, now we need could either dispatch the `increment` action creator that we've just created in the component and that will do the trick, but to make this nicer I'm going to create two actions on the `pokemonList` duck to take advantage of the sagas.
 
 ```js
 // New Actions
