@@ -21,3 +21,16 @@
   border: 1px solid var(--primaryTheme);
   box-shadow: 0 0 10px var(--primaryTheme);
 }
+
+::placeholder {
+  color: #999;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  color: #999;
+}
+
+::-ms-input-placeholder {
+  color: #999;
+}

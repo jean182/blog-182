@@ -1,6 +1,8 @@
-body.light {
+body {
   --primaryTheme: #356CB5;
-
+  background-color: var(--bg);
+}
+body.light {
   --primaryBg: #fff;
   --primaryLink: #31639c;
 

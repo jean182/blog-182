@@ -242,4 +242,4 @@ const mapStateToProps = state => ({
   };
 ```
 
-With that little selector now your scroll with not display the loading if you reach the 809 pokemon on the pokeAPI(*Sword-Shield gen is not there yet*) and you can show the actual count of pokemon that you have in your array. Hope you like this tutorial and you can find the repo with full examples (here)[https://github.com/jean182/infinite-scroll].
+With that little selector now your scroll with not display the loading if you reach the 809 pokemon on the pokeAPI(*Sword-Shield gen is not there yet*) and you can show the actual count of pokemon that you have in your array. Hope you like this tutorial and you can find the repo with full examples [here](https://github.com/jean182/infinite-scroll).
