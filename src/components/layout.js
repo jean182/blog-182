@@ -5,7 +5,7 @@ import Header from "./header"
 import Footer from "./footer"
 
 function Layout(props) {
-  let windowTheme = null;
+  let windowTheme = null
   if (isBrowser()) {
     windowTheme = window.__theme
   }
@@ -14,8 +14,8 @@ function Layout(props) {
   useEffect(() => {
     try {
       window.__onThemeChange = () => {
-        setTheme(window.__theme);
-      };
+        setTheme(window.__theme)
+      }
       const metaThemeColor = document.querySelector("meta[name=theme-color]")
       metaThemeColor.setAttribute(
         "content",
@@ -28,9 +28,7 @@ function Layout(props) {
 
   function toggleTheme(event) {
     if (isBrowser()) {
-      window.__setPreferredTheme(
-        event.target.checked ? 'dark' : 'light'
-      )
+      window.__setPreferredTheme(event.target.checked ? "dark" : "light")
     }
   }
 
@@ -48,7 +46,7 @@ function Layout(props) {
       <Header
         title={title}
         theme={theme}
-        isOn={theme === 'dark'}
+        isOn={theme === "dark"}
         toggleTheme={toggleTheme}
       />
       <main>{children}</main>

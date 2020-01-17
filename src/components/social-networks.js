@@ -1,9 +1,15 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { FiInstagram, FiLinkedin, FiGithub } from "react-icons/fi"
+import {
+  FaDev,
+  FaGithub,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTwitter,
+} from "react-icons/fa"
 
 const SocialNetworks = props => {
-  const { iconSize, instagram, linkedIn, github } = props
+  const { devTo, iconSize, instagram, linkedIn, github, twitter } = props
   return (
     <div
       style={{
@@ -11,7 +17,7 @@ const SocialNetworks = props => {
       }}
     >
       <a
-        href={`https://instagram.com/${instagram}`}
+        href={`https://dev.to/${devTo}`}
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -20,19 +26,7 @@ const SocialNetworks = props => {
           marginRight: `0.5rem`,
         }}
       >
-        <FiInstagram />
-      </a>
-      <a
-        href={`https://www.linkedin.com/in/${linkedIn}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          fontSize: `${iconSize}rem`,
-          color: "inherit",
-          marginRight: `0.5rem`,
-        }}
-      >
-        <FiLinkedin />
+        <FaDev />
       </a>
       <a
         href={`https://github.com/${github}`}
@@ -44,17 +38,55 @@ const SocialNetworks = props => {
           marginRight: `0.5rem`,
         }}
       >
-        <FiGithub />
+        <FaGithub />
+      </a>
+      <a
+        href={`https://instagram.com/${instagram}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          fontSize: `${iconSize}rem`,
+          color: "inherit",
+          marginRight: `0.5rem`,
+        }}
+      >
+        <FaInstagram />
+      </a>
+      <a
+        href={`https://www.linkedin.com/in/${linkedIn}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          fontSize: `${iconSize}rem`,
+          color: "inherit",
+          marginRight: `0.5rem`,
+        }}
+      >
+        <FaLinkedinIn />
+      </a>
+      <a
+        href={`https://twitter.com/${twitter}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          fontSize: `${iconSize}rem`,
+          color: "inherit",
+          marginRight: `0.5rem`,
+        }}
+      >
+        <FaTwitter />
       </a>
     </div>
   )
 }
 
 SocialNetworks.propTypes = {
+  devTo: PropTypes.string,
   iconSize: PropTypes.number.isRequired,
   instagram: PropTypes.string,
   linkedIn: PropTypes.string,
   github: PropTypes.string,
+  twitter: PropTypes.string,
 }
 
 export default SocialNetworks

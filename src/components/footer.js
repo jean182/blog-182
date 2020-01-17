@@ -10,9 +10,11 @@ const Footer = ({ currentLanguage }) => {
         siteMetadata {
           author
           social {
+            devTo
             instagram
             github
             linkedIn
+            twitter
           }
         }
       }
@@ -37,10 +39,12 @@ const Footer = ({ currentLanguage }) => {
         </span>
       </div>
       <SocialNetworks
+        devTo={social.devTo}
         iconSize={1}
         instagram={social.instagram}
         linkedIn={social.linkedIn}
         github={social.github}
+        twitter={social.twitter}
       />
     </footer>
   )
