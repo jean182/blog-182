@@ -5,10 +5,11 @@ module.exports = {
     description: `The most awesome blog.`,
     siteUrl: `https://www.loserkid.io/`,
     social: {
-      twitter: `jeanm182`,
+      devTo: `jean182`,
       instagram: `jeanm182`,
       github: `jean182`,
       linkedIn: `jean182`,
+      twitter: `jeanm182`,
     },
   },
   plugins: [
