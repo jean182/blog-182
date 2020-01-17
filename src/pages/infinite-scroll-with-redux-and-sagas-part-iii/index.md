@@ -14,14 +14,12 @@ As it was the application was performing several request to the  pokeAPI(I'm sor
 
 So let's start, to make the respective changes, first start with the redux part.
 
-Initially the app kept the counter for fetching more pokemon on the react side, here I'm going to pass that to the redux store, but why you'll be wondering? The answer is this one, I want to have a filter that can have more functionality, like searching by text, or sorting by name and as the pokemon list is coming from redux, it makes sense to store it there, since we will have the ability to use it anywhere. I'm going to create a new reducer called `filters.js` and that will have the count state.
+Initially the app kept the counter for fetching more pokemon on the react side, here I'm going to pass that to the redux store, but why you'll be wondering? The answer is this one, I want to have a filter that can have more functionality, like searching by text, or sorting by name and as the pokemon list is coming from redux, it makes sense to store it there, since we will have the ability to use it anywhere. I'm going to create a new module called `filters.js` and that will have the count state.
 
 ```js
 const INCREMENT = "pokemon-frontend/filters/INCREMENT";
 
 const filtersReducerDefaultState = {
-  text: "",
-  sortBy: "number",
   count: 20,
 };
 
@@ -242,4 +240,4 @@ const mapStateToProps = state => ({
   };
 ```
 
-With that little selector now your scroll with not display the loading if you reach the 809 pokemon on the pokeAPI(*Sword-Shield gen is not there yet*) and you can show the actual count of pokemon that you have in your array. Hope you like this tutorial and you can find the repo with full examples [here](https://github.com/jean182/infinite-scroll).
+With that little selector now your scroll with not display the loading if you reach the 809 pokemon (on the pokeAPI *Sword-Shield gen is not there yet*) and you can show the actual count of pokemon that you have in your array. Hope you like this tutorial and you can find the repo with full examples [here](https://github.com/jean182/infinite-scroll).
