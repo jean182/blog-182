@@ -5,7 +5,8 @@ description: Part I Setting up redux.
 ---
 
 More on this series:
-[Part II](/infinite-scroll-with-redux-and-sagas-part-ii/)
+[Part II](/infinite-scroll-with-redux-and-sagas-part-ii/) ⋮
+[Part III](/infinite-scroll-with-redux-and-sagas-part-iii/)
 
 Lately I've been trying to create a pokedex, using redux, to practice the core concepts and try new things from an UI perspective.
 

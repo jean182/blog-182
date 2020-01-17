@@ -5,7 +5,8 @@ description: Part II Setting up the frontend.
 ---
 
 More on this series:
-[Part I](/infinite-scroll-with-redux-and-sagas-part-i/)
+[Part I](/infinite-scroll-with-redux-and-sagas-part-i/) ⋮
+[Part III](/infinite-scroll-with-redux-and-sagas-part-iii/)
 
 For this part we'll be focusing on the component setup, and the srolling part and fetching data when the scroll is at the bottom.
 
