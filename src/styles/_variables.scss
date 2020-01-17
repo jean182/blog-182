@@ -1,4 +1,4 @@
-html {
+body.light {
   --primaryTheme: #356CB5;
 
   --primaryBg: #fff;
@@ -32,7 +32,7 @@ html {
   --inlineCode-bg: rgba(255, 229, 100, 0.2);
 }
 
-html[data-theme="dark"] {
+body.dark {
   --primaryTheme: #f76c6c;
   --primaryBg: #1a1a1d;
   --primaryLink: #8bb9dd;

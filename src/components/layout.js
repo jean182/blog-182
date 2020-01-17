@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react"
-import { consoleWarning } from "../utils/helpers"
+import { consoleWarning, isBrowser } from "../utils/helpers"
 import { rhythm } from "../utils/typography"
 import Header from "./header"
 import Footer from "./footer"
 
 function Layout(props) {
-  let findTheme = "light"
-  try {
-    findTheme = JSON.parse(localStorage.getItem("theme")) || "light"
-  } catch (error) {
-    consoleWarning(error)
+  let windowTheme = null;
+  if (isBrowser()) {
+    windowTheme = window.__theme
   }
-  const [theme, setTheme] = useState(findTheme)
+  const [theme, setTheme] = useState(windowTheme)
   const [isOn, setIsOn] = useState(theme === "dark")
 
   useEffect(() => {
     try {
-      document.documentElement.setAttribute("data-theme", theme)
-      localStorage.setItem("theme", JSON.stringify(theme))
+      window.__onThemeChange = () => {
+        setTheme(window.__theme);
+      };
       const metaThemeColor = document.querySelector("meta[name=theme-color]")
       metaThemeColor.setAttribute(
         "content",
@@ -28,13 +27,16 @@ function Layout(props) {
     }
   }, [theme])
 
-  function toggleTheme() {
-    setTheme(prevState => (prevState === "light" ? "dark" : "light"))
+  function toggleTheme(event) {
+    if (isBrowser()) {
+      window.__setPreferredTheme(
+        event.target.checked ? 'dark' : 'light'
+      )
+    }
     setIsOn(prevState => !prevState)
   }
 
   const { title, children, currentLanguage } = props
-
   return (
     <div
       style={{

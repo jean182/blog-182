@@ -2,6 +2,8 @@ export const systemFont = `system-ui, -apple-system, BlinkMacSystemFont, "Segoe 
 "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
 "Droid Sans", "Helvetica Neue", sans-serif`
 
+export const isBrowser = () => typeof window !== 'undefined'
+
 export const consoleWarning = error =>
   console.warn(
     `warning ${error.message}, you're probably not running this in the browser`
