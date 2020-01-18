@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default class HTML extends React.Component {
   render() {
     return (
-      <html {...this.props.htmlAttributes}>
+      <html className="light" {...this.props.htmlAttributes}>
         <head>
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -14,7 +14,7 @@ export default class HTML extends React.Component {
           />
           {this.props.headComponents}
         </head>
-        <body {...this.props.bodyAttributes} className="light">
+        <body {...this.props.bodyAttributes}>
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -23,7 +23,7 @@ export default class HTML extends React.Component {
                 function setTheme(newTheme) {
                   window.__theme = newTheme;
                   preferredTheme = newTheme;
-                  document.body.className = newTheme;
+                  document.documentElement.className = newTheme;
                   window.__onThemeChange(newTheme);
                 }
 

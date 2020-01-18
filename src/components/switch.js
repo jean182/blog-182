@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { mediaQueries } from "../gatsby-plugin-theme-ui"
+import { isBrowser } from "../utils/helpers"
 
 const IconWrapper = styled.button`
   padding: 0;
@@ -92,21 +93,40 @@ const MoonMask = styled.div`
   z-index: -10;
 `
 
-function Switch(props) {
-  const { handleToggle, theme } = props
-  const isDark = theme === `dark`
-  return (
-    <IconWrapper
-      isDark={isDark}
-      onClick={handleToggle}
-      aria-label={isDark ? `Activate light mode` : `Activate dark mode`}
-      checked={isDark}
-      title={isDark ? `Activate light mode` : `Activate dark mode`}
-    >
-      <MoonOrSun isDark={isDark} />
-      <MoonMask isDark={isDark} />
-    </IconWrapper>
-  )
+class Switch extends React.Component {
+  state = {
+    theme: null,
+  }
+  componentDidMount() {
+    this.setState({ theme: window.__theme })
+    window.__onThemeChange = () => {
+      this.setState({ theme: window.__theme })
+    }
+  }
+
+  toggleColorMode = event => {
+    console.log(event.target.title)
+    if (isBrowser()) {
+      window.__setPreferredTheme(
+        event.target.title === "Dark" ? "light" : "dark"
+      )
+    }
+  }
+  render() {
+    const { theme } = this.state
+    const isDark = theme === `dark`
+    return (
+      <IconWrapper
+        isDark={isDark}
+        onClick={this.toggleColorMode}
+        aria-label={isDark ? `Activate light mode` : `Activate dark mode`}
+        title={isDark ? `Dark` : `Light`}
+      >
+        <MoonOrSun isDark={isDark} />
+        <MoonMask isDark={isDark} />
+      </IconWrapper>
+    )
+  }
 }
 
 export default Switch
