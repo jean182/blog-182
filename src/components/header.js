@@ -31,7 +31,7 @@ const navItemStyles = {
 }
 
 const Header = props => {
-  const { isOn, title, theme, toggleTheme } = props
+  const { title } = props
   return (
     <header
       className="header"
@@ -65,7 +65,7 @@ const Header = props => {
           },
         }}
       >
-        <Switch theme={theme} isOn={isOn} handleToggle={toggleTheme} />
+        <Switch />
       </div>
     </header>
   )
@@ -73,8 +73,6 @@ const Header = props => {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  isOn: PropTypes.bool.isRequired,
-  toggleTheme: PropTypes.func.isRequired,
 }
 
 export default Header

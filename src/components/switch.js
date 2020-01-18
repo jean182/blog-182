@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled from "@emotion/styled"
 import { mediaQueries } from "../gatsby-plugin-theme-ui"
+import { consoleWarning, isBrowser } from "../utils/helpers"
 
 const IconWrapper = styled.button`
   padding: 0;
@@ -92,15 +93,40 @@ const MoonMask = styled.div`
   z-index: -10;
 `
 
-function Switch(props) {
-  const { handleToggle, theme } = props
-  const isDark = theme === `dark`
+function Switch() {
+  let windowTheme = "light"
+  if (isBrowser()) {
+    windowTheme = window.__theme
+  }
+  const [colorMode, setColorMode] = useState(windowTheme)
+
+  useEffect(() => {
+    try {
+      window.__onThemeChange = () => {
+        setColorMode(window.__theme)
+      }
+      const metaThemeColor = document.querySelector("meta[name=theme-color]")
+      metaThemeColor.setAttribute(
+        "content",
+        colorMode === "light" ? "#356CB5" : "#f76c6c"
+      )
+    } catch (error) {
+      consoleWarning(error)
+    }
+  }, [colorMode])
+
+  const isDark = colorMode === `dark`
+  function toggleColorMode(event) {
+    event.preventDefault()
+    if (isBrowser()) {
+      window.__setPreferredTheme(isDark ? "light" : "dark")
+    }
+  }
   return (
     <IconWrapper
       isDark={isDark}
-      onClick={handleToggle}
+      onClick={toggleColorMode}
       aria-label={isDark ? `Activate light mode` : `Activate dark mode`}
-      checked={isDark}
       title={isDark ? `Activate light mode` : `Activate dark mode`}
     >
       <MoonOrSun isDark={isDark} />
