@@ -94,7 +94,7 @@ const MoonMask = styled.div`
 `
 
 function Switch() {
-  let windowTheme = "light"
+  let windowTheme = "dark"
   if (isBrowser()) {
     windowTheme = window.__theme
   }
