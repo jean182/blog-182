@@ -12,7 +12,7 @@
     "submit": " Subscribe"
   },
   "footer": {
-    "description": "Made with a lot of love by"
+    "copyright": "All Rights Reserved"
   },
   "post": {
     "readingTime": "min read"
@@ -36,7 +36,7 @@
       "submit": "Suscribirse"
     },
     "footer": {
-      "description": "Hecho con mucho amor por"
+      "copyright": "Todos los derechos reservados"
     },
     "translations": {
       "translationAvailable": "Disponible en",
@@ -58,7 +58,7 @@
       "submit": "S'abonner"
     },
     "footer": {
-      "description": "Fait avec beaucoup d'amour par"
+      "copyright": "Tous les droits sont réservés"
     },
     "translations": {
       "translationAvailable": "Disponible en",
@@ -80,7 +80,7 @@
       "submit": " Abbonarsi"
     },
     "footer": {
-      "description": "Fatto con molto amore da"
+      "copyright": "Tutti i diritti riservati"
     },
     "translations": {
       "translationAvailable": "Disponibile in",
@@ -102,7 +102,7 @@
       "submit": " Subscrever"
     },
     "footer": {
-      "description": "Feito com muito amor por"
+      "copyright": "Todos os direitos reservados"
     },
     "translations": {
       "translationAvailable": "Disponível em",

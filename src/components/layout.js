@@ -27,8 +27,11 @@ function Layout(props) {
   }, [theme])
 
   function toggleTheme(event) {
+    event.preventDefault()
     if (isBrowser()) {
-      window.__setPreferredTheme(event.target.checked ? "dark" : "light")
+      window.__setPreferredTheme(
+        event.target.title === "Activate dark mode" ? "dark" : "light"
+      )
     }
   }
 
