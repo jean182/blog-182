@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled from "@emotion/styled"
 import { mediaQueries } from "../gatsby-plugin-theme-ui"
-import { isBrowser } from "../utils/helpers"
+import { consoleWarning, isBrowser } from "../utils/helpers"
 
 const IconWrapper = styled.button`
   padding: 0;
@@ -93,40 +93,46 @@ const MoonMask = styled.div`
   z-index: -10;
 `
 
-class Switch extends React.Component {
-  state = {
-    theme: null,
+function Switch() {
+  let windowTheme = "light"
+  if (isBrowser()) {
+    windowTheme = window.__theme
   }
-  componentDidMount() {
-    this.setState({ theme: window.__theme })
-    window.__onThemeChange = () => {
-      this.setState({ theme: window.__theme })
-    }
-  }
+  const [colorMode, setColorMode] = useState(windowTheme)
 
-  toggleColorMode = event => {
-    console.log(event.target.title)
-    if (isBrowser()) {
-      window.__setPreferredTheme(
-        event.target.title === "Dark" ? "light" : "dark"
+  useEffect(() => {
+    try {
+      window.__onThemeChange = () => {
+        setColorMode(window.__theme)
+      }
+      const metaThemeColor = document.querySelector("meta[name=theme-color]")
+      metaThemeColor.setAttribute(
+        "content",
+        colorMode === "light" ? "#356CB5" : "#f76c6c"
       )
+    } catch (error) {
+      consoleWarning(error)
+    }
+  }, [colorMode])
+
+  const isDark = colorMode === `dark`
+  function toggleColorMode(event) {
+    event.preventDefault()
+    if (isBrowser()) {
+      window.__setPreferredTheme(isDark ? "light" : "dark")
     }
   }
-  render() {
-    const { theme } = this.state
-    const isDark = theme === `dark`
-    return (
-      <IconWrapper
-        isDark={isDark}
-        onClick={this.toggleColorMode}
-        aria-label={isDark ? `Activate light mode` : `Activate dark mode`}
-        title={isDark ? `Dark` : `Light`}
-      >
-        <MoonOrSun isDark={isDark} />
-        <MoonMask isDark={isDark} />
-      </IconWrapper>
-    )
-  }
+  return (
+    <IconWrapper
+      isDark={isDark}
+      onClick={toggleColorMode}
+      aria-label={isDark ? `Activate light mode` : `Activate dark mode`}
+      title={isDark ? `Activate light mode` : `Activate dark mode`}
+    >
+      <MoonOrSun isDark={isDark} />
+      <MoonMask isDark={isDark} />
+    </IconWrapper>
+  )
 }
 
 export default Switch
