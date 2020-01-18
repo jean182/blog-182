@@ -13,6 +13,15 @@ Wordpress2016.overrideThemeStyles = () => {
     p: {
       color: "var(--primaryText)",
     },
+    ol: {
+      color: "var(--primaryText)",
+    },
+    ul: {
+      color: "var(--primaryText)",
+    },
+    footer: {
+      color: "var(--primaryText)",
+    },
   }
 }
 

@@ -1,4 +1,5 @@
 import React from "react"
+import _ from "lodash"
 import SocialNetworks from "./social-networks"
 import { useStaticQuery, graphql } from "gatsby"
 import { translate } from "../utils/i18n"
@@ -8,7 +9,7 @@ const Footer = ({ currentLanguage }) => {
     query FooterQuery {
       site {
         siteMetadata {
-          author
+          title
           social {
             devTo
             instagram
@@ -20,7 +21,7 @@ const Footer = ({ currentLanguage }) => {
       }
     }
   `)
-  const { social, author } = data.site.siteMetadata
+  const { social, title } = data.site.siteMetadata
   return (
     <footer
       style={{
@@ -29,14 +30,10 @@ const Footer = ({ currentLanguage }) => {
       }}
     >
       <div>
-        © {new Date().getFullYear()},{" "}
-        {translate(currentLanguage, "footer.description")}
+        © {new Date().getFullYear()}, {` `}
+        {_.lowerCase(title)}
         {` `}
-        {author}
-        {` `}
-        <span role="img" aria-label="red-heart">
-          ❤️
-        </span>
+        {translate(currentLanguage, "footer.copyright")}
       </div>
       <SocialNetworks
         devTo={social.devTo}

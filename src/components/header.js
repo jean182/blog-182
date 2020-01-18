@@ -1,13 +1,50 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import PropTypes from "prop-types"
 import Switch from "./switch"
 import { Link } from "gatsby"
-import { FiMoon, FiSun } from "react-icons/fi"
+import { mediaQueries } from "../gatsby-plugin-theme-ui"
+
+const navItemTopOffset = `0.4rem`
+
+const navItemHorizontalSpacing = [1, null, 2]
+
+const overrideDefaultMdLineHeight = {
+  [mediaQueries.md]: {
+    lineHeight: t => t.sizes.headerHeight,
+  },
+}
+
+const navItemStyles = {
+  borderBottom: `2px solid transparent`,
+  color: `navigation.linkDefault`,
+  display: `block`,
+  fontSize: 3,
+  lineHeight: t => t.sizes.headerHeight,
+  [mediaQueries.md]: {
+    lineHeight: t => `calc(${t.sizes.headerHeight} - ${navItemTopOffset})`,
+  },
+  position: `relative`,
+  textDecoration: `none`,
+  zIndex: 1,
+  "&:hover, &:focus": { color: `navigation.linkHover` },
+}
 
 const Header = props => {
   const { isOn, title, theme, toggleTheme } = props
   return (
-    <header className="header">
+    <header
+      className="header"
+      sx={{
+        bg: `navigation.background`,
+        height: `headerHeight`,
+        left: 0,
+        px: `env(safe-area-inset-left)`,
+        right: 0,
+        top: t => t.sizes.bannerHeight,
+        zIndex: `navigation`,
+      }}
+    >
       <nav>
         <h1 className="header__logo">
           <Link className="link-unstyled title-header" to={`/`}>
@@ -15,18 +52,21 @@ const Header = props => {
           </Link>
         </h1>
       </nav>
-      <nav style={{ display: "flex", justifyContent: "spaceBetween" }}>
-        <div style={{ marginTop: "-0.5px", paddingRight: "0.5rem" }}>
-          {theme === "dark" ? (
-            <FiMoon style={{ color: "#f5f3ce", fontSize: "1.5rem" }} />
-          ) : (
-            <FiSun style={{ color: "#ecbd2c", fontSize: "1.5rem" }} />
-          )}
-        </div>
-        <div>
-          <Switch isOn={isOn} handleToggle={toggleTheme} />
-        </div>
-      </nav>
+      <div
+        sx={{
+          ...navItemStyles,
+          ...overrideDefaultMdLineHeight,
+          color: `navigation.socialLink`,
+          ml: navItemHorizontalSpacing,
+          display: "flex",
+          alignItems: "center",
+          "&:hover": {
+            color: `navigation.linkHover`,
+          },
+        }}
+      >
+        <Switch theme={theme} isOn={isOn} handleToggle={toggleTheme} />
+      </div>
     </header>
   )
 }

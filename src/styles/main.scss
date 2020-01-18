@@ -6,7 +6,7 @@
 @import "void";
 
 body {
-  background: var(--primaryBg);
+  background: var(--primaryBg) !important;
   color: var(--primaryText);
   font-weight: 400;
 }
