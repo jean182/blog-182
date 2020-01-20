@@ -98,33 +98,32 @@ class BlogPostTemplate extends Component {
             }}
           />
         </div>
-        <Newsletter currentLanguage={lang} />
-        <Bio currentLanguage={lang} />
-
         <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
+        style={{
+          display: `flex`,
+          flexWrap: `wrap`,
+          justifyContent: `space-between`,
+          listStyle: `none`,
+          padding: 0,
+        }}
+      >
+        <li>
+          {previous && (
+            <Link to={previous.fields.slug} rel="prev">
+              ← {previous.frontmatter.title}
+            </Link>
+          )}
+        </li>
+        <li>
+          {next && (
+            <Link to={next.fields.slug} rel="next">
+              {next.frontmatter.title} →
+            </Link>
+          )}
+        </li>
+      </ul>
+        <Bio currentLanguage={lang} />
+        <Newsletter currentLanguage={lang} />
       </Layout>
     )
   }

@@ -162,7 +162,7 @@ First we need to update our `mapStateToProps` function to this one:
 const mapStateToProps = state => ({
   isLoading: state.pokemonListReducer.isLoading,
   error: state.pokemonListReducer.error,
-  pokemonList: pokemonListFilterSelector(state, state.filterReducer),
+  pokemonList: pokemonListFilterSelector(state),
 });
 ```
 

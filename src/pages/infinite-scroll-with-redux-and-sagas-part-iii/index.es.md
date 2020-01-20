@@ -1,7 +1,7 @@
 ---
-title: Scroll infinito usando redux y redux-saga, Part III.
+title: Scroll infinito usando redux y redux-saga, Parte III.
 date: 2020-01-16T11:22:25.427Z
-description: Part III Mejorando el código.
+description: Parte III Mejorando el código.
 ---
 
 Más de estas series:
@@ -163,7 +163,7 @@ Primero ocupamos modificar la función `mapStateToProps` para que quede así:
 const mapStateToProps = state => ({
   isLoading: state.pokemonListReducer.isLoading,
   error: state.pokemonListReducer.error,
-  pokemonList: pokemonListFilterSelector(state, state.filterReducer),
+  pokemonList: pokemonListFilterSelector(state),
 });
 ```
 
