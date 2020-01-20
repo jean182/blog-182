@@ -1,7 +1,7 @@
 html.light {
-  --primaryTheme: #356CB5;
+  --primaryTheme: #e66992;
   --primaryBg: #fff;
-  --primaryLink: #31639c;
+  --primaryLink: #69bae6;
 
   --primaryText: #212121;
   --secondaryText: #7b7b7b;
@@ -15,8 +15,8 @@ html.light {
 
   --primaryShadowBg: rgba(204, 204, 204, 0.7);
   --inlineCode-text: #1a1a1a;
-  --panelText: #856404;
   --panelBg: #fff9e0;
+  --panelText: #856404;
   --panelBorder: hsla(0, 0%, 0%, 0.2);
   --fallBackLink: #31639c;
   /* Prism js variables */
@@ -32,10 +32,10 @@ html.light {
 }
 
 html.dark {
-  --primaryTheme: #f76c6c;
+  --primaryTheme: #ffa7c4;
   --primaryBg: #1a1a1d;
-  --primaryLink: #8bb9dd;
-  --primaryText: rgba(255, 255, 255, 0.8);
+  --primaryLink: #a7e2ff;
+  --primaryText: #c4c4c4;
   --secondaryText: rgba(255, 255, 255, 0.6);
   --primaryButtonText: #fff;
   --primaryBorderBg: #292929;
@@ -45,6 +45,7 @@ html.dark {
   --panelBg: #d1ecf1;
   --panelText: #0c5460;
   --panelBorder: hsla(201, 100%, 50%, 0.78);
+  --fallBackLink: #31639c;
 
   /* Prism js variables */
   --codeBg: #fff9e0;
