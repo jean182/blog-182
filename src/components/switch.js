@@ -108,7 +108,7 @@ function Switch() {
       const metaThemeColor = document.querySelector("meta[name=theme-color]")
       metaThemeColor.setAttribute(
         "content",
-        colorMode === "light" ? "#356CB5" : "#f76c6c"
+        colorMode === "light" ? "#e66992" : "#ffa7c4"
       )
     } catch (error) {
       consoleWarning(error)
