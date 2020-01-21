@@ -42,6 +42,13 @@ module.exports = {
             },
           },
           {
+            resolve: "gatsby-remark-embed-gist",
+            options: {
+              username: 'jean182',
+              includeDefaultCss: true
+            }
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
