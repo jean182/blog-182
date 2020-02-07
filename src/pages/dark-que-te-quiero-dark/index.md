@@ -10,7 +10,7 @@ So in this post I would go through on how some websites implement their themes; 
 
 ## Google Fonts.
 
-First I would like to talk about the easiest and straight forward way to do it, I'm going to [Google Fonts](https://fonts.google.com/) as the example.
+First I would like to talk about the easiest and straight forward way to do it, I'm going to use [Google Fonts](https://fonts.google.com/) as the example.
 
 Inspecting the site, you can see that they have a class in their html tag called `t-white`, and if you press the select background color button and choose the dark option you'll notice that the html class will change to `t-black`. The javascript code presumably changes the dom node class attribute to use the opposite `t-class` that is currently selected and that would change the whole UI. If we take a look a the css (we need to use a tool to beautify it), we can clearly see that they have declared the same classes for the `t-black` and `t-white` but with the respective changes to make it work for each theme.
 
@@ -73,7 +73,9 @@ export default props => {
 
 This code uses the `useColorMode` hook, that it looks like an `useState` hook with steroids, which is the one that does the dirty work for you. Check the [source](https://github.com/system-ui/theme-ui/blob/90066c9786bc3acbb3eb49ee32386c57760625e8/packages/theme-ui/src/color-modes.js) to see how awesome it is. Offtopic, but looking through this source code is truly inspirational and gives you a lot of cool ideas.
 
-This approach is the easiest one to setup, and it will do the dirty work for you, because it can persist the choosen theme by storing the value in the local storage, `theme-ui` does it for you, less things to worry means you code happily. They also provide support for the `prefers-color-scheme` which we'll talk later. One of the cons found is browser compatibility, IE11 does not have support for `prefers-color-scheme` neither for css variables.
+This approach is the easiest one to setup, and it will do the dirty work for you, because it can persist the choosen theme by storing the value in the local storage, `theme-ui` does it for you, less things to worry means you code happily. They also provide support for the `prefers-color-scheme` which we'll talk later. ~~One of the cons found is browser compatibility, IE11 does not have support for `prefers-color-scheme` neither for css variables~~.
+
+**Update: They do offer the possibility of using the theme without css variables and the prefers-colors-scheme can be disabled** check this [section](https://theme-ui.com/color-modes#turn-off-custom-properties) of their docs.
 
 ## Loserkid
 
@@ -115,7 +117,7 @@ You'll see that you will get an object like this:
 }
 ```
 
-The object itself contains an attribute called `matches`, this will return a boolean if the `prefers-color-scheme` passed (in this case `dark`), matches your system specification, in my case matches attribute is `true` because my computer theme is `dark`, but if yours happens to be using a `light` theme, it will return true.
+The object itself contains an attribute called `matches`, this will return a boolean if the `prefers-color-scheme` passed (in this case `dark`), matches your system specification, in my case matches attribute is `true` because my computer theme is `dark`, but if yours happens to be using a `light` theme, it will return false.
 
 If you want to override those settings and let the user to choose the theme and persist it, you will have to use `localStorage`, because you'll have to store the user selected value and use it everytime the user access the page.
 
@@ -134,7 +136,7 @@ So your code should have a function that gets and sets the value. It is better t
 ## Conclusions
 
 * Using the google fonts approach makes a lot of sense for cross browser support, we can have this working even for IE11 and you know that enterprise wise, a lot of companies are still stuck on IE11 and we have devs have to be fighting against it.
-* Theme UI is a brilliant tool, makes things less stressful an easy to config out of the box. Cons are, browser support, some people are not accostumed to style using jsx and well at the time is only compatible with react.
+* Theme UI is a brilliant tool, makes things less stressful an easy to config out of the box. Cons are, ~~browser support~~, some people are not accostumed to style using jsx and well at the time is only compatible with react.
 * My blog approach, is pretty nice and it is more DIY, just taking the considerations on localStorage, and this property `prefers-color-scheme`, you'll be dealing with browser incompatibility, since I used css variables and `prefers-color-scheme` won't work.
 * It is important to say, that without counting `theme-ui`, we can implemente any approach we want using plain old js and css, it is just changing a node attribute, the only thing that changes is how the event is handled.
 
