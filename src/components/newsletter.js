@@ -4,7 +4,7 @@ import addToMailchimp from "gatsby-plugin-mailchimp"
 import { IoMdMailOpen } from "react-icons/io"
 import { translate } from "../utils/i18n"
 import { ToastContainer, toast } from "react-toastify"
-import _ from "lodash"
+import { first, isEmpty } from "lodash"
 import "react-toastify/dist/ReactToastify.css"
 
 const htmlRegex = /<\s*a[^>]*>(.*?)<\s*\/\s*a>/g
@@ -40,12 +40,12 @@ class Newsletter extends Component {
       if (result === "success") return toast.success(msg, { autoClose: 2000 })
       const link = msg.match(htmlRegex)
       const message = msg.replace(htmlRegex, "")
-      if (!_.isEmpty(link) && _.head(link)) {
+      if (!isEmpty(link) && first(link)) {
         const Message = () => {
           return (
             <div>
               <p>{message}</p>
-              <div dangerouslySetInnerHTML={{ __html: _.head(link) }} />
+              <div dangerouslySetInnerHTML={{ __html: first(link) }} />
             </div>
           )
         }

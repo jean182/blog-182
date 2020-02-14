@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import get from "lodash/get"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
+import Bio from "../components/bio/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Translations from "../components/translations"

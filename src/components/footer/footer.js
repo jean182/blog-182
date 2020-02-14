@@ -1,8 +1,9 @@
 import React from "react"
-import _ from "lodash"
-import SocialNetworks from "./social-networks"
+import { lowerCase } from "lodash"
+import SocialNetworks from "../social-networks/social-networks"
 import { useStaticQuery, graphql } from "gatsby"
-import { translate } from "../utils/i18n"
+import { translate } from "../../utils/i18n"
+import { FooterWrapper } from "./footer.styled"
 
 const Footer = ({ currentLanguage }) => {
   const data = useStaticQuery(graphql`
@@ -23,15 +24,10 @@ const Footer = ({ currentLanguage }) => {
   `)
   const { social, title } = data.site.siteMetadata
   return (
-    <footer
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
+    <FooterWrapper>
       <div>
         © {new Date().getFullYear()}, {` `}
-        {_.lowerCase(title)}
+        {lowerCase(title)}
         {` `}
         {translate(currentLanguage, "footer.copyright")}
       </div>
@@ -43,7 +39,7 @@ const Footer = ({ currentLanguage }) => {
         github={social.github}
         twitter={social.twitter}
       />
-    </footer>
+    </FooterWrapper>
   )
 }
 
