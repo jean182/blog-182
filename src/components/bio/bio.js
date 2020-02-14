@@ -1,10 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
-import { translate } from "../utils/i18n"
-
-import { rhythm } from "../utils/typography"
+import { translate } from "../../utils/i18n"
+import { DivWrapper, ImageWrapper } from "./bio.styled"
 
 function Bio({ currentLanguage }) {
   return (
@@ -13,25 +11,10 @@ function Bio({ currentLanguage }) {
       render={data => {
         const { author, social } = data.site.siteMetadata
         return (
-          <div
-            style={{
-              display: `flex`,
-              marginBottom: rhythm(1.5),
-              marginTop: rhythm(1),
-            }}
-          >
-            <Image
+          <DivWrapper>
+            <ImageWrapper
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
-              }}
-              imgStyle={{
-                borderRadius: `50%`,
-              }}
             />
             <p>
               {translate(currentLanguage, "bio.main")}
@@ -49,7 +32,7 @@ function Bio({ currentLanguage }) {
               <br />
               {translate(currentLanguage, "bio.secondary")}
             </p>
-          </div>
+          </DivWrapper>
         )
       }}
     />

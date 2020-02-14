@@ -1,7 +1,7 @@
 import React from "react"
 import { rhythm } from "../utils/typography"
-import Header from "./header"
-import Footer from "./footer"
+import Header from "./header/header"
+import Footer from "./footer/footer"
 
 function Layout(props) {
   const { title, children, currentLanguage } = props

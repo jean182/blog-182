@@ -13,6 +13,7 @@ const col = {
   navigation: {
     socialLink: c.grey[40],
   },
+  primaryTheme: "#e66992",
   modes: {
     light: {
       navigation: {
@@ -20,6 +21,7 @@ const col = {
       },
     },
     dark: {
+      primaryTheme: "#ffa7c4",
       navigation: {
         socialLink: c.grey[60],
       },

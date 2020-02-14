@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 import Image from "gatsby-image"
 import { graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
-import SocialNetworks from "../components/social-networks"
+import SocialNetworks from "../components/social-networks/social-networks"
 
 const About = props => {
   const { data } = props

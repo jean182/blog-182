@@ -7,76 +7,53 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa"
+import { DivWrapper, LinkWrapper } from "./social-networks.styled"
 
 const SocialNetworks = props => {
   const { devTo, iconSize, instagram, linkedIn, github, twitter } = props
   return (
-    <div
-      style={{
-        textDecoration: "inherit",
-      }}
-    >
-      <a
+    <DivWrapper>
+      <LinkWrapper
         href={`https://dev.to/${devTo}`}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          fontSize: `${iconSize}rem`,
-          color: "inherit",
-          marginRight: `0.5rem`,
-        }}
+        iconSize={iconSize}
       >
         <FaDev />
-      </a>
-      <a
+      </LinkWrapper>
+      <LinkWrapper
         href={`https://github.com/${github}`}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          fontSize: `${iconSize}rem`,
-          color: "inherit",
-          marginRight: `0.5rem`,
-        }}
+        iconSize={iconSize}
       >
         <FaGithub />
-      </a>
-      <a
+      </LinkWrapper>
+      <LinkWrapper
         href={`https://instagram.com/${instagram}`}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          fontSize: `${iconSize}rem`,
-          color: "inherit",
-          marginRight: `0.5rem`,
-        }}
+        iconSize={iconSize}
       >
         <FaInstagram />
-      </a>
-      <a
+      </LinkWrapper>
+      <LinkWrapper
         href={`https://www.linkedin.com/in/${linkedIn}`}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          fontSize: `${iconSize}rem`,
-          color: "inherit",
-          marginRight: `0.5rem`,
-        }}
+        iconSize={iconSize}
       >
         <FaLinkedinIn />
-      </a>
-      <a
+      </LinkWrapper>
+      <LinkWrapper
         href={`https://twitter.com/${twitter}`}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          fontSize: `${iconSize}rem`,
-          color: "inherit",
-          marginRight: `0.5rem`,
-        }}
+        iconSize={iconSize}
       >
         <FaTwitter />
-      </a>
-    </div>
+      </LinkWrapper>
+    </DivWrapper>
   )
 }
 
