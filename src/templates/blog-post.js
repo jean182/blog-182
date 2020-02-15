@@ -6,7 +6,7 @@ import Bio from "../components/bio/bio"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 import Translations from "../components/translations/translations"
-import Newsletter from "../components/newsletter"
+import Newsletter from "../components/newsletter/newsletter"
 import {
   codeToLanguage,
   createLanguageLink,

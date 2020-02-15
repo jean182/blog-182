@@ -1,10 +1,10 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import addToMailchimp from "gatsby-plugin-mailchimp"
-import { IoMdMailOpen } from "react-icons/io"
-import { translate } from "../utils/i18n"
+import { translate } from "../../utils/i18n"
 import { ToastContainer, toast } from "react-toastify"
 import { first, isEmpty } from "lodash"
+import { Column, Input, InputBtn, InputWrapper, MailIcon, MarginDiv, Title, NewsletterTitleWrapper, NewsletterWrapper } from "./newsletter.styled"
 import "react-toastify/dist/ReactToastify.css"
 
 const htmlRegex = /<\s*a[^>]*>(.*?)<\s*\/\s*a>/g
@@ -69,55 +69,50 @@ class Newsletter extends Component {
     const { currentLanguage } = this.props
     return (
       <div>
-        <div className="row newsletter px-sm-4 py-4 mb-3 mr-sm-0 ml-sm-0">
-          <div className="col-sm">
-            <div className="d-flex justify-content-between align-items-center">
-              <h3 className="m-0">
+        <NewsletterWrapper>
+          <Column>
+            <NewsletterTitleWrapper>
+              <Title>
                 {translate(currentLanguage, "newsletter.title")}
-              </h3>
-              <IoMdMailOpen
-                style={{ color: "var(--primaryTheme)", fontSize: "2.5rem" }}
-              />
-            </div>
-            <div className="mt-4">
+              </Title>
+              <MailIcon />
+            </NewsletterTitleWrapper>
+            <MarginDiv>
               <p>
                 {translate(currentLanguage, "newsletter.description")}{" "}
                 <span role="img" aria-label="slightly-smiling-face">
                   🙂
                 </span>
               </p>
-            </div>
-          </div>
-          <div className="col-sm">
+            </MarginDiv>
+          </Column>
+          <Column>
             <form onSubmit={this._handleSubmit}>
-              <div className="form-group">
-                <input
-                  className="form-control"
+              <InputWrapper>
+                <Input
                   placeholder={translate(currentLanguage, "newsletter.name")}
                   onChange={this.onNameChange}
                   type="text"
                   value={name}
                 />
-              </div>
-              <div className="form-group">
-                <input
-                  className="form-control"
+              </InputWrapper>
+              <InputWrapper>
+                <Input
                   placeholder={translate(currentLanguage, "newsletter.email")}
                   onChange={this.onEmailChange}
                   type="email"
                   value={email}
                 />
-              </div>
-              <div className="form-group">
-                <input
-                  className="btn btn-block"
+              </InputWrapper>
+              <InputWrapper>
+                <InputBtn
                   type="submit"
                   value={translate(currentLanguage, "newsletter.submit")}
                 />
-              </div>
+              </InputWrapper>
             </form>
-          </div>
-        </div>
+          </Column>
+        </NewsletterWrapper>
         <ToastContainer />
       </div>
     )
