@@ -1,11 +1,12 @@
 import React, { Component } from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Bio from "../components/bio/bio"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
 import { formatPostDate, formatReadingTime } from "../utils/helpers"
+import { PostTitle } from "./blog-index.styled"
+import { RegularGatsbyLink } from "../components/shared/links.styled"
 import "bootstrap-4-grid/css/grid.min.css"
 import "../styles/main.scss"
 
@@ -32,15 +33,11 @@ class BlogIndex extends Component {
           const title = node.frontmatter.title || node.fields.slug
           return (
             <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link className="article__link" to={node.fields.slug}>
+              <PostTitle>
+                <RegularGatsbyLink to={node.fields.slug}>
                   {title}
-                </Link>
-              </h3>
+                </RegularGatsbyLink>
+              </PostTitle>
               <small>
                 {formatPostDate(node.frontmatter.date, langKey)} -{" "}
                 {formatReadingTime(node.fields.readingTime.minutes, langKey)}

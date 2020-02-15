@@ -11,21 +11,6 @@ body {
   min-height: 100vh,
 }
 
-a {
-  color: var(--primaryLink);
-}
-
-.article__link {
-  color: var(--primaryLink);
-  box-shadow: none;
-}
-
-.panel {
-  color: var(--panelText);
-  background-color: var(--panelBg);
-  border-color: var(--panelBorder);
-}
-
 h1,
 h2,
 h3,

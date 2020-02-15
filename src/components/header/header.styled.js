@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { UnstyledLink } from "../shared/links.styled"
+import { UnstyledGatsbyLink } from "../shared/links.styled"
 
 export const HeaderWrapper = styled.header`
   display: flex;
@@ -12,7 +12,7 @@ export const Title = styled.h1`
   color: var(--primaryTheme);
 `
 
-export const TitleLink = styled(UnstyledLink)`
+export const TitleLink = styled(UnstyledGatsbyLink)`
   text-transform: lowercase;
 `
 
