@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react"
 import styled from "@emotion/styled"
-import { mediaQueries } from "../gatsby-plugin-theme-ui"
-import { consoleWarning, isBrowser } from "../utils/helpers"
+import { mediaQueries } from "../../gatsby-plugin-theme-ui"
 
-const IconWrapper = styled.button`
+export const IconWrapper = styled.button`
   padding: 0;
   appearance: none;
   align-items: center;
@@ -27,7 +25,7 @@ const IconWrapper = styled.button`
   }
 `
 
-const MoonOrSun = styled.div`
+export const MoonOrSun = styled.div`
   border: ${p => (p.isDark ? `4px` : `2px`)} solid
     ${p => p.theme.colors.navigation.socialLink};
   background: ${p => p.theme.colors.navigation.socialLink};
@@ -78,7 +76,7 @@ const MoonOrSun = styled.div`
   }
 `
 
-const MoonMask = styled.div`
+export const MoonMask = styled.div`
   background: ${p => p.theme.colors.white};
   border-radius: 50%;
   border: 0;
@@ -92,47 +90,3 @@ const MoonMask = styled.div`
   width: 24px;
   z-index: -10;
 `
-
-function Switch() {
-  let windowTheme = "dark"
-  if (isBrowser()) {
-    windowTheme = window.__theme
-  }
-  const [colorMode, setColorMode] = useState(windowTheme)
-
-  useEffect(() => {
-    try {
-      window.__onThemeChange = () => {
-        setColorMode(window.__theme)
-      }
-      const metaThemeColor = document.querySelector("meta[name=theme-color]")
-      metaThemeColor.setAttribute(
-        "content",
-        colorMode === "light" ? "#e66992" : "#ffa7c4"
-      )
-    } catch (error) {
-      consoleWarning(error)
-    }
-  }, [colorMode])
-
-  const isDark = colorMode === `dark`
-  function toggleColorMode(event) {
-    event.preventDefault()
-    if (isBrowser()) {
-      window.__setPreferredTheme(isDark ? "light" : "dark")
-    }
-  }
-  return (
-    <IconWrapper
-      isDark={isDark}
-      onClick={toggleColorMode}
-      aria-label={isDark ? `Activate light mode` : `Activate dark mode`}
-      title={isDark ? `Activate light mode` : `Activate dark mode`}
-    >
-      <MoonOrSun isDark={isDark} />
-      <MoonMask isDark={isDark} />
-    </IconWrapper>
-  )
-}
-
-export default Switch

@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Switch from "../switch"
+import Switch from "../switch/switch"
 import { HeaderWrapper, Title, TitleLink, SwitchWrapper } from "./header.styled"
 
 

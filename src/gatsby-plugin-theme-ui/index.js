@@ -60,6 +60,7 @@ const config = {
   mediaQueries: mq,
   sizes: si,
   transition: t,
+  breakpoints: [576, 768, 992, 1200]
 }
 
 export default config

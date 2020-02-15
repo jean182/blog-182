@@ -1,6 +1,5 @@
 @import "variables";
 @import "code";
-@import "forms";
 
 body {
   background: var(--primaryBg) !important;
@@ -16,30 +15,4 @@ h4,
 h5,
 h6 {
   color: var(--primaryTheme);
-}
-
-.newsletter {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, Montserrat,
-    sans-serif;
-  border-radius: 0.5rem;
-  background-color: var(--subscriptionBg);
-  box-shadow: 0 2px 15px 0 var(--primaryTheme);
-}
-
-.btn {
-  border-radius: 0.25rem;
-  background-color: var(--primaryTheme);
-  color: white;
-  font-family: Montserrat, sans-serif;
-  font-weight: 700;
-  font-size: 1.2rem;
-  cursor: pointer;
-  &:hover {
-    box-shadow: 0 2px 15px 0 var(--primaryTheme);
-  }
-}
-
-.btn-block {
-  display: block;
-  width: 100%;
 }
