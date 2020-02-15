@@ -1,19 +1,20 @@
 import React, { Component } from "react"
 import get from "lodash/get"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Bio from "../components/bio/bio"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
-import Translations from "../components/translations"
+import Translations from "../components/translations/translations"
 import Newsletter from "../components/newsletter"
-import { rhythm, scale } from "../utils/typography"
 import {
   codeToLanguage,
   createLanguageLink,
   loadFontsForCode,
 } from "../utils/i18n"
 import { formatPostDate, formatReadingTime } from "../utils/helpers"
+import { DateAndTime, LineBreak, Paginator } from "./blog-post.styled"
+import { RegularGatsbyLink } from "../components/shared/links.styled"
 
 const GITHUB_USERNAME = "jean182"
 const GITHUB_REPO_NAME = "blog-182"
@@ -72,17 +73,10 @@ class BlogPostTemplate extends Component {
         />
         <div>
           <h1>{post.frontmatter.title}</h1>
-          <p
-            style={{
-              ...scale(-1 / 5),
-              display: `block`,
-              marginBottom: rhythm(1),
-              marginTop: rhythm(-1),
-            }}
-          >
+          <DateAndTime>
             {formatPostDate(post.frontmatter.date, lang)} -{" "}
             {formatReadingTime(post.fields.readingTime.minutes, lang)}
-          </p>
+          </DateAndTime>
           {translations.length > 0 && (
             <Translations
               editUrl={editUrl}
@@ -92,36 +86,24 @@ class BlogPostTemplate extends Component {
             />
           )}
           <div dangerouslySetInnerHTML={{ __html: html }} />
-          <hr
-            style={{
-              marginBottom: rhythm(1),
-            }}
-          />
+          <LineBreak />
         </div>
-        <ul
-        style={{
-          display: `flex`,
-          flexWrap: `wrap`,
-          justifyContent: `space-between`,
-          listStyle: `none`,
-          padding: 0,
-        }}
-      >
-        <li>
-          {previous && (
-            <Link to={previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
-            </Link>
-          )}
-        </li>
-        <li>
-          {next && (
-            <Link to={next.fields.slug} rel="next">
-              {next.frontmatter.title} →
-            </Link>
-          )}
-        </li>
-      </ul>
+        <Paginator>
+          <li>
+            {previous && (
+              <RegularGatsbyLink to={previous.fields.slug} rel="prev">
+                ← {previous.frontmatter.title}
+              </RegularGatsbyLink>
+            )}
+          </li>
+          <li>
+            {next && (
+              <RegularGatsbyLink to={next.fields.slug} rel="next">
+                {next.frontmatter.title} →
+              </RegularGatsbyLink>
+            )}
+          </li>
+        </Paginator>
         <Bio currentLanguage={lang} />
         <Newsletter currentLanguage={lang} />
       </Layout>
