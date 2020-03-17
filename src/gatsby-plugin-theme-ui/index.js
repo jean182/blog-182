@@ -1,6 +1,5 @@
 import {
   colors as c,
-  mediaQueries as mq,
   sizes as s,
   space as sp,
   transition as t,
@@ -16,15 +15,11 @@ const col = {
   primaryTheme: "#e66992",
   modes: {
     light: {
-      navigation: {
-        socialLink: c.grey[60],
-      },
+      sunOrMoon: c.yellow[40],
     },
     dark: {
       primaryTheme: "#ffa7c4",
-      navigation: {
-        socialLink: c.grey[60],
-      },
+      sunOrMoon: c.yellow[60],
     },
   },
 }
@@ -51,13 +46,22 @@ const si = {
 
 // export const borders = b
 export const colors = col
-export const mediaQueries = mq
 export const sizes = si
 export const transition = t
+export const mediaQueries = {
+  smMin: '@media (min-width: 576px)',
+  mdMin: '@media (min-width: 768px)',
+  lgMin: '@media (min-width: 992px)',
+  xlMin: '@media (min-width: 1200px)',
+  xsMax: '@media (max-width: 575.98px)',
+  smMax: '@media (max-width: 767.98px)',
+  mdMax: '@media (max-width: 991.98px)',
+  lgMax: ' @media (max-width: 1199.98px)',
+};
 
 const config = {
   colors: col,
-  mediaQueries: mq,
+  mediaQueries,
   sizes: si,
   transition: t,
   breakpoints: [576, 768, 992, 1200]
