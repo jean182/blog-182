@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from "gatsby-design-tokens"
 
 // kudos to our friends at narative.co
 // https://github.com/narative/gatsby-theme-novela/blob/fb38329e17595df6e846be1d33517ff6125cde4e/src/components/Navigation/Navigation.Header.tsx
@@ -54,8 +55,8 @@ export const IconWrapper = styled.button`
 
 export const MoonOrSun = styled.div`
   border: ${(p) => (p.isDark ? '4px' : '2px')} solid
-    ${(p) => p.theme.colors.sunOrMoon};
-  background: ${(p) => p.theme.colors.sunOrMoon};
+    ${(p) => p.isDark ? colors[40] : colors[60]};
+  background: ${(p) => p.isDark ? colors[40] : colors[60]};
   border-radius: 50%;
   height: 24px;
   overflow: ${(p) => (p.isDark ? 'visible' : 'hidden')};
@@ -65,7 +66,7 @@ export const MoonOrSun = styled.div`
   width: 24px;
   &::before {
     border-radius: 50%;
-    border: 2px solid ${(p) => p.theme.colors.sunOrMoon};
+    border: 2px solid ${(p) => p.isDark ? colors[40] : colors[60]};
     content: "";
     height: 24px;
     opacity: ${(p) => (p.isDark ? 0 : 1)};
@@ -78,14 +79,14 @@ export const MoonOrSun = styled.div`
   }
   &::after {
     border-radius: 50%;
-    box-shadow: 0 -23px 0 ${(p) => p.theme.colors.sunOrMoon},
-      0 23px 0 ${(p) => p.theme.colors.sunOrMoon},
-      23px 0 0 ${(p) => p.theme.colors.sunOrMoon},
-      -23px 0 0 ${(p) => p.theme.colors.sunOrMoon},
-      15px 15px 0 ${(p) => p.theme.colors.sunOrMoon},
-      -15px 15px 0 ${(p) => p.theme.colors.sunOrMoon},
-      15px -15px 0 ${(p) => p.theme.colors.sunOrMoon},
-      -15px -15px 0 ${(p) => p.theme.colors.sunOrMoon};
+    box-shadow: 0 -23px 0 ${(p) => p.isDark ? colors[40] : colors[60]},
+      0 23px 0 ${(p) => p.isDark ? colors[40] : colors[60]},
+      23px 0 0 ${(p) => p.isDark ? colors[40] : colors[60]},
+      -23px 0 0 ${(p) => p.isDark ? colors[40] : colors[60]},
+      15px 15px 0 ${(p) => p.isDark ? colors[40] : colors[60]},
+      -15px 15px 0 ${(p) => p.isDark ? colors[40] : colors[60]},
+      15px -15px 0 ${(p) => p.isDark ? colors[40] : colors[60]},
+      -15px -15px 0 ${(p) => p.isDark ? colors[40] : colors[60]};
     content: "";
     height: 8px;
     left: 50%;
