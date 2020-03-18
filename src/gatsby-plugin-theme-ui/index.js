@@ -13,6 +13,7 @@ const col = {
     socialLink: c.grey[40],
   },
   primaryTheme: "#e66992",
+  sunOrMoon: c.yellow[40],
   modes: {
     light: {
       sunOrMoon: c.yellow[40],
