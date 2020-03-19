@@ -10,6 +10,10 @@ export const HeaderWrapper = styled.header`
 export const Title = styled.h1`
   margin-top: 0;
   color: var(--primaryTheme);
+
+  ${(p) => p.theme.mediaQueries.smMax} {
+    display: none;
+  }
 `
 
 export const TitleLink = styled(UnstyledGatsbyLink)`

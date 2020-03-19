@@ -1,30 +1,30 @@
 import React from "react"
-import PropTypes from "prop-types"
 import Switch from "../switch/switch"
 import { HeaderWrapper, Title, TitleLink, SwitchWrapper } from "./header.styled"
+import { FlashLarge, FlashSmall } from "../flash/flash"
 
 
 
-const Header = props => {
-  const { title } = props
+const Header = () => {
   return (
     <HeaderWrapper>
       <nav>
         <Title>
           <TitleLink to={`/`}>
-            {title}
+            Lo
+            <FlashLarge />
+            erkid
           </TitleLink>
         </Title>
+        <TitleLink to={`/`}>
+          <FlashSmall />
+        </TitleLink>
       </nav>
       <SwitchWrapper>
         <Switch />
       </SwitchWrapper>
     </HeaderWrapper>
   )
-}
-
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
 }
 
 export default Header

@@ -50,22 +50,22 @@ export const colors = col
 export const sizes = si
 export const transition = t
 export const mediaQueries = {
-  smMin: '@media (min-width: 576px)',
-  mdMin: '@media (min-width: 768px)',
-  lgMin: '@media (min-width: 992px)',
-  xlMin: '@media (min-width: 1200px)',
-  xsMax: '@media (max-width: 575.98px)',
-  smMax: '@media (max-width: 767.98px)',
-  mdMax: '@media (max-width: 991.98px)',
-  lgMax: ' @media (max-width: 1199.98px)',
-};
+  smMin: "@media (min-width: 576px)",
+  mdMin: "@media (min-width: 768px)",
+  lgMin: "@media (min-width: 992px)",
+  xlMin: "@media (min-width: 1200px)",
+  xsMax: "@media (max-width: 575.98px)",
+  smMax: "@media (max-width: 767.98px)",
+  mdMax: "@media (max-width: 991.98px)",
+  lgMax: " @media (max-width: 1199.98px)",
+}
 
 const config = {
   colors: col,
   mediaQueries,
   sizes: si,
   transition: t,
-  breakpoints: [576, 768, 992, 1200]
+  breakpoints: [576, 768, 992, 1200],
 }
 
 export default config
