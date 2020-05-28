@@ -13,7 +13,7 @@
     "@mdx-js/react": "^1.5.5",
     "bluebird": "^3.5.4",
     "gatsby": "^2.5.5",
-    "gatsby-design-tokens": "^1.0.10",
+    "gatsby-design-tokens": "^2.0.6",
     "gatsby-image": "^2.0.37",
     "gatsby-plugin-catch-links": "^2.0.13",
     "gatsby-plugin-emotion": "^4.1.21",
