@@ -47,6 +47,7 @@ export const IconWrapper = styled.button`
   transition: opacity 0.3s ease;
   vertical-align: middle;
   width: 40px;
+  outline: none;
   &:hover {
     opacity: 1;
   }
