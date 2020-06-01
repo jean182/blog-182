@@ -1,6 +1,6 @@
 import {
   colors as c,
-  sizes as s,
+  fontSizes as s,
   space as sp,
   transition as t,
 } from "gatsby-design-tokens"
