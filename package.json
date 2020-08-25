@@ -63,7 +63,7 @@
     "babel-preset-gatsby": "^0.2.17",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
-    "prettier": "^1.17.0",
+    "prettier": "^2.1.0",
     "react-test-renderer": "^16.10.2"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
