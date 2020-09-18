@@ -39,7 +39,7 @@
     "gatsby-remark-smartypants": "^2.0.9",
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-transformer-remark": "^2.3.8",
-    "gatsby-transformer-sharp": "^2.1.17",
+    "gatsby-transformer-sharp": "^2.5.15",
     "hex2rgba": "^0.0.1",
     "lodash": "^4.17.11",
     "node-sass": "^4.12.0",
