@@ -1,5 +1,5 @@
 html {
-  --primaryTheme: #e66992;
+  --primaryTheme: #ffa7c4;
   --primaryBg: #fff;
   --primaryLink: #69bae6;
 
@@ -32,8 +32,8 @@ html {
 }
 
 html.dark {
-  --primaryTheme: #ffa7c4;
-  --primaryBg: #1a1a1d;
+  --primaryTheme: #f8e877;
+  --primaryBg: #1a1a2e;
   --primaryLink: #a7e2ff;
   --primaryText: #c4c4c4;
   --secondaryText: rgba(255, 255, 255, 0.6);
@@ -57,8 +57,4 @@ html.dark {
   --subscriptionBg: #282c34;
   --aliensExists: #abc13a;
   --inlineCode-bg: #373c49;
-}
-
-body {
-  background-color: var(--bg);
 }

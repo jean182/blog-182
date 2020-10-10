@@ -15,6 +15,7 @@ module.exports = {
   ],
   rules: {
     semi: 0,
+    "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
     "import/prefer-default-export": "off",
     "react/no-danger": "off",

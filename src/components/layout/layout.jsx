@@ -4,18 +4,19 @@ import { ThemeProvider } from "emotion-theming"
 
 import Header from "../header/header"
 import Footer from "../footer/footer"
-import { LayoutWrapper } from "./layout.styled"
+import { Main } from "./layout.styled"
 import theme from "../../theme"
+import Container from "../container/container"
 
 function Layout(props) {
   const { title, children, currentLanguage } = props
   return (
     <ThemeProvider theme={theme}>
-      <LayoutWrapper>
-        <Header title={title} />
-        <main>{children}</main>
-        <Footer currentLanguage={currentLanguage} />
-      </LayoutWrapper>
+      <Header title={title} />
+      <Main>
+        <Container>{children}</Container>
+      </Main>
+      <Footer currentLanguage={currentLanguage} />
     </ThemeProvider>
   )
 }

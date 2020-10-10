@@ -16,6 +16,7 @@ import {
 import { formatPostDate, formatReadingTime } from "../utils/helpers"
 import { DateAndTime, LineBreak, Paginator } from "./blog-post.styled"
 import { RegularGatsbyLink } from "../components/shared/links.styled"
+import { PageLayout } from "../components/layout/layout.styled"
 
 const GITHUB_USERNAME = "jean182"
 const GITHUB_REPO_NAME = "blog-182"
@@ -57,46 +58,48 @@ function BlogPostTemplate({ data, location, pageContext }) {
 
   return (
     <Layout currentLanguage={lang} location={location} title={siteTitle}>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-        lang={lang}
-      />
-      <div>
-        <h1>{post.frontmatter.title}</h1>
-        <DateAndTime>
-          {formatPostDate(post.frontmatter.date, lang)} -{" "}
-          {formatReadingTime(post.fields.readingTime.minutes, lang)}
-        </DateAndTime>
-        {translations.length > 0 && (
-          <Translations
-            editUrl={editUrl}
-            translations={translations}
-            languageLink={languageLink}
-            lang={lang}
-          />
-        )}
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-        <LineBreak />
-      </div>
-      <Paginator>
-        <li>
-          {previous && (
-            <RegularGatsbyLink to={previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
-            </RegularGatsbyLink>
+      <PageLayout>
+        <SEO
+          title={post.frontmatter.title}
+          description={post.frontmatter.description || post.excerpt}
+          lang={lang}
+        />
+        <div>
+          <h1>{post.frontmatter.title}</h1>
+          <DateAndTime>
+            {formatPostDate(post.frontmatter.date, lang)} -{" "}
+            {formatReadingTime(post.fields.readingTime.minutes, lang)}
+          </DateAndTime>
+          {translations.length > 0 && (
+            <Translations
+              editUrl={editUrl}
+              translations={translations}
+              languageLink={languageLink}
+              lang={lang}
+            />
           )}
-        </li>
-        <li>
-          {next && (
-            <RegularGatsbyLink to={next.fields.slug} rel="next">
-              {next.frontmatter.title} →
-            </RegularGatsbyLink>
-          )}
-        </li>
-      </Paginator>
-      <Bio currentLanguage={lang} />
-      <Newsletter currentLanguage={lang} />
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <LineBreak />
+        </div>
+        <Paginator>
+          <li>
+            {previous && (
+              <RegularGatsbyLink to={previous.fields.slug} rel="prev">
+                ← {previous.frontmatter.title}
+              </RegularGatsbyLink>
+            )}
+          </li>
+          <li>
+            {next && (
+              <RegularGatsbyLink to={next.fields.slug} rel="next">
+                {next.frontmatter.title} →
+              </RegularGatsbyLink>
+            )}
+          </li>
+        </Paginator>
+        <Bio currentLanguage={lang} />
+        <Newsletter currentLanguage={lang} />
+      </PageLayout>
     </Layout>
   )
 }

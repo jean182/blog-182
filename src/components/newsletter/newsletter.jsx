@@ -68,7 +68,7 @@ function Newsletter({ currentLanguage }) {
     return null
   }
   return (
-    <div>
+    <>
       <NewsletterWrapper>
         <Column>
           <NewsletterTitleWrapper>
@@ -112,7 +112,7 @@ function Newsletter({ currentLanguage }) {
         </Column>
       </NewsletterWrapper>
       <ToastContainer />
-    </div>
+    </>
   )
 }
 

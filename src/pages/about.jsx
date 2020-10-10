@@ -6,16 +6,17 @@ import PropTypes from "prop-types"
 import Layout from "../components/layout/layout"
 import { rhythm } from "../utils/typography"
 import SocialNetworks from "../components/social-networks/social-networks"
+import { PageLayout } from "../components/layout/layout.styled"
 
 const About = ({ data, pageContext, location }) => {
   const { author, social } = data.site.siteMetadata
   return (
-    <div>
-      <Layout
-        location={location}
-        title="About"
-        currentLanguage={pageContext.langKey}
-      >
+    <Layout
+      location={location}
+      title="About"
+      currentLanguage={pageContext.langKey}
+    >
+      <PageLayout>
         <h1>About</h1>
         <div
           style={{
@@ -50,8 +51,8 @@ const About = ({ data, pageContext, location }) => {
           linkedIn={social.linkedIn}
           github={social.github}
         />
-      </Layout>
-    </div>
+      </PageLayout>
+    </Layout>
   )
 }
 

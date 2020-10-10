@@ -1,6 +1,3 @@
-// custom typefaces
-import "typeface-montserrat"
-import "typeface-merriweather"
 import React from "react"
 
 // Forked Gatsby default to not remount on switches between

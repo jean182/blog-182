@@ -4,7 +4,8 @@ import { lowerCase } from "lodash"
 import { graphql, useStaticQuery } from "gatsby"
 import SocialNetworks from "../social-networks/social-networks"
 import { translate } from "../../utils/i18n"
-import { FooterWrapper } from "./footer.styled"
+import { StyledFooter } from "./footer.styled"
+import SVG from "../../styles/assets/flash.svg"
 
 const GET_FOOTER_DATA = graphql`
   query GetFooterData {
@@ -27,22 +28,26 @@ function Footer({ currentLanguage }) {
   const data = useStaticQuery(GET_FOOTER_DATA)
   const { social, title } = data.site.siteMetadata
   return (
-    <FooterWrapper>
-      <div>
-        © {new Date().getFullYear()}, {` `}
-        {lowerCase(title)}
-        {` `}
-        {translate(currentLanguage, "footer.copyright")}
-      </div>
-      <SocialNetworks
-        devTo={social.devTo}
-        iconSize={1}
-        instagram={social.instagram}
-        linkedIn={social.linkedIn}
-        github={social.github}
-        twitter={social.twitter}
-      />
-    </FooterWrapper>
+    <StyledFooter>
+      <nav aria-labelledby="footer-navigation">
+        <div className="meta">
+          <SVG />
+          <small>
+            © {new Date().getFullYear()}, {` `}
+            {lowerCase(title)}
+            {` `}
+            {translate(currentLanguage, "footer.copyright")}
+          </small>
+        </div>
+        <SocialNetworks
+          devTo={social.devTo}
+          github={social.github}
+          instagram={social.instagram}
+          linkedIn={social.linkedIn}
+          twitter={social.twitter}
+        />
+      </nav>
+    </StyledFooter>
   )
 }
 

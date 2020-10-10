@@ -191,5 +191,21 @@ module.exports = {
           "https://hotmail.us20.list-manage.com/subscribe/post?u=99a0004437c27dd67681c3dcb&amp;id=395ed69915",
       },
     },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Bangers", "Open Sans"],
+        },
+      },
+    },
   ],
 }

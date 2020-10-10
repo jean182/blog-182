@@ -47,9 +47,13 @@ export const IconWrapper = styled.button`
   transition: opacity 0.3s ease;
   vertical-align: middle;
   width: 40px;
-  outline: none;
   &:hover {
     opacity: 1;
+  }
+
+  /* Ugly hack to allow overflow on dark toggle */
+  div {
+    z-index: -1;
   }
 `
 

@@ -4,6 +4,8 @@ import { IoMdMailOpen } from "react-icons/io"
 export const NewsletterWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin: auto;
+  max-width: 70%;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Montserrat,
     sans-serif;
   border-radius: 0.5rem;
@@ -13,11 +15,13 @@ export const NewsletterWrapper = styled.div`
   padding-top: 1.5rem;
   margin-bottom: 1rem;
 
-  @media (min-width: ${p => p.theme.breakpoints[0]}px) {
+  ${p => p.theme.breakpoints.down("md")} {
+    max-width: 100%;
+  }
+
+  ${p => p.theme.breakpoints.up("md")} {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    margin-left: 0;
-    margin-right: 0;
   }
 `
 
@@ -27,7 +31,7 @@ export const Column = styled.div`
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  @media (min-width: ${p => p.theme.breakpoints[0]}px) {
+  ${p => p.theme.breakpoints.up("md")} {
     flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;

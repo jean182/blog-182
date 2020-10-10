@@ -10,6 +10,7 @@ import { formatPostDate, formatReadingTime } from "../utils/helpers"
 import { PostTitle } from "./blog-index.styled"
 import { RegularGatsbyLink } from "../components/shared/links.styled"
 import "../styles/main.css"
+import { PageLayout } from "../components/layout/layout.styled"
 
 function BlogIndex({ data, location, pageContext }) {
   const siteTitle = data.site.siteMetadata.title
@@ -18,32 +19,34 @@ function BlogIndex({ data, location, pageContext }) {
 
   return (
     <Layout currentLanguage={langKey} location={location} title={siteTitle}>
-      <SEO
-        title="All posts"
-        keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-        lang={langKey}
-      />
-      <Bio currentLanguage={langKey} />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        const htmlFragment = sanitize(
-          node.frontmatter.description || node.excerpt
-        )
-        return (
-          <div key={node.fields.slug}>
-            <PostTitle>
-              <RegularGatsbyLink to={node.fields.slug}>
-                {title}
-              </RegularGatsbyLink>
-            </PostTitle>
-            <small>
-              {formatPostDate(node.frontmatter.date, langKey)} -{" "}
-              {formatReadingTime(node.fields.readingTime.minutes, langKey)}
-            </small>
-            <p dangerouslySetInnerHTML={{ __html: htmlFragment }} />
-          </div>
-        )
-      })}
+      <PageLayout>
+        <SEO
+          title="All posts"
+          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+          lang={langKey}
+        />
+        <Bio currentLanguage={langKey} />
+        {posts.map(({ node }) => {
+          const title = node.frontmatter.title || node.fields.slug
+          const htmlFragment = sanitize(
+            node.frontmatter.description || node.excerpt
+          )
+          return (
+            <div key={node.fields.slug}>
+              <PostTitle>
+                <RegularGatsbyLink to={node.fields.slug}>
+                  {title}
+                </RegularGatsbyLink>
+              </PostTitle>
+              <small>
+                {formatPostDate(node.frontmatter.date, langKey)} -{" "}
+                {formatReadingTime(node.fields.readingTime.minutes, langKey)}
+              </small>
+              <p dangerouslySetInnerHTML={{ __html: htmlFragment }} />
+            </div>
+          )
+        })}
+      </PageLayout>
     </Layout>
   )
 }
