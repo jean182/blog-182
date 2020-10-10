@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa"
 import { DivWrapper, LinkWrapper } from "./social-networks.styled"
 
-const SocialNetworks = props => {
+function SocialNetworks(props) {
   const { devTo, iconSize, instagram, linkedIn, github, twitter } = props
   return (
     <DivWrapper>

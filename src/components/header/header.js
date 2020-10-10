@@ -5,7 +5,7 @@ import { FlashLarge, FlashSmall } from "../flash/flash"
 
 
 
-const Header = () => {
+function Header() {
   return (
     <HeaderWrapper>
       <nav>

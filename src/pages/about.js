@@ -1,7 +1,6 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import Image from "gatsby-image"
-import { graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
 import SocialNetworks from "../components/social-networks/social-networks"
 
@@ -49,27 +48,5 @@ const About = props => {
     </div>
   )
 }
-
-export const aboutQuery = graphql`
-  query AboutQuery {
-    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-      childImageSharp {
-        fixed(width: 50, height: 50) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        author
-        social {
-          instagram
-          github
-          linkedIn
-        }
-      }
-    }
-  }
-`
 
 export default About

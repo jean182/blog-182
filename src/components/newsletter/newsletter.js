@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 import { translate } from "../../utils/i18n"
@@ -9,37 +9,30 @@ import "react-toastify/dist/ReactToastify.css"
 
 const htmlRegex = /<\s*a[^>]*>(.*?)<\s*\/\s*a>/g
 
-class Newsletter extends Component {
-  constructor(props) {
-    super(props)
+function Newsletter({ currentLanguage }) {
+  const [name, setName] = React.useState("")
+  const [email, setEmail] = React.useState("")
 
-    this.state = {
-      name: "",
-      email: "",
-      response: {},
-    }
-  }
-
-  onNameChange = e => {
+  const onNameChange = e => {
     const name = e.target.value
-    this.setState(() => ({ name }))
+    setName(name)
   }
 
-  onEmailChange = e => {
+  const onEmailChange = e => {
     const email = e.target.value
-    this.setState(() => ({ email }))
+    setEmail(email)
   }
 
-  _handleSubmit = async e => {
+  const _handleSubmit = async e => {
     e.preventDefault()
-    const { name, email } = this.state
     if (name !== "" || email !== "") {
       const response = await addToMailchimp(email, { name: name })
       const { result, msg } = response
-      this.setState(() => ({ response: { result, msg } }))
       if (result === "success") return toast.success(msg, { autoClose: 2000 })
+
       const link = msg.match(htmlRegex)
       const message = msg.replace(htmlRegex, "")
+
       if (!isEmpty(link) && first(link)) {
         const Message = () => {
           return (
@@ -63,10 +56,6 @@ class Newsletter extends Component {
       })
     }
   }
-
-  render() {
-    const { name, email } = this.state
-    const { currentLanguage } = this.props
     return (
       <div>
         <NewsletterWrapper>
@@ -87,11 +76,11 @@ class Newsletter extends Component {
             </MarginDiv>
           </Column>
           <Column>
-            <form onSubmit={this._handleSubmit}>
+            <form onSubmit={_handleSubmit}>
               <InputWrapper>
                 <Input
                   placeholder={translate(currentLanguage, "newsletter.name")}
-                  onChange={this.onNameChange}
+                  onChange={onNameChange}
                   type="text"
                   value={name}
                 />
@@ -99,7 +88,7 @@ class Newsletter extends Component {
               <InputWrapper>
                 <Input
                   placeholder={translate(currentLanguage, "newsletter.email")}
-                  onChange={this.onEmailChange}
+                  onChange={onEmailChange}
                   type="email"
                   value={email}
                 />
@@ -116,7 +105,6 @@ class Newsletter extends Component {
         <ToastContainer />
       </div>
     )
-  }
 }
 
 Newsletter.propTypes = {

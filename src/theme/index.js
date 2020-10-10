@@ -4,7 +4,7 @@ import {
   space as sp,
   transition as t,
 } from "gatsby-design-tokens"
-import {breakpoints} from './breakpoints'
+import { breakpoints } from "./breakpoints"
 
 const spaceTokens = sp.map(token => `${token / 16}rem`)
 

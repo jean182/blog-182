@@ -1,27 +1,29 @@
 import React from "react"
 import { lowerCase } from "lodash"
 import SocialNetworks from "../social-networks/social-networks"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import { translate } from "../../utils/i18n"
 import { FooterWrapper } from "./footer.styled"
 
-const Footer = ({ currentLanguage }) => {
-  const data = useStaticQuery(graphql`
-    query FooterQuery {
-      site {
-        siteMetadata {
-          title
-          social {
-            devTo
-            instagram
-            github
-            linkedIn
-            twitter
-          }
-        }
+const GET_FOOTER_DATA = graphql`
+query GetFooterData {
+  site {
+    siteMetadata {
+      title
+      social {
+        devTo
+        instagram
+        github
+        linkedIn
+        twitter
       }
     }
-  `)
+  }
+}
+`
+
+function Footer({ currentLanguage }) {
+  const data = useStaticQuery(GET_FOOTER_DATA)
   const { social, title } = data.site.siteMetadata
   return (
     <FooterWrapper>

@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 
 import Bio from "../components/bio/bio"
@@ -9,49 +9,42 @@ import { PostTitle } from "./blog-index.styled"
 import { RegularGatsbyLink } from "../components/shared/links.styled"
 import "../styles/main.css"
 
-class BlogIndex extends Component {
-  render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const langKey = this.props.pageContext.langKey
-    const posts = data.allMarkdownRemark.edges
+function BlogIndex({ data, location, pageContext }) {
+  const siteTitle = data.site.siteMetadata.title
+  const langKey = pageContext.langKey
+  const posts = data.allMarkdownRemark.edges
 
-    return (
-      <Layout
-        currentLanguage={langKey}
-        location={this.props.location}
-        title={siteTitle}
-      >
-        <SEO
-          title="All posts"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-          lang={langKey}
-        />
-        <Bio currentLanguage={langKey} />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <PostTitle>
-                <RegularGatsbyLink to={node.fields.slug}>
-                  {title}
-                </RegularGatsbyLink>
-              </PostTitle>
-              <small>
-                {formatPostDate(node.frontmatter.date, langKey)} -{" "}
-                {formatReadingTime(node.fields.readingTime.minutes, langKey)}
-              </small>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </div>
-          )
-        })}
-      </Layout>
-    )
-  }
+  return (
+    <Layout currentLanguage={langKey} location={location} title={siteTitle}>
+      <SEO
+        title="All posts"
+        keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+        lang={langKey}
+      />
+      <Bio currentLanguage={langKey} />
+      {posts.map(({ node }) => {
+        const title = node.frontmatter.title || node.fields.slug
+        return (
+          <div key={node.fields.slug}>
+            <PostTitle>
+              <RegularGatsbyLink to={node.fields.slug}>
+                {title}
+              </RegularGatsbyLink>
+            </PostTitle>
+            <small>
+              {formatPostDate(node.frontmatter.date, langKey)} -{" "}
+              {formatReadingTime(node.fields.readingTime.minutes, langKey)}
+            </small>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: node.frontmatter.description || node.excerpt,
+              }}
+            />
+          </div>
+        )
+      })}
+    </Layout>
+  )
 }
 
 export default BlogIndex

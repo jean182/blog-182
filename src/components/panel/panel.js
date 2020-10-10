@@ -1,7 +1,7 @@
 import React from "react"
 import { PanelWrapper } from "./panel.styled"
 
-function Panel({ children, style = {} }) {
+function Panel({ children }) {
   return (
     <PanelWrapper>
       {children}

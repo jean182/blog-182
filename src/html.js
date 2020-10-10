@@ -1,65 +1,63 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class HTML extends React.Component {
-  render() {
-    return (
-      <html className="light" {...this.props.htmlAttributes}>
-        <head>
-          <meta charSet="utf-8" />
-          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          {this.props.headComponents}
-        </head>
-        <body {...this.props.bodyAttributes}>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-              (function() {
-                window.__onThemeChange = function() {};
-                function setTheme(newTheme) {
-                  window.__theme = newTheme;
-                  preferredTheme = newTheme;
-                  document.documentElement.className = newTheme;
-                  window.__onThemeChange(newTheme);
-                }
+export default function HTML(props) {
+  return (
+    <html className="light" {...props.htmlAttributes}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        {props.headComponents}
+      </head>
+      <body {...props.bodyAttributes}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function() {
+              window.__onThemeChange = function() {};
+              function setTheme(newTheme) {
+                window.__theme = newTheme;
+                preferredTheme = newTheme;
+                document.documentElement.className = newTheme;
+                window.__onThemeChange(newTheme);
+              }
 
-                var preferredTheme;
+              var preferredTheme;
+              try {
+                preferredTheme = localStorage.getItem('theme');
+              } catch (err) { }
+
+              window.__setPreferredTheme = function(newTheme) {
+                setTheme(newTheme);
                 try {
-                  preferredTheme = localStorage.getItem('theme');
-                } catch (err) { }
+                  localStorage.setItem('theme', newTheme);
+                } catch (err) {}
+              }
 
-                window.__setPreferredTheme = function(newTheme) {
-                  setTheme(newTheme);
-                  try {
-                    localStorage.setItem('theme', newTheme);
-                  } catch (err) {}
-                }
+              var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+              darkQuery.addListener(function(e) {
+                window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+              });
 
-                var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-                darkQuery.addListener(function(e) {
-                  window.__setPreferredTheme(e.matches ? 'dark' : 'light')
-                });
-
-                setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
-              })();
-            `,
-            }}
-          />
-          {this.props.preBodyComponents}
-          <div
-            key={`body`}
-            id="___gatsby"
-            dangerouslySetInnerHTML={{ __html: this.props.body }}
-          />
-          {this.props.postBodyComponents}
-        </body>
-      </html>
-    );
-  }
+              setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+            })();
+          `,
+          }}
+        />
+        {props.preBodyComponents}
+        <div
+          key={`body`}
+          id="___gatsby"
+          dangerouslySetInnerHTML={{ __html: props.body }}
+        />
+        {props.postBodyComponents}
+      </body>
+    </html>
+  );
 }
 
 HTML.propTypes = {
