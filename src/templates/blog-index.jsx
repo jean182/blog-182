@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { sanitize } from "dompurify"
 
 import { Props } from "./blog-post.props"
 import Bio from "../components/bio/bio"
@@ -28,9 +27,8 @@ function BlogIndex({ data, location, pageContext }) {
         <Bio currentLanguage={langKey} />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
-          const htmlFragment = sanitize(
-            node.frontmatter.description || node.excerpt
-          )
+          const htmlFragment = node.frontmatter.description || node.excerpt
+
           return (
             <div key={node.fields.slug}>
               <PostTitle>
