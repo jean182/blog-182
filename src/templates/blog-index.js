@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import { formatPostDate, formatReadingTime } from "../utils/helpers"
 import { PostTitle } from "./blog-index.styled"
 import { RegularGatsbyLink } from "../components/shared/links.styled"
-import "../styles/main.scss"
+import "../styles/main.css"
 
 class BlogIndex extends Component {
   render() {

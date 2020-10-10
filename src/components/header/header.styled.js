@@ -11,7 +11,7 @@ export const Title = styled.h1`
   margin-top: 0;
   color: var(--primaryTheme);
 
-  ${(p) => p.theme.mediaQueries.smMax} {
+  ${(p) => p.theme.breakpoints.down('sm')} {
     display: none;
   }
 `

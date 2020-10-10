@@ -96,7 +96,8 @@ export const MoonOrSun = styled.div`
     width: 8px;
     transform: scale(${(p) => (p.isDark ? 1 : 0)});
     transition: all 0.35s ease;
-    ${(p) => p.theme.mediaQueries.mdMin} {
+
+    ${(p) => p.theme.breakpoints.down('md')} {
       transform: scale(${(p) => (p.isDark ? 0.92 : 0)});
     }
   }

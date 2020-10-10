@@ -1,5 +1,5 @@
-@import "variables";
-@import "code";
+@import "_variables.css";
+@import "_code.css";
 
 body {
   background: var(--primaryBg) !important;

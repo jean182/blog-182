@@ -182,9 +182,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-catch-links`,
-    `gatsby-plugin-theme-ui`,
     `gatsby-plugin-emotion`,
-    `gatsby-plugin-sass`,
     {
       resolve: "gatsby-plugin-mailchimp",
       options: {

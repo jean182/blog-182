@@ -11,11 +11,11 @@ export const FlashWrapper = styled.svg`
 export const FlashMobileWrapper = styled.svg`
   fill: var(--primaryTheme);
 
-  ${(p) => p.theme.mediaQueries.mdMin} {
+  ${(p) => p.theme.breakpoints.up('md')} {
     display: none;
   }
 
-  ${(p) => p.theme.mediaQueries.mdMax} {
+  ${(p) => p.theme.breakpoints.down('md')} {
     width: 10%
   }
 `
