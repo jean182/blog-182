@@ -33,15 +33,11 @@ function Bio({ currentLanguage }) {
 
   return (
     <DivWrapper>
-      <ImageWrapper
-        fixed={data.avatar.childImageSharp.fixed}
-        alt={author}
-      />
+      <ImageWrapper fixed={data.avatar.childImageSharp.fixed} alt={author} />
       <p>
         {translate(currentLanguage, "bio.main")}
         {` `}
         <strong>
-          {` `}
           <a
             target="_blank"
             rel="noopener noreferrer"

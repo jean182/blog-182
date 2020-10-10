@@ -1,26 +1,26 @@
 import React from "react"
+import PropTypes from "prop-types"
+
 import Panel from "../panel/panel"
 import { FallbackGatsbyLink, FallbackLink } from "../shared/links.styled"
 import { translate, codeToLanguage } from "../../utils/i18n"
 
 function Translations({ translations, lang, languageLink, editUrl }) {
-  let readerTranslations = translations.filter(lang => lang !== "ru")
+  const readerTranslations = translations.filter(
+    availableLang => availableLang !== "ru"
+  )
 
   return (
     <Panel>
       {translations.length > 0 && (
         <span>
-          <span>
-            {translate(lang, "translations.translationAvailable")}:{" "}
-          </span>
+          <span>{translate(lang, "translations.translationAvailable")}: </span>
           {readerTranslations.map((l, i) => (
             <React.Fragment key={l}>
               {l === lang ? (
                 <b>{codeToLanguage(l)}</b>
               ) : (
-                <FallbackGatsbyLink
-                  to={`/${languageLink(l)}`}
-                >
+                <FallbackGatsbyLink to={`/${languageLink(l)}`}>
                   {codeToLanguage(l)}
                 </FallbackGatsbyLink>
               )}
@@ -33,9 +33,7 @@ function Translations({ translations, lang, languageLink, editUrl }) {
         <>
           <br />
           <br />
-          <FallbackGatsbyLink
-            to={languageLink("en")}
-          >
+          <FallbackGatsbyLink to={languageLink("en")}>
             {translate(lang, "translations.readOriginal")}
           </FallbackGatsbyLink>
           {" ⋮ "}
@@ -54,6 +52,13 @@ function Translations({ translations, lang, languageLink, editUrl }) {
       )}
     </Panel>
   )
+}
+
+Translations.propTypes = {
+  editUrl: PropTypes.string.isRequired,
+  lang: PropTypes.string.isRequired,
+  languageLink: PropTypes.func.isRequired,
+  translations: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default Translations

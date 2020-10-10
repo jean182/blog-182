@@ -11,7 +11,7 @@ export const Title = styled.h1`
   margin-top: 0;
   color: var(--primaryTheme);
 
-  ${(p) => p.theme.breakpoints.down('sm')} {
+  ${p => p.theme.breakpoints.down("sm")} {
     display: none;
   }
 `
@@ -22,7 +22,7 @@ export const TitleLink = styled(UnstyledGatsbyLink)`
 
 export const SwitchWrapper = styled.div`
   display: flex;
-  alignItems: center;
+  alignitems: center;
 `
 
 /*

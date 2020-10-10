@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { sanitize } from "dompurify"
 
+import { Props } from "./blog-post.props"
 import Bio from "../components/bio/bio"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
@@ -11,7 +13,7 @@ import "../styles/main.css"
 
 function BlogIndex({ data, location, pageContext }) {
   const siteTitle = data.site.siteMetadata.title
-  const langKey = pageContext.langKey
+  const { langKey } = pageContext
   const posts = data.allMarkdownRemark.edges
 
   return (
@@ -24,6 +26,9 @@ function BlogIndex({ data, location, pageContext }) {
       <Bio currentLanguage={langKey} />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
+        const htmlFragment = sanitize(
+          node.frontmatter.description || node.excerpt
+        )
         return (
           <div key={node.fields.slug}>
             <PostTitle>
@@ -35,17 +40,15 @@ function BlogIndex({ data, location, pageContext }) {
               {formatPostDate(node.frontmatter.date, langKey)} -{" "}
               {formatReadingTime(node.fields.readingTime.minutes, langKey)}
             </small>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: node.frontmatter.description || node.excerpt,
-              }}
-            />
+            <p dangerouslySetInnerHTML={{ __html: htmlFragment }} />
           </div>
         )
       })}
     </Layout>
   )
 }
+
+BlogIndex.propTypes = Props
 
 export default BlogIndex
 

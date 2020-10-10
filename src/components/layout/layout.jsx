@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { ThemeProvider } from "emotion-theming"
 
 import Header from "../header/header"
@@ -17,6 +18,12 @@ function Layout(props) {
       </LayoutWrapper>
     </ThemeProvider>
   )
+}
+
+Layout.propTypes = {
+  currentLanguage: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default Layout

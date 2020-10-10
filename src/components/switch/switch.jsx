@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from "react"
 import { consoleWarning, isBrowser } from "../../utils/helpers"
 import { IconWrapper, MoonMask, MoonOrSun } from "./switch.styled"

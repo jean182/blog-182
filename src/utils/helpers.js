@@ -5,6 +5,7 @@ export const systemFont = `system-ui, -apple-system, BlinkMacSystemFont, "Segoe 
 export const isBrowser = () => typeof window !== "undefined"
 
 export const consoleWarning = error =>
+  // eslint-disable-next-line no-console
   console.warn(
     `warning ${error.message}, you're probably not running this in the browser`
   )
@@ -14,12 +15,12 @@ export const formatPostDate = (date, lang) => {
     return date
   }
 
-  date = new Date(date)
+  const newDate = new Date(date)
   const args = [
     lang,
     { day: "numeric", month: "long", year: "numeric" },
   ].filter(Boolean)
-  return date.toLocaleDateString(...args)
+  return newDate.toLocaleDateString(...args)
 }
 
 export const formatReadingTime = (minutes, lang) => {

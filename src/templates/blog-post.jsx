@@ -7,6 +7,7 @@ import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 import Translations from "../components/translations/translations"
 import Newsletter from "../components/newsletter/newsletter"
+import { Props } from "./blog-post.props"
 import {
   codeToLanguage,
   createLanguageLink,
@@ -19,29 +20,24 @@ import { RegularGatsbyLink } from "../components/shared/links.styled"
 const GITHUB_USERNAME = "jean182"
 const GITHUB_REPO_NAME = "blog-182"
 
-function BlogPostTemplate(props) {
-  const post = props.data.markdownRemark
-  const siteTitle = get(props, "data.site.siteMetadata.title")
-  let {
-    previous,
-    next,
-    slug,
-    translations,
-    translatedLinks,
-  } = props.pageContext
+function BlogPostTemplate({ data, location, pageContext }) {
+  const post = data.markdownRemark
+  const siteTitle = get(data, "site.siteMetadata.title")
+  const { previous, next, slug, translatedLinks } = pageContext
+  let { translations } = pageContext
   const lang = post.fields.langKey || ""
 
   // Replace original links with translated when available.
-  let html = post.html
+  let { html } = post
   translatedLinks.forEach(link => {
     // jeez
     function escapeRegExp(str) {
       return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
     }
-    let translatedLink = "/" + lang + link
+    const translatedLink = `/${lang}${link}`
     html = html.replace(
-      new RegExp('"' + escapeRegExp(link) + '"', "g"),
-      '"' + translatedLink + '"'
+      new RegExp(`"${escapeRegExp(link)}"`, "g"),
+      `"${translatedLink}"`
     )
   })
 
@@ -57,10 +53,10 @@ function BlogPostTemplate(props) {
   const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${enSlug.slice(
     1,
     enSlug.length - 1
-  )}/index${lang === "en" ? "" : "." + lang}.md`
+  )}/index${lang === "en" ? "" : `.${lang}`}.md`
 
   return (
-    <Layout currentLanguage={lang} location={props.location} title={siteTitle}>
+    <Layout currentLanguage={lang} location={location} title={siteTitle}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -104,6 +100,8 @@ function BlogPostTemplate(props) {
     </Layout>
   )
 }
+
+BlogPostTemplate.propTypes = Props
 
 export default BlogPostTemplate
 

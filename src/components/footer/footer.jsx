@@ -1,25 +1,26 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { lowerCase } from "lodash"
-import SocialNetworks from "../social-networks/social-networks"
 import { graphql, useStaticQuery } from "gatsby"
+import SocialNetworks from "../social-networks/social-networks"
 import { translate } from "../../utils/i18n"
 import { FooterWrapper } from "./footer.styled"
 
 const GET_FOOTER_DATA = graphql`
-query GetFooterData {
-  site {
-    siteMetadata {
-      title
-      social {
-        devTo
-        instagram
-        github
-        linkedIn
-        twitter
+  query GetFooterData {
+    site {
+      siteMetadata {
+        title
+        social {
+          devTo
+          instagram
+          github
+          linkedIn
+          twitter
+        }
       }
     }
   }
-}
 `
 
 function Footer({ currentLanguage }) {
@@ -43,6 +44,10 @@ function Footer({ currentLanguage }) {
       />
     </FooterWrapper>
   )
+}
+
+Footer.propTypes = {
+  currentLanguage: PropTypes.string.isRequired,
 }
 
 export default Footer

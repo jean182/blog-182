@@ -1,4 +1,4 @@
-import { between, down, keys, only, up, values, width } from './utils';
+import { between, down, keys, only, up, values, width } from "./utils"
 
 export const breakpoints = {
   between,
@@ -7,5 +7,5 @@ export const breakpoints = {
   only,
   up,
   values,
-  width
-};
+  width,
+}

@@ -7,7 +7,7 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa"
-import { DivWrapper, LinkWrapper } from "./social-networks.styled"
+import { DivWrapper, LinkWrapper } from "./social-networks.styled"
 
 function SocialNetworks(props) {
   const { devTo, iconSize, instagram, linkedIn, github, twitter } = props
@@ -58,12 +58,12 @@ function SocialNetworks(props) {
 }
 
 SocialNetworks.propTypes = {
-  devTo: PropTypes.string,
+  devTo: PropTypes.string.isRequired,
   iconSize: PropTypes.number.isRequired,
-  instagram: PropTypes.string,
-  linkedIn: PropTypes.string,
-  github: PropTypes.string,
-  twitter: PropTypes.string,
+  instagram: PropTypes.string.isRequired,
+  linkedIn: PropTypes.string.isRequired,
+  github: PropTypes.string.isRequired,
+  twitter: PropTypes.string.isRequired,
 }
 
 export default SocialNetworks
