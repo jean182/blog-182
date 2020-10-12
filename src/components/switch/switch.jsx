@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from "react"
+import { DARK_THEME_PRIMARY, LIGHT_THEME_PRIMARY } from "../../utils/constants"
 import { consoleWarning, isBrowser } from "../../utils/helpers"
 import { IconWrapper, MoonMask, MoonOrSun } from "./switch.styled"
 
@@ -18,7 +19,7 @@ function Switch() {
       const metaThemeColor = document.querySelector("meta[name=theme-color]")
       metaThemeColor.setAttribute(
         "content",
-        colorMode === "light" ? "#e66992" : "#ffa7c4"
+        colorMode === "light" ? LIGHT_THEME_PRIMARY : DARK_THEME_PRIMARY
       )
     } catch (error) {
       consoleWarning(error)

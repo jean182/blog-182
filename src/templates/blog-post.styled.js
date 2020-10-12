@@ -12,6 +12,10 @@ export const LineBreak = styled.hr`
   margin-bottom: ${rhythm(1)};
 `
 
+export const PostTitle = styled.h1`
+  text-align: initial;
+`
+
 export const Paginator = styled.ul`
   display: flex;
   flex-wrap: wrap;
