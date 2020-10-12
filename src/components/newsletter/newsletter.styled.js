@@ -156,9 +156,6 @@ export const InputBtn = styled.input`
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
@@ -167,6 +164,11 @@ export const InputBtn = styled.input`
   border-radius: 0.25rem;
   background-color: var(--primaryTheme);
   color: white;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  opacity: 1;
 `
 
 export const MessageStyled = styled.div`
