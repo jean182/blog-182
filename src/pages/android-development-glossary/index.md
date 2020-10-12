@@ -6,15 +6,15 @@ description: An useful glossary about android modding.
 
 A few years ago, when I had my first or second android phone(it was a galaxy s3 mini), I started to get interest in android development. By android development I'm referring the tools that devs create in order to alter or modify the behavior of android phones.  I did not and I don't take part of the development of the tools(a big kudos for those guys, they work really hard to help the community even if that means using their free time), thus that would be awesome currently I have other priorities. In this posts I'll share some concepts you should know in order to understand waht does android development means
 
-## Rooting:
+### Rooting:
 
 Is the proccess to allow you to get super user access in your android phone. Normally uses exploits or vulnerabilities found in the phone source code to obtain the root or super user access. With rooting your phone gains superpowers because you can mod it like hell but you should be careful because you could also brick your device if you don't know what you're doing.
 
-## USB Debugging:
+### USB Debugging:
 
 This is a functionality  that allows computers that have the android developer tools installed, to be able to recognize your device when you connect it via usb. It is not the same as reading files or copying files like you are used to.
 
-## ADB:
+### ADB:
 
 Android debug bridge is a script that allows you to communicate with your phone. It is used by android developers because you can sideload apps via adb(more on that later) that will allow to test applications in development in the phone.
 
@@ -38,15 +38,15 @@ Recovery is another system image, as it name suggests is used to try to recover 
 ![TWRP Recovery](/recovery.JPG "TWRP Recovery")
 *A picture of my custom twrp recovery in my old nexus 5x*
 
-## Bootloop:
+### Bootloop:
 
 A term that is used when your phone is unable to boot and is stuck on the init animation of the phone. Usually happens when you are messing with the phone and installing custom stuff, but it can happen to non modded phones as well though is not usual.
 
-## ROM
+### ROM
 
 A ROM is a custom version of the AOSP, there are stock roms which means that are the ones offered by the vendor, for example Huawei offers its own custom ROM called **EMUI**. Also we have custom roms that are created by the community for free just for the sake of modding **LineageOS** is a custom ROM that is pretty popular in the android community. ROMS are specific for devices, so there are devices that have more roms than others. The main reason for this is that there are certain OEMS that makes unlocking the bootloader a pain in the ass. Some users like to use a custom ROM because they like having privacy, usually ROMS are free of google apps, so there're some hardcore users there that don't have google in their phone and a custom ROM allows you to do it.
 
-## GAPPS
+### GAPPS
 
 Acronym for **google apps**, a zip offered to install all the neccesary apps to use google services in a custom ROM, because roms normally just contain the neccesary apps to make your phone usable, they're offered in variants (for example a minimal setup or a full app installation) and they vary according to the version of android and its platform
 

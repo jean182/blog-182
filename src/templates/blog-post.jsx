@@ -18,9 +18,7 @@ import { DateAndTime, LineBreak, Paginator } from "./blog-post.styled"
 import { RegularGatsbyLink } from "../components/shared/links.styled"
 import { PageLayout } from "../components/layout/layout.styled"
 import "../styles/blog.css"
-
-const GITHUB_USERNAME = "jean182"
-const GITHUB_REPO_NAME = "blog-182"
+import { GITHUB_REPO_NAME, GITHUB_USERNAME } from "../utils/constants"
 
 function BlogPostTemplate({ data, pageContext }) {
   const post = data.markdownRemark

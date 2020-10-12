@@ -22,3 +22,9 @@ export const AboutStyled = styled.div`
     fill: var(--primaryTheme);
   }
 `
+
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`

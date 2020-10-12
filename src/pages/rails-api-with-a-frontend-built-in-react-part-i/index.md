@@ -83,7 +83,7 @@ production:
 
 Now that we have the template ready we need to ignore the database.yml, we do that just adding this line to the gitignore
 
-```
+```.ignore
 # Ignore the local database.yml
 /config/database.yml
 ```

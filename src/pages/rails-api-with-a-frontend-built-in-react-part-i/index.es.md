@@ -83,7 +83,7 @@ production:
 
 Ahora que tenemos la plantilla lista, tenemos que ignorar el database.yml, lo hacemos añadiendo la siguiente linea al .gitignore
 
-```
+```.ignore
 # Ignore the local database.yml
 /config/database.yml
 ```

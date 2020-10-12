@@ -1,3 +1,5 @@
+@import "_code.css";
+
 img {
   max-width: 100%;
   margin-left: 0;
@@ -8,4 +10,42 @@ img {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.75rem;
+}
+
+a {
+  color: var(--primaryLink);
+  background-color: transparent;
+}
+
+blockquote {
+  font-size: 1em;
+  margin: 50px auto;
+  font-family: Open Sans;
+  font-style: italic;
+  color: var(--primaryText);
+  padding: 0.8em 30px 0.8em 75px;
+  border-left: 8px solid var(--primaryTheme) ;
+  line-height:1.6;
+  position: relative;
+  background:var(--inlineCode-bg);
+}
+
+blockquote::before {
+  font-family: Arial;
+  content: "\201C";
+  color: var(--primaryTheme);
+  font-size: 4em;
+  position: absolute;
+  left: 10px;
+}
+
+blockquote::after {
+  content: '';
+}
+
+blockquote cite {
+  display: block;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:1em;
 }

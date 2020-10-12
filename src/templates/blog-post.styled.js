@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { rhythm, scale } from "../utils/typography"
 
-export const DateAndTime = styled.p`
+export const DateAndTime = styled.small`
   display: block;
   margin-bottom: ${rhythm(1)};
   margin-top: ${rhythm(-0.5)};
