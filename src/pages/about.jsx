@@ -7,22 +7,15 @@ import Layout from "../components/layout/layout"
 import { rhythm } from "../utils/typography"
 import SocialNetworks from "../components/social-networks/social-networks"
 import { PageLayout } from "../components/layout/layout.styled"
+import { AboutStyled } from "../components/shared/about.styled"
 
-const About = ({ data, pageContext, location }) => {
+const About = ({ data, pageContext }) => {
   const { author, social } = data.site.siteMetadata
   return (
-    <Layout
-      location={location}
-      title="About"
-      currentLanguage={pageContext.langKey}
-    >
+    <Layout title="About" currentLanguage={pageContext.langKey}>
       <PageLayout>
-        <h1>About</h1>
-        <div
-          style={{
-            display: `flex`,
-          }}
-        >
+        <AboutStyled>
+          <h1>About</h1>
           <Image
             fixed={data.avatar.childImageSharp.fixed}
             alt={author}
@@ -40,17 +33,19 @@ const About = ({ data, pageContext, location }) => {
             Hi my name is <strong>{author}</strong>, I&apos;m studying software
             engineering and I&apos;m a rails developer
           </p>
-        </div>
-        <p>
-          This is just for fun, I&apos;ll try to make a nice UI that goes along
-          with the blog and myself
-        </p>
-        <SocialNetworks
-          iconSize={2}
-          instagram={social.instagram}
-          linkedIn={social.linkedIn}
-          github={social.github}
-        />
+          <p>
+            This is just for fun, I&apos;ll try to make a nice UI that goes
+            along with the blog and myself
+          </p>
+          <h3>Follow me on my social networks</h3>
+          <SocialNetworks
+            devTo={social.devTo}
+            instagram={social.instagram}
+            linkedIn={social.linkedIn}
+            github={social.github}
+            twitter={social.twitter}
+          />
+        </AboutStyled>
       </PageLayout>
     </Layout>
   )
@@ -69,9 +64,11 @@ export const aboutQuery = graphql`
       siteMetadata {
         author
         social {
+          devTo
           instagram
           github
           linkedIn
+          twitter
         }
       }
     }
@@ -89,14 +86,15 @@ About.propTypes = {
       siteMetadata: PropTypes.shape({
         author: PropTypes.string,
         social: PropTypes.shape({
+          devTo: PropTypes.string,
           instagram: PropTypes.string,
           github: PropTypes.string,
           linkedIn: PropTypes.string,
+          twitter: PropTypes.string,
         }),
       }),
     }),
   }).isRequired,
-  location: PropTypes.oneOfType([PropTypes.object]).isRequired,
   pageContext: PropTypes.shape({
     langKey: PropTypes.string,
   }).isRequired,

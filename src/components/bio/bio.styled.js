@@ -4,8 +4,13 @@ import { rhythm } from "../../utils/typography"
 
 export const DivWrapper = styled.div`
   display: flex;
-  margin-bottom: ${rhythm(1.5)};
-  margin-top: ${rhythm(1)};
+  align-items: center;
+
+  a {
+    box-shadow: none;
+    color: var(--primaryLink);
+    text-decoration: none;
+  }
 `
 
 export const ImageWrapper = styled(Image)`

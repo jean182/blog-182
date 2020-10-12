@@ -51,9 +51,3 @@ export const Believe = styled.p`
   color: var(--primaryText);
   font-weight: bold;
 `
-
-/*
- TODO
- use theme UI mode...
- ${p => p.theme.colors.primaryTheme}
-*/

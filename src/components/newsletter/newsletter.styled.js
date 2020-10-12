@@ -1,13 +1,11 @@
 import styled from "@emotion/styled"
+import { withPrefix } from "gatsby"
 import { IoMdMailOpen } from "react-icons/io"
 
 export const NewsletterWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  max-width: 70%;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, Montserrat,
-    sans-serif;
   border-radius: 0.5rem;
   background-color: var(--subscriptionBg);
   box-shadow: 0 2px 15px 0 var(--primaryTheme);
@@ -15,8 +13,66 @@ export const NewsletterWrapper = styled.div`
   padding-top: 1.5rem;
   margin-bottom: 1rem;
 
-  ${p => p.theme.breakpoints.down("md")} {
-    max-width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  p {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Montserrat,
+      sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+
+  .form-control.is-invalid ~ .invalid-feedback,
+  .form-control.is-invalid ~ .invalid-tooltip,
+  .was-validated .form-control:invalid ~ .invalid-feedback,
+  .was-validated .form-control:invalid ~ .invalid-tooltip {
+    display: block;
+  }
+
+  .form-control.is-valid ~ .valid-feedback,
+  .form-control.is-valid ~ .valid-tooltip,
+  .was-validated .form-control:valid ~ .valid-feedback,
+  .was-validated .form-control:valid ~ .valid-tooltip {
+    display: block;
+  }
+
+  .valid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #28a745;
+  }
+
+  .invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    line-height: 1.5;
+    font-size: 0.8rem;
+    color: #dc3545;
+  }
+
+  .form-control.is-valid,
+  .was-validated .form-control:valid {
+    border-color: #28a745;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url(${withPrefix("/img/success.svg")});
+    background-repeat: no-repeat;
+    background-position: center right calc(0.375em + 0.1875rem);
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  }
+
+  .form-control.is-invalid,
+  .was-validated .form-control:invalid {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url(${withPrefix("/img/error.svg")});
+    background-repeat: no-repeat;
+    background-position: center right calc(0.375em + 0.1875rem);
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
   }
 
   ${p => p.theme.breakpoints.up("md")} {
@@ -100,14 +156,20 @@ export const InputBtn = styled.input`
   border-radius: 0.25rem;
   background-color: var(--primaryTheme);
   color: white;
-  font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 1.2rem;
   cursor: pointer;
 `
 
-/*
- TODO
- use theme UI mode...
- ${p => p.theme.colors.primaryTheme}
-*/
+export const MessageStyled = styled.div`
+  font-family: sans-serif;
+  font-size: 1rem;
+
+  a {
+    color: var(--primaryLink);
+    text-decoration: none;
+    background-color: transparent;
+    display: block;
+    padding: 0.5rem 1rem;
+  }
+`

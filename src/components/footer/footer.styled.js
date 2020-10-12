@@ -8,6 +8,9 @@ export const StyledFooter = styled.footer`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-right: auto;
+    margin-left: auto;
+  
 
     .meta {
       display: flex;
@@ -57,4 +60,5 @@ export const StyledFooter = styled.footer`
   svg {
     width: 1.5rem;
     fill: var(--primaryTheme);
+  }
 `

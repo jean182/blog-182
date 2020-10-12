@@ -9,6 +9,8 @@
     "description": "If you want to get my latest posts don't forget to subscribe",
     "name": "Name",
     "email": "Email",
+    "required": "This field is required",
+    "invalidEmail": "Invalid email address",
     "submit": " Subscribe"
   },
   "footer": {
@@ -33,6 +35,8 @@
       "description": "Si quieres obtener mis últimas publicaciones no olvides suscribirte",
       "name": "Nombre",
       "email": "Correo Electrónico",
+      "required": "Este campo es requerido",
+      "invalidEmail": "Dirección de correo electrónico inválida",
       "submit": "Suscribirse"
     },
     "footer": {
@@ -54,7 +58,9 @@
       "title": "Bulletin",
       "description": "Si vous voulez recevoir mes dernières publications, n'oubliez pas de vous abonner",
       "name": "Nom",
-      "email": "Courrier Électronique",
+      "email": "Adresse électronique",
+      "required": "Ce champ est requis",
+      "invalidEmail": "Adresse e-mail invalide",
       "submit": "S'abonner"
     },
     "footer": {
@@ -77,6 +83,8 @@
       "description": "Se vuoi ricevere i miei ultimi post, non dimenticare di iscriverti",
       "name": "Nome",
       "email": "Email",
+      "required": "Questo campo è obbligatorio",
+      "invalidEmail": "Indirizzo email non valido",
       "submit": " Abbonarsi"
     },
     "footer": {
@@ -99,6 +107,8 @@
       "description": "Se você deseja obter minhas publicações mais recentes, não se esqueça de se inscrever",
       "name": "Nome",
       "email": "Correio Eletrônico",
+      "required": "Este campo é obrigatório",
+      "invalidEmail": "Endereço de email invalido",
       "submit": " Subscrever"
     },
     "footer": {

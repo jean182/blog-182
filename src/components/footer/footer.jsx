@@ -6,6 +6,7 @@ import SocialNetworks from "../social-networks/social-networks"
 import { translate } from "../../utils/i18n"
 import { StyledFooter } from "./footer.styled"
 import SVG from "../../styles/assets/flash.svg"
+import Container from "../container/container"
 
 const GET_FOOTER_DATA = graphql`
   query GetFooterData {
@@ -29,24 +30,26 @@ function Footer({ currentLanguage }) {
   const { social, title } = data.site.siteMetadata
   return (
     <StyledFooter>
-      <nav aria-labelledby="footer-navigation">
-        <div className="meta">
-          <SVG />
-          <small>
-            © {new Date().getFullYear()}, {` `}
-            {lowerCase(title)}
-            {` `}
-            {translate(currentLanguage, "footer.copyright")}
-          </small>
-        </div>
-        <SocialNetworks
-          devTo={social.devTo}
-          github={social.github}
-          instagram={social.instagram}
-          linkedIn={social.linkedIn}
-          twitter={social.twitter}
-        />
-      </nav>
+      <Container>
+        <nav aria-labelledby="footer-navigation">
+          <div className="meta">
+            <SVG />
+            <small>
+              © {new Date().getFullYear()}, {` `}
+              {lowerCase(title)}
+              {` `}
+              {translate(currentLanguage, "footer.copyright")}
+            </small>
+          </div>
+          <SocialNetworks
+            devTo={social.devTo}
+            github={social.github}
+            instagram={social.instagram}
+            linkedIn={social.linkedIn}
+            twitter={social.twitter}
+          />
+        </nav>
+      </Container>
     </StyledFooter>
   )
 }

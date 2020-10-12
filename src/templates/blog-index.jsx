@@ -11,13 +11,13 @@ import { RegularGatsbyLink } from "../components/shared/links.styled"
 import "../styles/main.css"
 import { PageLayout } from "../components/layout/layout.styled"
 
-function BlogIndex({ data, location, pageContext }) {
+function BlogIndex({ data, pageContext }) {
   const siteTitle = data.site.siteMetadata.title
   const { langKey } = pageContext
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <Layout currentLanguage={langKey} location={location} title={siteTitle}>
+    <Layout currentLanguage={langKey} title={siteTitle}>
       <PageLayout>
         <SEO
           title="All posts"

@@ -26,9 +26,3 @@ export const RegularLink = styled.a`
 export const FallbackLink = styled(RegularLink)`
   color: var(--fallBackLink);
 `
-
-/*
- TODO
- use theme UI mode...
- ${p => p.theme.colors.primaryTheme}
-*/

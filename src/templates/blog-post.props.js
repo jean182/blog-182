@@ -26,7 +26,6 @@ export const Props = {
       }),
     }),
   }).isRequired,
-  location: PropTypes.oneOfType([PropTypes.object]).isRequired,
   pageContext: PropTypes.shape({
     next: PropTypes.oneOfType([
       PropTypes.shape({

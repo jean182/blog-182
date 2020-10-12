@@ -17,11 +17,12 @@ import { formatPostDate, formatReadingTime } from "../utils/helpers"
 import { DateAndTime, LineBreak, Paginator } from "./blog-post.styled"
 import { RegularGatsbyLink } from "../components/shared/links.styled"
 import { PageLayout } from "../components/layout/layout.styled"
+import "../styles/blog.css"
 
 const GITHUB_USERNAME = "jean182"
 const GITHUB_REPO_NAME = "blog-182"
 
-function BlogPostTemplate({ data, location, pageContext }) {
+function BlogPostTemplate({ data, pageContext }) {
   const post = data.markdownRemark
   const siteTitle = get(data, "site.siteMetadata.title")
   const { previous, next, slug, translatedLinks } = pageContext
@@ -57,7 +58,7 @@ function BlogPostTemplate({ data, location, pageContext }) {
   )}/index${lang === "en" ? "" : `.${lang}`}.md`
 
   return (
-    <Layout currentLanguage={lang} location={location} title={siteTitle}>
+    <Layout currentLanguage={lang} title={siteTitle}>
       <PageLayout>
         <SEO
           title={post.frontmatter.title}

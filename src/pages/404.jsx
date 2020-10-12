@@ -14,16 +14,12 @@ import {
   VoidWrapper,
 } from "../components/shared/404.styled"
 
-function NotFoundPage({ data, pageContext, location }) {
+function NotFoundPage({ data, pageContext }) {
   const siteTitle = data.site.siteMetadata.title
 
   return (
     <VoidWrapper>
-      <Layout
-        location={location}
-        title={siteTitle}
-        currentLanguage={pageContext.langKey}
-      >
+      <Layout title={siteTitle} currentLanguage={pageContext.langKey}>
         <SEO title="404: Not Found" />
         <div>
           <NotFound>404</NotFound>
@@ -49,7 +45,6 @@ NotFoundPage.propTypes = {
       }),
     }),
   }).isRequired,
-  location: PropTypes.oneOfType([PropTypes.object]).isRequired,
   pageContext: PropTypes.shape({
     langKey: PropTypes.string,
   }).isRequired,
