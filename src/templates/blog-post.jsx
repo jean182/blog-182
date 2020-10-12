@@ -14,7 +14,12 @@ import {
   loadFontsForCode,
 } from "../utils/i18n"
 import { formatPostDate, formatReadingTime } from "../utils/helpers"
-import { DateAndTime, LineBreak, Paginator } from "./blog-post.styled"
+import {
+  DateAndTime,
+  LineBreak,
+  PostTitle,
+  Paginator,
+} from "./blog-post.styled"
 import { RegularGatsbyLink } from "../components/shared/links.styled"
 import { PageLayout } from "../components/layout/layout.styled"
 import "../styles/blog.css"
@@ -64,7 +69,7 @@ function BlogPostTemplate({ data, pageContext }) {
           lang={lang}
         />
         <div>
-          <h1>{post.frontmatter.title}</h1>
+          <PostTitle>{post.frontmatter.title}</PostTitle>
           <DateAndTime>
             {formatPostDate(post.frontmatter.date, lang)} -{" "}
             {formatReadingTime(post.fields.readingTime.minutes, lang)}
