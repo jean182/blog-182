@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { keyframes } from '@emotion/core'
+import { keyframes } from "@emotion/core"
 
 export const NotFound = styled.h1`
   font-family: Montserrat, sans-serif;
@@ -51,9 +51,3 @@ export const Believe = styled.p`
   color: var(--primaryText);
   font-weight: bold;
 `
-
-/*
- TODO
- use theme UI mode...
- ${p => p.theme.colors.primaryTheme}
-*/

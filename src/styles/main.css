@@ -1,0 +1,77 @@
+@import "_variables.css";
+@import "_code.css";
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--primaryBg) !important;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--primaryText);
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 400;
+  min-height: 100vh;
+  transition: background 0.5s ease;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.003em;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bangers", cursive;
+  color: var(--primaryTheme);
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#___gatsby > * {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main > .container {
+  margin-top: 70px;
+}
+
+/* Nav transition */
+.show-enter {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.show-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 350ms, transform 350ms;
+}
+.show-exit {
+  opacity: 1;
+}
+.show-exit-active {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 350ms, transform 350ms;
+}

@@ -1,6 +1,3 @@
-// custom typefaces
-import "typeface-montserrat"
-import "typeface-merriweather"
 import React from "react"
 
 // Forked Gatsby default to not remount on switches between
@@ -53,8 +50,9 @@ function shouldPreserveScrollBetween(oldPathname, newPathname) {
 // Forked to not update scroll on transitions between translations.
 // Sadness. I have to override a *plugin* because it already has its own logic,
 // and Gatsby just ignores mine, lol. TODO: fork this plugin?
-let oldShouldUpdateScroll = require("gatsby-remark-autolink-headers/gatsby-browser")
+const oldShouldUpdateScroll = require("gatsby-remark-autolink-headers/gatsby-browser")
   .shouldUpdateScroll
+
 if (typeof oldShouldUpdateScroll !== "function") {
   throw new Error("No monkeypatching today :-(")
 }

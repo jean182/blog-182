@@ -1,0 +1,8 @@
+// .eslintignore
+*spec.js
+jest-preprocess.js
+gatsby-node.js
+gatsby-browser.js
+loadershim.js
+setup-test-env.js
+html.js

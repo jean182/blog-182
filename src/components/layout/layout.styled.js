@@ -1,13 +1,10 @@
 import styled from "@emotion/styled"
-import { rhythm } from "../../utils/typography"
 
-export const LayoutWrapper = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  max-width: ${rhythm(24)};
-  padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
+export const Main = styled.main`
+  flex: 1 0 auto;
+`
 
-  ${(p) => p.theme.mediaQueries.mdMax} {
-    padding: ${rhythm(0.5)} ${rhythm(1 / 2)};
-  }
+export const PageLayout = styled.div`
+  padding: 0.5rem 1rem;
+  text-align: justify;
 `

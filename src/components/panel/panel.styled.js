@@ -5,7 +5,7 @@ export const PanelWrapper = styled.div`
   color: var(--panelText);
   background-color: var(--panelBg);
   border-color: var(--panelBorder);
-  font-size: 0.9em;
+  font-size: 0.8em;
   border-radius: 0.75em;
   padding: 0.75em;
   word-break: keep-all;
@@ -13,9 +13,3 @@ export const PanelWrapper = styled.div`
   border: 1px solid var(--panelBorder);
   font-family: ${systemFont};
 `
-
-/*
- TODO
- use theme UI mode...
- ${p => p.theme.colors.primaryTheme}
-*/

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled"
 
 // kudos to our friends at narative.co
 // https://github.com/narative/gatsby-theme-novela/blob/fb38329e17595df6e846be1d33517ff6125cde4e/src/components/Navigation/Navigation.Header.tsx
@@ -47,46 +47,48 @@ export const IconWrapper = styled.button`
   transition: opacity 0.3s ease;
   vertical-align: middle;
   width: 40px;
-  outline: none;
   &:hover {
     opacity: 1;
   }
-`;
+
+  /* Ugly hack to allow overflow on dark toggle */
+  div {
+    z-index: -1;
+  }
+`
 
 export const MoonOrSun = styled.div`
-  border: ${(p) => (p.isDark ? '4px' : '2px')} solid
-    ${(p) => p.theme.colors.sunOrMoon};
-  background: ${(p) => p.theme.colors.sunOrMoon};
+  background: ${p => p.theme.colors.sunOrMoon};
   border-radius: 50%;
   height: 24px;
-  overflow: ${(p) => (p.isDark ? 'visible' : 'hidden')};
+  overflow: ${p => (p.isDark ? `visible` : `hidden`)};
   position: relative;
-  transform: scale(${(p) => (p.isDark ? 0.55 : 1)});
+  transform: scale(${p => (p.isDark ? 0.55 : 1)});
   transition: all 0.45s ease;
   width: 24px;
   &::before {
     border-radius: 50%;
-    border: 2px solid ${(p) => p.theme.colors.sunOrMoon};
+    border: 2px solid ${p => p.theme.colors.sunOrMoon};
     content: "";
     height: 24px;
-    opacity: ${(p) => (p.isDark ? 0 : 1)};
+    opacity: ${p => (p.isDark ? 0 : 1)};
     position: absolute;
     right: -9px;
     top: -9px;
-    transform: translate(${(p) => (p.isDark ? '14px, -14px' : '0, 0')});
+    transform: translate(${p => (p.isDark ? `14px, -14px` : `0, 0`)});
     transition: transform 0.45s ease;
     width: 24px;
   }
   &::after {
     border-radius: 50%;
-    box-shadow: 0 -23px 0 ${(p) => p.theme.colors.sunOrMoon},
-      0 23px 0 ${(p) => p.theme.colors.sunOrMoon},
-      23px 0 0 ${(p) => p.theme.colors.sunOrMoon},
-      -23px 0 0 ${(p) => p.theme.colors.sunOrMoon},
-      15px 15px 0 ${(p) => p.theme.colors.sunOrMoon},
-      -15px 15px 0 ${(p) => p.theme.colors.sunOrMoon},
-      15px -15px 0 ${(p) => p.theme.colors.sunOrMoon},
-      -15px -15px 0 ${(p) => p.theme.colors.sunOrMoon};
+    box-shadow: 0 -23px 0 ${p => p.theme.colors.sunOrMoon},
+      0 23px 0 ${p => p.theme.colors.sunOrMoon},
+      23px 0 0 ${p => p.theme.colors.sunOrMoon},
+      -23px 0 0 ${p => p.theme.colors.sunOrMoon},
+      15px 15px 0 ${p => p.theme.colors.sunOrMoon},
+      -15px 15px 0 ${p => p.theme.colors.sunOrMoon},
+      15px -15px 0 ${p => p.theme.colors.sunOrMoon},
+      -15px -15px 0 ${p => p.theme.colors.sunOrMoon};
     content: "";
     height: 8px;
     left: 50%;
@@ -94,24 +96,25 @@ export const MoonOrSun = styled.div`
     position: absolute;
     top: 50%;
     width: 8px;
-    transform: scale(${(p) => (p.isDark ? 1 : 0)});
+    transform: scale(${p => (p.isDark ? 1 : 0)});
     transition: all 0.35s ease;
-    ${(p) => p.theme.mediaQueries.mdMin} {
-      transform: scale(${(p) => (p.isDark ? 0.92 : 0)});
+
+    ${p => p.theme.breakpoints.up("md")} {
+      transform: scale(${p => (p.isDark ? 0.92 : 0)});
     }
   }
-`;
+`
 
 export const MoonMask = styled.div`
   background: var(--primaryBg);
   border-radius: 50%;
   border: 0;
   height: 24px;
-  opacity: ${(p) => (p.isDark ? 0 : 1)};
+  opacity: ${p => (p.isDark ? 0 : 1)};
   position: absolute;
   right: 0;
   top: 0;
-  transform: translate(${(p) => (p.isDark ? '14px, -14px' : '0, 0')});
+  transform: translate(${p => (p.isDark ? `14px, -14px` : `0, 0`)});
   transition: background 0.5s ease, transform 0.45s ease;
   width: 24px;
-`;
+`

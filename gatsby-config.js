@@ -38,16 +38,16 @@ module.exports = {
               width: 800,
               ratio: 1.77, // Optional: Defaults to 16/9 = 1.77
               height: 400, // Optional: Overrides optional.ratio
-              related: false, //Optional: Will remove related videos from the end of an embedded YouTube video.
-              noIframeBorder: true, //Optional: Disable insertion of <style> border: 0
+              related: false, // Optional: Will remove related videos from the end of an embedded YouTube video.
+              noIframeBorder: true, // Optional: Disable insertion of <style> border: 0
             },
           },
           {
             resolve: "gatsby-remark-embed-gist",
             options: {
-              username: 'jean182',
-              includeDefaultCss: true
-            }
+              username: "jean182",
+              includeDefaultCss: true,
+            },
           },
           {
             resolve: `gatsby-remark-images`,
@@ -101,13 +101,13 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
-                const siteUrl = site.siteMetadata.siteUrl
+                const { siteUrl } = site.siteMetadata
                 const postText = `
               <div style="margin-top=55px; font-style: italic;">(This is an article posted to my blog at loserkid.io. You can read it online by <a href="${siteUrl +
                 edge.node.fields.slug}">clicking here</a>.)</div>
             `
 
-                let html = edge.node.html
+                let { html } = edge.node
                 // Hacky workaround for https://github.com/gaearon/overreacted.io/issues/65
                 html = html
                   .replace(/href="\//g, `href="${siteUrl}/`)
@@ -115,13 +115,14 @@ module.exports = {
                   .replace(/"\/static\//g, `"${siteUrl}/static/`)
                   .replace(/,\s*\/static\//g, `,${siteUrl}/static/`)
 
-                return Object.assign({}, edge.node.frontmatter, {
+                return {
+                  ...edge.node.frontmatter,
                   description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   custom_elements: [{ "content:encoded": html + postText }],
-                })
+                }
               })
             },
             query: `
@@ -169,12 +170,6 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
-    {
       resolve: "gatsby-plugin-i18n",
       options: {
         langKeyDefault: "en",
@@ -182,14 +177,28 @@ module.exports = {
       },
     },
     `gatsby-plugin-catch-links`,
-    `gatsby-plugin-theme-ui`,
     `gatsby-plugin-emotion`,
-    `gatsby-plugin-sass`,
     {
       resolve: "gatsby-plugin-mailchimp",
       options: {
         endpoint:
           "https://hotmail.us20.list-manage.com/subscribe/post?u=99a0004437c27dd67681c3dcb&amp;id=395ed69915",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Bangers", "Open Sans"],
+        },
       },
     },
   ],
