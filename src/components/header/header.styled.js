@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-// import { UnstyledGatsbyLink } from "../shared/links.styled"
 
 export const StyledHeader = styled.header`
   font-weight: 400;

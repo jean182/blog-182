@@ -13,15 +13,8 @@ function Header() {
   useOutsideHandler(navRef, () => setOpen(false))
   const closeSidebar = () => open && setOpen(false)
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setCollapseStatus("collapse")
-    }, 200)
-    return () => clearTimeout(timer)
-  }, [open])
-
   const handleClick = () => {
-    setCollapseStatus(() => "collapsing")
+    setCollapseStatus("collapse")
     setOpen(!open)
   }
 

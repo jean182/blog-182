@@ -75,9 +75,9 @@ export const NewsletterWrapper = styled.div`
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
   }
 
-  ${p => p.theme.breakpoints.up("md")} {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+  ${p => p.theme.breakpoints.down("md")} {
+    padding-left: 0;
+    padding-right: 0;
   }
 `
 
@@ -85,8 +85,7 @@ export const Column = styled.div`
   position: relative;
   width: 100%;
   min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 15px;
   ${p => p.theme.breakpoints.up("md")} {
     flex-basis: 0;
     flex-grow: 1;
@@ -153,12 +152,21 @@ export const Input = styled.input`
 export const InputBtn = styled.input`
   display: block;
   width: 100%;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
   border-radius: 0.25rem;
   background-color: var(--primaryTheme);
   color: white;
-  font-weight: 700;
-  font-size: 1.2rem;
-  cursor: pointer;
 `
 
 export const MessageStyled = styled.div`

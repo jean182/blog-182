@@ -46,7 +46,6 @@ const si = {
   tocWidth: `18rem`,
 }
 
-// export const borders = b
 export const colors = col
 export const sizes = si
 export const transition = t

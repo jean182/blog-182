@@ -1,36 +1,57 @@
 import React from "react"
 import PropTypes from "prop-types"
-
+import { useMedia } from "react-media"
 import { Link } from "gatsby"
+import { CSSTransition } from "react-transition-group"
+
+import { useTheme } from "emotion-theming"
 import Switch from "../switch/switch"
 import { SwitchWrapper } from "./navbar.styled"
 
 function Navbar({ closeSidebar, collapseStatus, isOpen }) {
-  const sidebarRef = React.useRef(null)
-  const styleAnimation =
-    sidebarRef !== null && sidebarRef.current
-      ? {
-          height: sidebarRef.current.getBoundingClientRect().height,
-        }
-      : null
-
+  const theme = useTheme()
+  const isSmallScreen = useMedia({
+    query: `(max-width: ${theme.breakpoints.values.md}px)`,
+  })
   const handleKeyPress = event => {
     if (event.key === "Enter") {
       closeSidebar()
     }
   }
 
-  return (
-    <div
-      ref={sidebarRef}
-      id="navbar"
-      className={`${"navbar-collapse ".concat(
-        collapseStatus,
-        isOpen ? " show" : ""
-      )}`}
-      {...(collapseStatus === "collapsing" &&
-        sidebarRef !== null && { style: styleAnimation })}
-    >
+  return isSmallScreen ? (
+    <CSSTransition in={isOpen} timeout={350} classNames="show" unmountOnExit>
+      <div
+        id="navbar"
+        className={`${"navbar-collapse show".concat(collapseStatus)}`}
+      >
+        <ul className="navbar-nav">
+          <li
+            role="presentation"
+            onClick={closeSidebar}
+            onKeyPress={handleKeyPress}
+          >
+            <Link activeClassName="active" to="/">
+              Home
+            </Link>
+          </li>
+          <li
+            role="presentation"
+            onClick={closeSidebar}
+            onKeyPress={handleKeyPress}
+          >
+            <Link activeClassName="active" to="/about" className="nav-link">
+              About
+            </Link>
+          </li>
+        </ul>
+        <SwitchWrapper>
+          <Switch />
+        </SwitchWrapper>
+      </div>
+    </CSSTransition>
+  ) : (
+    <div id="navbar" className={`${"navbar-collapse ".concat(collapseStatus)}`}>
       <ul className="navbar-nav">
         <li
           role="presentation"

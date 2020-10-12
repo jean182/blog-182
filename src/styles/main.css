@@ -56,3 +56,22 @@ p {
 main > .container {
   margin-top: 70px;
 }
+
+/* Nav transition */
+.show-enter {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.show-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 350ms, transform 350ms;
+}
+.show-exit {
+  opacity: 1;
+}
+.show-exit-active {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 350ms, transform 350ms;
+}
