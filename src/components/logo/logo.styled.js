@@ -14,12 +14,6 @@ export const Title = styled.div`
     text-decoration: none;
   }
 
-  ${p => p.theme.breakpoints.down("md")} {
-    span {
-      display: none;
-    }
-  }
-
   span:first-of-type {
     margin-right: -2px;
   }
@@ -31,9 +25,5 @@ export const Title = styled.div`
   svg {
     width: 0.8em;
     fill: var(--primaryTheme);
-
-    ${p => p.theme.breakpoints.down("md")} {
-      width: 2rem;
-    }
   }
 `

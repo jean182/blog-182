@@ -7,7 +7,7 @@ import Layout from "../components/layout/layout"
 import { rhythm } from "../utils/typography"
 import SocialNetworks from "../components/social-networks/social-networks"
 import { PageLayout } from "../components/layout/layout.styled"
-import { AboutStyled } from "../components/shared/about.styled"
+import { AboutStyled, TitleContainer } from "../components/shared/about.styled"
 
 const About = ({ data, pageContext }) => {
   const { author, social } = data.site.siteMetadata
@@ -15,29 +15,43 @@ const About = ({ data, pageContext }) => {
     <Layout title="About" currentLanguage={pageContext.langKey}>
       <PageLayout>
         <AboutStyled>
-          <h1>About</h1>
-          <Image
-            fixed={data.avatar.childImageSharp.fixed}
-            alt={author}
-            style={{
-              marginRight: rhythm(1 / 2),
-              marginBottom: 0,
-              minWidth: 50,
-              borderRadius: `100%`,
-            }}
-            imgStyle={{
-              borderRadius: `50%`,
-            }}
-          />
+          <TitleContainer>
+            <h1>Me myself and Irene</h1>
+            <Image
+              fixed={data.avatar.childImageSharp.fixed}
+              alt={author}
+              style={{
+                marginRight: rhythm(1 / 2),
+                marginBottom: 0,
+                minWidth: 50,
+                borderRadius: `100%`,
+              }}
+              imgStyle={{
+                borderRadius: `50%`,
+              }}
+            />
+          </TitleContainer>
           <p>
             Hi my name is <strong>{author}</strong>, I&apos;m studying software
-            engineering and I&apos;m a rails developer
+            engineering and I&apos;m a react developer.
           </p>
           <p>
-            This is just for fun, I&apos;ll try to make a nice UI that goes
-            along with the blog and myself
+            Currently I&apos;m working with react only but I do have experience
+            with ruby on rails applications, this was my first tech stack so I
+            have a lot of love for it.
           </p>
-          <h3>Follow me on my social networks</h3>
+          <p>
+            I did this blog in order to share the knowledge I&apos;m getting
+            from working and playing with web technologies, but I also will be
+            using this to share some of my hobbies outside work, most of them
+            should be also tech stuff but bear in mind it can be something
+            completely different.
+          </p>
+          <p>
+            If for some reason you want to get in touch this is my{" "}
+            <a href="mailto:jean-marco-10@hotmail.com">email</a> or you can
+            follow me on my social networks:
+          </p>
           <SocialNetworks
             devTo={social.devTo}
             instagram={social.instagram}

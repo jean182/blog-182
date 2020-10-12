@@ -425,9 +425,9 @@ This is very important to do, because there might be info we don't want to have 
 $ touch .env
 ```
 
-```
+`
 REACT_APP_API_URL=http://localhost:3000/
-```
+`
 
 This is a simple explanation but bear in mind it can be useful if you're dealing with API keys or data that you want to hide from the others.
 

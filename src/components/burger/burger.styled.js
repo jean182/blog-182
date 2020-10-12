@@ -1,42 +1,53 @@
 import styled from "@emotion/styled"
 
-export const StyledBurger = styled.button`
-  top: 5%;
-  left: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 2rem;
-  height: 2rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1;
-  outline: none;
+export const StyledBurger = styled.div`
+  .menu {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 0;
+  }
 
-  div {
-    width: 2rem;
-    height: 0.25rem;
-    background: var(--primaryText);
-    border-radius: 10px;
-    transition: all 0.35s linear;
-    position: relative;
-    transform-origin: 1px;
+  .line {
+    fill: none;
+    stroke: var(--primaryText);
+    stroke-width: 6;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-    :first-of-type {
-      transform: ${({ isOpen }) => (isOpen ? "rotate(45deg)" : "rotate(0)")};
-    }
+  .line1 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+  }
 
-    :nth-of-type(2) {
-      opacity: ${({ isOpen }) => (isOpen ? "0" : "1")};
-      transform: ${({ isOpen }) =>
-        isOpen ? "translateX(20px)" : "translateX(0)"};
-    }
+  .line2 {
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
+  }
 
-    :nth-of-type(3) {
-      transform: ${({ isOpen }) => (isOpen ? "rotate(-45deg)" : "rotate(0)")};
-    }
+  .line3 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+  }
+
+  .opened .line1 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+  }
+
+  .opened .line2 {
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
+  }
+
+  .opened .line3 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
   }
 
   ${p => p.theme.breakpoints.up("md")} {

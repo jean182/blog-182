@@ -14,13 +14,12 @@ First let start with the simplest, when you're using react with other libraries,
 
 When I was starting writing tests for a connected Redux component, I remember seeing this failure whenever I tried to write tests for connected components:
 
-```
-Invariant Violation:
+> Invariant Violation:
 Could not find "store" in the context of "Connect(ComponentName)".
 Either wrap the root component in a <Provider>
 or pass a custom React context provider to <Provider> and the corresponding
 React context consumer to Connect(ComponentName) in connect options.
-```
+
 
 This is because our test suite unlike our application, is not wrapped in a `<Provider />` component, so it is not aware of the store context. To solve it without using a third party library. we can do the following; Take this component as an example:
 

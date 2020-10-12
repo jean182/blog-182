@@ -44,7 +44,7 @@ end
 
 Now we're going to create our first model, the Movie model, our movie will have a title, a plot and a release date, at least for now.
 
-```
+```bash
 $ rails generate model Movie title plot:string release_date:date
 ```
 

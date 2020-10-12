@@ -425,9 +425,9 @@ Esto es algo bastante importante, porque no queremos albergar variables confiden
 $ touch .env
 ```
 
-```
+`
 REACT_APP_API_URL=http://localhost:3000/
-```
+`
 
 Esto es un ejemplo bastante sencillo pero ten en cuenta que puede ser util si estas lidiando con datos que quieres esconder a terceros.
 
