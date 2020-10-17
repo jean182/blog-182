@@ -63,6 +63,12 @@ export const NewsletterWrapper = styled.div`
     background-repeat: no-repeat;
     background-position: center right calc(0.375em + 0.1875rem);
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+
+    & :focus {
+      outline: none !important;
+      border: 1px solid #28a745;
+      box-shadow: 0 0 10px #28a745;
+    }
   }
 
   .form-control.is-invalid,
@@ -73,6 +79,12 @@ export const NewsletterWrapper = styled.div`
     background-repeat: no-repeat;
     background-position: center right calc(0.375em + 0.1875rem);
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+
+    & :focus {
+      outline: none !important;
+      border: 1px solid #dc3545;
+      box-shadow: 0 0 10px #dc3545;
+    }
   }
 
   ${p => p.theme.breakpoints.down("md")} {
