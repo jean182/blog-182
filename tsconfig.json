@@ -18,10 +18,11 @@
         "@components/*": ["src/components/*"],
         "@helpers/*": ["src/helpers/*"],
         "@src/*": ["src/*"],
+        "@styles/*": ["src/styles/*"],
         "@theme/*": ["src/theme/*"],
         "@utils/*": ["src/utils/*"],
       }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/types/custom.d.ts"],
     "exclude": ["node_modules"]
   }

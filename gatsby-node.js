@@ -5,13 +5,13 @@ const { supportedLanguages } = require("./i18n")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-    const blogPost = path.resolve("./src/templates/blog-post.jsx")
+    const blogPost = path.resolve("./src/templates/blog-post.tsx")
 
     // Create index pages for all supported languages
     Object.keys(supportedLanguages).forEach(langKey => {
       createPage({
         path: langKey === "en" ? "/" : `/${langKey}/`,
-        component: path.resolve("./src/templates/blog-index.jsx"),
+        component: path.resolve("./src/templates/blog-index.tsx"),
         context: {
           langKey,
         },
