@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import styled from "styled-components"
 import { rhythm, scale } from "../utils/typography"
 
 export const DateAndTime = styled.small`

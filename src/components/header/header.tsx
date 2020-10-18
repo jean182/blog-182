@@ -1,10 +1,12 @@
 import React from "react"
+
+import Container from "@components/container/container"
+import Burger from "@components/burger/burger"
+import Navbar from "@components/navbar/navbar"
+import Logo from "@components/logo/logo"
+import { useOutsideHandler } from "@utils/hooks"
+
 import { StyledHeader } from "./header.styled"
-import { useOutsideHandler } from "../../utils/hooks/use-outside-handler"
-import Container from "../container/container"
-import Burger from "../burger/burger"
-import Navbar from "../navbar/navbar"
-import Logo from "../logo/logo"
 
 function Header() {
   const navRef = React.useRef(null)
@@ -23,7 +25,7 @@ function Header() {
       <nav className="navbar expand fixed" ref={navRef}>
         <Container>
           <Logo closeSidebar={closeSidebar} />
-          <Burger onClick={handleClick} type="button" open={open} />
+          <Burger onClick={handleClick} open={open} />
           <Navbar
             collapseStatus={collapseStatus}
             isOpen={open}

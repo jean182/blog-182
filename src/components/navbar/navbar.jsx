@@ -4,7 +4,7 @@ import { useMedia } from "react-media"
 import { Link } from "gatsby"
 import { CSSTransition } from "react-transition-group"
 
-import { useTheme } from "emotion-theming"
+import { useTheme } from "../../utils/hooks/use-styled-theme"
 import Switch from "../switch/switch"
 import { SwitchWrapper } from "./navbar.styled"
 

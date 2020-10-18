@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import styled from "styled-components"
 
 export const Title = styled.div`
   padding-top: 0.3125rem;

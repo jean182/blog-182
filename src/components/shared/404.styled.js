@@ -1,5 +1,4 @@
-import styled from "@emotion/styled"
-import { keyframes } from "@emotion/core"
+import styled, { keyframes } from "styled-components"
 
 export const NotFound = styled.h1`
   font-family: Montserrat, sans-serif;

@@ -13,7 +13,7 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-emotion`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -177,7 +177,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-catch-links`,
-    `gatsby-plugin-emotion`,
     {
       resolve: "gatsby-plugin-mailchimp",
       options: {
@@ -199,6 +198,19 @@ module.exports = {
         google: {
           families: ["Bangers", "Open Sans"],
         },
+      },
+    },
+    "gatsby-plugin-typescript",
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@src": "src",
+          "@components": "src/components",
+          "@theme": "src/theme",
+          "@utils": "src/utils",
+        },
+        extensions: ["js", "jsx", "ts", "tsx"],
       },
     },
   ],

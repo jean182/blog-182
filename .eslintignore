@@ -6,3 +6,4 @@ gatsby-browser.js
 loadershim.js
 setup-test-env.js
 html.js
+gatsby.js

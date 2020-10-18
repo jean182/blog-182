@@ -1,18 +1,21 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { ThemeProvider } from "emotion-theming"
+import { ThemeProvider } from "styled-components"
 
-import Header from "../header/header"
-import Footer from "../footer/footer"
+import Header from "@components/header/header"
+import Footer from "@components/footer/footer"
+import Container from "@components/container/container"
+
+import theme from "@theme/index"
+
 import { Main } from "./layout.styled"
-import theme from "../../theme"
-import Container from "../container/container"
 
-function Layout(props) {
-  const { title, children, currentLanguage } = props
+import { Props } from "./layout.props"
+
+function Layout({ children, currentLanguage }: Props) {
   return (
     <ThemeProvider theme={theme}>
-      <Header title={title} />
+      <Header />
       <Main>
         <Container>{children}</Container>
       </Main>
@@ -24,7 +27,6 @@ function Layout(props) {
 Layout.propTypes = {
   currentLanguage: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-  title: PropTypes.string.isRequired,
 }
 
 export default Layout

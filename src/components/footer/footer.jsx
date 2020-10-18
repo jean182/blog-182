@@ -35,9 +35,7 @@ function Footer({ currentLanguage }) {
           <div className="meta">
             <SVG />
             <small>
-              © {new Date().getFullYear()}, {` `}
-              {lowerCase(title)}
-              {` `}
+              © {new Date().getFullYear()},{lowerCase(title)}
               {translate(currentLanguage, "footer.copyright")}
             </small>
           </div>

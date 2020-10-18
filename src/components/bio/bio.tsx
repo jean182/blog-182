@@ -1,7 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
-import { translate } from "../../utils/i18n"
+
+import { translate } from "@utils/i18n"
+
 import { DivWrapper, ImageWrapper } from "./bio.styled"
 
 const GET_BIO = graphql`
@@ -36,14 +38,14 @@ function Bio({ currentLanguage }) {
       <ImageWrapper fixed={data.avatar.childImageSharp.fixed} alt={author} />
       <p>
         {translate(currentLanguage, "bio.main")}
-        {` `}
+
         <strong>
           <a
             target="_blank"
             rel="noopener noreferrer"
             href={`https://instagram.com/${social.instagram}`}
           >
-            {author}
+            {` ${author}`}
           </a>
         </strong>
         <br />

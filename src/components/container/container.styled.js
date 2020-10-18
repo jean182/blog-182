@@ -1,6 +1,6 @@
-import styled from "@emotion/styled"
+import styled from "styled-components"
 
-import { MAX_WIDTH_VALUES } from "../../theme/constants"
+import { MAX_WIDTH_VALUES } from "@theme/constants"
 
 export const StyledContainer = styled.div`
   width: 100%;

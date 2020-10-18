@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import styled from "styled-components"
 
 export const Main = styled.main`
   flex: 1 0 auto;

@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import styled from "styled-components"
 import { withPrefix } from "gatsby"
 import { IoMdMailOpen } from "react-icons/io"
 

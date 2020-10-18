@@ -1,4 +1,6 @@
-export const values = {
+import { Breakpoint, BreakpointValues } from "./breakpoints.interfaces"
+
+export const values: BreakpointValues = {
   xs: 256,
   sm: 576,
   md: 768,
@@ -6,18 +8,18 @@ export const values = {
   xl: 1200,
 }
 
-export const keys = ["xs", "sm", "md", "lg", "xl"]
+export const keys: Breakpoint[] = ["xs", "sm", "md", "lg", "xl"]
 
 const step = 2
 
 const unit = "px"
 
-export function up(key) {
+export function up(key: Breakpoint | number) {
   const value = typeof key === "number" ? key : values[key]
   return `@media (min-width:${value}${unit})`
 }
 
-export function down(key) {
+export function down(key: Breakpoint | number) {
   if (typeof key === "number") {
     return `@media (max-width:${key - step / 100}${unit})`
   }
@@ -31,7 +33,7 @@ export function down(key) {
   return `@media (max-width:${upperbound - step / 100}${unit})`
 }
 
-export function between(start, end) {
+export function between(start: Breakpoint | number, end: Breakpoint | number) {
   const startValue = typeof start !== "number" ? values[start] : start
   const endValue = typeof end !== "number" ? values[end] : end
 
@@ -48,7 +50,7 @@ export function between(start, end) {
   )
 }
 
-export function only(key) {
+export function only(key: Breakpoint) {
   if (keys.indexOf(key) + 1 < keys.length) {
     return between(key, keys[keys.indexOf(key) + 1])
   }
@@ -56,6 +58,6 @@ export function only(key) {
   return up(key)
 }
 
-export function width(key) {
+export function width(key: Breakpoint) {
   return values[key]
 }
