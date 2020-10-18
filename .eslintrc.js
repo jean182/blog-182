@@ -40,6 +40,7 @@ module.exports = {
         map: [
           ["@src", "./src"],
           ["@components", "./src/components"],
+          ["@styles", "./src/styles"],
           ["@theme", "./src/theme"],
           ["@utils", "./src/utils"],
         ],
@@ -60,7 +61,7 @@ module.exports = {
         semi: false
       }
     ],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.setup-test-env.js", "**/*.jest-preprocess.js"]}],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.setup-test-env.js", "**/*.jest-preprocess.js", "**/*.spec.ts", "**/*.spec.tsx"]}],
     "import/extensions": [
       "error",
       "ignorePackages",

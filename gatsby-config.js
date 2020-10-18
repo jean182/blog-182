@@ -162,7 +162,6 @@ module.exports = {
         short_name: `Loserkid`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#ffa7c4`,
         display: `minimal-ui`,
         icon: `content/assets/blog-icon.png`,
       },
@@ -207,6 +206,7 @@ module.exports = {
         alias: {
           "@src": "src",
           "@components": "src/components",
+          "@styles": "src/styles",
           "@theme": "src/theme",
           "@utils": "src/utils",
         },

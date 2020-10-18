@@ -4,6 +4,7 @@ import { graphql, useStaticQuery } from "gatsby"
 
 import { translate } from "@utils/i18n"
 
+import { Props } from "./bio.props"
 import { DivWrapper, ImageWrapper } from "./bio.styled"
 
 const GET_BIO = graphql`
@@ -29,7 +30,7 @@ const GET_BIO = graphql`
   }
 `
 
-function Bio({ currentLanguage }) {
+function Bio({ currentLanguage }: Props) {
   const data = useStaticQuery(GET_BIO)
   const { author, social } = data.site.siteMetadata
 
