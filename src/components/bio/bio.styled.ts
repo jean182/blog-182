@@ -1,6 +1,7 @@
-import styled from "@emotion/styled"
+import styled from "styled-components"
 import Image from "gatsby-image"
-import { rhythm } from "../../utils/typography"
+
+import { rhythm } from "@utils/typography"
 
 export const DivWrapper = styled.div`
   display: flex;

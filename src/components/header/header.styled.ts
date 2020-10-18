@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import styled from "styled-components"
 
 export const StyledHeader = styled.header`
   font-weight: 400;
@@ -118,9 +118,3 @@ export const StyledHeader = styled.header`
     color: var(--primaryTheme);
   }
 `
-
-/*
- TODO
- use theme UI mode...
- ${p => p.theme.colors.primaryTheme}
-*/
