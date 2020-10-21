@@ -34,13 +34,18 @@ function Footer({ currentLanguage }: Props) {
   return (
     <StyledFooter>
       <Container>
-        <nav aria-labelledby="footer-navigation">
+        <nav>
           <div className="meta">
             <SVG />
             <small>
-              © {new Date().getFullYear()},{lowerCase(title)}
-              {translate(currentLanguage, "footer.copyright")}
+              © {new Date().getFullYear()},{` ${lowerCase(title)}`}
+              {` ${translate(currentLanguage, "footer.copyright")}`}
             </small>
+          </div>
+          <div className="rss">
+            <a href="/rss.xml" target="_blank" rel="noopener noreferrer">
+              rss
+            </a>
           </div>
           <SocialNetworks
             devTo={social.devTo}

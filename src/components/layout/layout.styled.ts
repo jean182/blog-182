@@ -6,5 +6,4 @@ export const Main = styled.main`
 
 export const PageLayout = styled.div`
   padding: 0.5rem 1rem;
-  text-align: justify;
 `

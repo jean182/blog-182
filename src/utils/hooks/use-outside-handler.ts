@@ -5,13 +5,13 @@ export function useOutsideHandler(
   handler: () => void
 ) {
   React.useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const listener: any = (event: any) => {
+    function listener(event) {
       if (!ref.current || ref.current.contains(event.target)) {
         return
       }
       handler()
     }
+
     document.addEventListener("mousedown", listener)
 
     return () => {

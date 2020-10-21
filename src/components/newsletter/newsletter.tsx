@@ -34,11 +34,15 @@ const Message = ({ message, link }: MessageProps) => {
   )
 }
 
-function Newsletter({ currentLanguage }: Props) {
+function Newsletter({ currentLanguage, slug }: Props) {
   const { register, reset, handleSubmit, errors } = useForm<FormValues>()
 
   // Reset if user switches page.
-  React.useEffect(() => reset(), [currentLanguage, reset])
+  React.useEffect(() => {
+    return () => {
+      reset()
+    }
+  }, [slug, reset])
 
   const onSubmit = async data => {
     const { name, email } = data
@@ -141,6 +145,7 @@ function Newsletter({ currentLanguage }: Props) {
 
 Newsletter.propTypes = {
   currentLanguage: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
 }
 
 export default Newsletter
