@@ -100,7 +100,7 @@ function BlogPostTemplate({ data, pageContext }: Props) {
           </li>
         </Paginator>
         <Bio currentLanguage={lang} />
-        <Newsletter currentLanguage={lang} />
+        <Newsletter currentLanguage={lang} slug={slug} />
       </PageLayout>
     </Layout>
   )

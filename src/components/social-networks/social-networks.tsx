@@ -24,6 +24,7 @@ function SocialNetworks({
           href={`https://dev.to/${devTo}`}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="DevTo link"
         >
           <FaDev />
         </a>
@@ -33,6 +34,7 @@ function SocialNetworks({
           href={`https://github.com/${github}`}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Github link"
         >
           <FaGithub />
         </a>
@@ -42,6 +44,7 @@ function SocialNetworks({
           href={`https://instagram.com/${instagram}`}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Instagram link"
         >
           <FaInstagram />
         </a>
@@ -51,6 +54,7 @@ function SocialNetworks({
           href={`https://www.linkedin.com/in/${linkedIn}`}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="LinkedIn link"
         >
           <FaLinkedinIn />
         </a>
@@ -60,6 +64,7 @@ function SocialNetworks({
           href={`https://twitter.com/${twitter}`}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Twitter link"
         >
           <FaTwitter />
         </a>

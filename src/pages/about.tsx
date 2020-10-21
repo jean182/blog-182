@@ -4,13 +4,12 @@ import { graphql } from "gatsby"
 import PropTypes from "prop-types"
 
 import Layout from "@components/layout/layout"
-import SocialNetworks from "@components/social-networks/social-networks"
 import { PageLayout } from "@components/layout/layout.styled"
 import { AboutStyled, TitleContainer } from "@components/shared/about.styled"
 import { rhythm } from "@utils/typography"
 
 const About = ({ data, pageContext }) => {
-  const { author, social } = data.site.siteMetadata
+  const { author } = data.site.siteMetadata
   return (
     <Layout currentLanguage={pageContext.langKey}>
       <PageLayout>
@@ -47,18 +46,6 @@ const About = ({ data, pageContext }) => {
             should be also tech stuff but bear in mind it can be something
             completely different.
           </p>
-          <p>
-            If for some reason you want to get in touch this is my{" "}
-            <a href="mailto:jean-marco-10@hotmail.com">email</a> or you can
-            follow me on my social networks:
-          </p>
-          <SocialNetworks
-            devTo={social.devTo}
-            instagram={social.instagram}
-            linkedIn={social.linkedIn}
-            github={social.github}
-            twitter={social.twitter}
-          />
         </AboutStyled>
       </PageLayout>
     </Layout>
@@ -77,13 +64,6 @@ export const aboutQuery = graphql`
     site {
       siteMetadata {
         author
-        social {
-          devTo
-          instagram
-          github
-          linkedIn
-          twitter
-        }
       }
     }
   }
@@ -99,13 +79,6 @@ About.propTypes = {
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         author: PropTypes.string,
-        social: PropTypes.shape({
-          devTo: PropTypes.string,
-          instagram: PropTypes.string,
-          github: PropTypes.string,
-          linkedIn: PropTypes.string,
-          twitter: PropTypes.string,
-        }),
       }),
     }),
   }).isRequired,

@@ -33,8 +33,8 @@ function Navbar({ closeSidebar, collapseStatus, isOpen }: Props) {
             onClick={closeSidebar}
             onKeyPress={handleKeyPress}
           >
-            <Link activeClassName="active" to="/">
-              Home
+            <Link activeClassName="active" to="/about" className="nav-link">
+              About
             </Link>
           </li>
           <li
@@ -42,8 +42,8 @@ function Navbar({ closeSidebar, collapseStatus, isOpen }: Props) {
             onClick={closeSidebar}
             onKeyPress={handleKeyPress}
           >
-            <Link activeClassName="active" to="/about" className="nav-link">
-              About
+            <Link activeClassName="active" to="/contact" className="nav-link">
+              Contact
             </Link>
           </li>
         </ul>
@@ -60,8 +60,8 @@ function Navbar({ closeSidebar, collapseStatus, isOpen }: Props) {
           onClick={closeSidebar}
           onKeyPress={handleKeyPress}
         >
-          <Link activeClassName="active" to="/">
-            Home
+          <Link activeClassName="active" to="/about" className="nav-link">
+            About
           </Link>
         </li>
         <li
@@ -69,8 +69,8 @@ function Navbar({ closeSidebar, collapseStatus, isOpen }: Props) {
           onClick={closeSidebar}
           onKeyPress={handleKeyPress}
         >
-          <Link activeClassName="active" to="/about" className="nav-link">
-            About
+          <Link activeClassName="active" to="/contact" className="nav-link">
+            Contact
           </Link>
         </li>
       </ul>
