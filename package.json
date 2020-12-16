@@ -17,7 +17,7 @@
     "fontsource-open-sans": "^3.0.9",
     "gatsby": "^2.5.5",
     "gatsby-design-tokens": "^2.0.6",
-    "gatsby-image": "^2.0.37",
+    "gatsby-image": "^2.8.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-catch-links": "^2.0.13",
     "gatsby-plugin-feed": "^2.1.0",
