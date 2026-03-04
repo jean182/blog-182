@@ -1,12 +1,27 @@
 ---
-title: Render React components dynamically based on a JSON payload.
-date: 2021-06-24T04:04:44.427Z
-description: A basic example on how to achieve dynamic rendering using react.
+title: How to Render React Components Dynamically from a JSON Payload
+date: "2021-06-24T04:04:44.427Z"
+description: Learn how to render React components dynamically from JSON using React.createElement, recursive rendering, and a typed action dispatch system.
 ---
 
-This is my last week in my current job and even though it has been good I think is time to move on. My last two months were pretty amazing because I was working in a project where we wanted to implement dynamic rendering based on a JSON payload.
+> **Update — March 4, 2026:** This post has been revised to reflect the current state of the [dynamic renderer repo](https://github.com/jean182/dynamic-rendering-example-react). Major additions include a typed action dispatch system, an `ActionContext` for dependency injection, and updated code examples throughout.
 
-The JSON has a structure similar to this one:
+Sometimes you need to render React components dynamically from a JSON configuration instead of hardcoding them in JSX. This is common when building CMS-driven interfaces, server-defined UIs, or any scenario where the layout is determined by data at runtime.
+
+In this guide, we'll build a dynamic renderer in React with TypeScript that reads a JSON payload and recursively creates components from it, including a typed action dispatch system to handle user interactions like button clicks, API calls, and analytics tracking.
+
+## The Problem
+
+React normally renders components statically through JSX. But sometimes the UI structure needs to come from an API or CMS. You might receive a JSON payload describing which components to render, what props to pass, and how they nest inside each other.
+
+The challenge is:
+- Mapping JSON types to actual React components.
+- Handling nested children recursively.
+- Supporting user interactions (clicks, form inputs) defined in the payload.
+
+## Example JSON Payload
+
+Here's what a typical payload looks like:
 
 ```json
 {
@@ -24,42 +39,41 @@ The JSON has a structure similar to this one:
                         {
                             "type": "Button",
                             "data": {
-                                "id": "4400936b-6158-4943-9dc8-a04c57e1af46",
-                                "title": "Button text",
+                                "id": "btn-open",
+                                "title": "Open Repo",
                                 "className": "btn-primary",
                                 "action": {
-                                    "type": "call",
-                                    "url": "https://pokeapi.co/api/v2/"
-                                },
+                                    "type": "openUrl",
+                                    "url": "https://github.com/jean182/dynamic-rendering-example-react"
+                                }
                             }
-                        },
+                        }
                     ]
                 }
             },
             {
                 "type": "Divider",
                 "data": {
-                    "id": "4400936b-6158-4943-9dc8-a04c57e1af46",
-                    "marginX": 3,
+                    "id": "4400936b-6158-4943-9dc8-dsfhjs32723",
+                    "marginY": 5
                 }
             },
             {
                 "type": "Card",
                 "data": {
                     "id": "4400936b-6158-4943-9dc8-a04c57e1af46",
-                    "title" : "Title",
-                    "headline" : "Month ## - Month ##, ####",
+                    "title": "Title",
+                    "headline": "Month ## - Month ##, ####",
                     "copy": "A really long text....",
-                    "image" : {
-                        "url" : "https://i.stack.imgur.com/y9DpT.jpg"
-                    },
+                    "image": {
+                        "url": "https://i.stack.imgur.com/y9DpT.jpg"
+                    }
                 }
             },
             {
                 "type": "Container",
                 "data": {
                     "id": "d76e3a5f-01ad-46f6-a45d-3ad9699ecf99",
-                    "fluid": true,
                     "embeddedView": {
                         "type": "Input",
                         "data": {
@@ -74,7 +88,7 @@ The JSON has a structure similar to this one:
                                 {
                                     "regexType": "eightOrMoreCharacters",
                                     "regexErrorCopy": "Use 8 or more characters"
-                                },
+                                }
                             ]
                         }
                     }
@@ -85,117 +99,292 @@ The JSON has a structure similar to this one:
 }
 ```
 
-Now let’s look closely at the object, we have to create a custom function that checks for the component type that in this case will be the component to be rendered, also if you take a closer look you will notice that some components can have children, some in a prop called items, that is an array of children and some components have an embedded view that is also a child. The rest of the properties included in the data object are the component props and we should pass them as regular props.
+Every node has a `type` (the component to render) and a `data` object (its props). Children can appear as an `items` array or a single `embeddedView`. The `action` field on Button defines what happens when the user clicks it.
 
-With that being said, how we can achieve a dynamic rendering in our react application, The simplest way is to take advantage of the React top-level API method `createElement`. If you know JSX, and how it transpile to regular JS you might heard about this method, basically the function returns a new React element, it works this way:
+## How React.createElement Works
+
+The key to making this work is the React top-level API method `createElement`. If you're familiar with how JSX transpiles to JavaScript, you've probably seen it before:
 
 ```js
 React.createElement(
-  type,
-  [props],
-  [...children]
+  type,       // HTML tag string, React component, or Fragment
+  [props],    // Props object
+  [...children] // Child elements
 )
 ```
 
-- As you can see the first argument is the element type which can be a regular html tag like a div or even a react component or a react fragment.
-- The second argument will be the props that we want to use for that component, it can be anything.
-- Finally, it also accepts React children, useful if your component is a wrapper component.
+- The first argument is the element type — this can be an HTML tag like `"div"` or an actual React component.
+- The second argument is the props object.
+- The third argument is children, which is useful for wrapper components.
 
-I recommend this [reading](https://reactjs.org/docs/react-without-jsx.html) if you want to learn more how does react transpiles the JSX, it is pretty interesting.
+I recommend this [reading](https://react.dev/reference/react/createElement) if you want to learn more about how React handles elements under the hood.
 
-Now we need to read that JSON and call the `React.createElement` every time we encounter a component that is valid, while this can be done with multiple approaches, we decided to use recursion to achieve it. This was written in typescript and the first step to make things work is to define some custom types/interfaces.
+We'll use `createElement` to dynamically instantiate components based on the `type` field from our JSON.
+
+## Creating the Component Map
+
+First, we define the interfaces. The `IComponent` interface describes each node in the JSON tree:
 
 ```ts
 // dynamic-rendering.interfaces.ts
-
-// Here is a type to map all the components names.
-type ComponentList =
-    | 'Button'
-    | 'Card'
-    | 'Container'
-    | 'Divider'
-    | 'Input';
+import type { Action } from "../actions/actions.types";
+import type { ComponentType } from "./dynamic-rendering.constants";
 
 export interface IComponent {
-    type: ComponentList;
-    data: {
-        id: string;
-        embeddedView?: IComponent;
-        items?: Array<IComponent>;
-        [key: string]: unknown;
-    };
+  type: ComponentType;
+  data: {
+    id: string;
+    embeddedView?: IComponent;
+    items?: Array<IComponent>;
+    action?: Action;
+    [key: string]: unknown;
+  };
 }
 ```
 
-Now that we have the interfaces, we can create a constants file to map the components to an object:
+Then we map component names to actual React components in a constants file:
 
 ```ts
 // dynamic-rendering.constants.ts
+import { Button, Card, Container, Divider, Input } from "../components";
 
-// All the component imports
+export type JsonComponent = React.ComponentType<any>;
 
-export const Components = {
-    Button,
-    Card,
-    Container,
-    Divider,
-    Input,
+export const Components: Record<
+  "Button" | "Card" | "Container" | "Divider" | "Input",
+  JsonComponent
+> = {
+  Button,
+  Card,
+  Container,
+  Divider,
+  Input,
+};
+
+export type ComponentType = keyof typeof Components;
+```
+
+This gives us a type-safe lookup: when the JSON says `"type": "Button"`, we resolve it to the actual `Button` component.
+
+## Action Dispatch System
+
+The original version of this project had no way to handle user interactions defined in the JSON. Now we have a typed action dispatch system. Actions are defined as a discriminated union:
+
+```ts
+// actions.types.ts
+export type Action =
+  | { type: "call"; url: string; method?: "GET" | "POST"; body?: unknown }
+  | { type: "openUrl"; url: string; target?: "_blank" | "_self" }
+  | { type: "track"; event: string; props?: Record<string, unknown> }
+  | { type: "log"; message: string; data?: unknown };
+
+export type ActionContext = {
+  request?: (args: {
+    url: string;
+    method: "GET" | "POST";
+    body?: unknown;
+  }) => Promise<unknown>;
+  track?: (event: string, props?: Record<string, unknown>) => void;
+  log?: (message: string, data?: unknown) => void;
 };
 ```
 
-After that we can create the service that will take the json payload and return the React components in our application.
+Each action type maps to a specific behavior:
 
-```tsx
-// dynamic-rendering.service.ts
-import React from 'react';
-import { IComponent } from './dynamic-rendering.interfaces';
-import { Components } from './dynamic-rendering.constants';
+- **`call`** — Makes an HTTP request (useful for API calls).
+- **`openUrl`** — Opens a URL in a new tab.
+- **`track`** — Fires an analytics event.
+- **`log`** — Logs a message (useful for debugging).
 
-export function createPage(data?: IComponent): React.ReactNode {
-    // Don't render anything if the payload is falsey.
-    if (!data) return null;
+The `ActionContext` is a small capability object that the host app provides. This keeps the renderer decoupled from specific implementations like your analytics provider or HTTP client.
 
-    function createComponent(item: IComponent): React.ReactNode {
-        const { data, type } = item;
-        const { items, embeddedView, id, ...rest } = data;
-        return React.createElement(
-            // TODO: This can be improved
-            Components[type] as any,
-            {
-                // Pass all the props coming from the data object.
-                ...rest,
-                id,
-                // Make each react key unique
-                key: id,
-            } as any,
-            // Map if there are items, if not try to render the embedded view as children
-            Array.isArray(items)
-                ? items.map(renderer)
-                : renderer(embeddedView ?? null),
-        );
+The dispatcher handles each action type with a simple switch:
+
+```ts
+// actions.dispatch.ts
+import type { Action, ActionContext } from "./actions.types";
+
+export async function dispatchAction(
+  action: Action | undefined,
+  ctx: ActionContext = {}
+): Promise<unknown> {
+  if (!action) return;
+
+  switch (action.type) {
+    case "openUrl": {
+      window.open(action.url, action.target ?? "_blank", "noopener,noreferrer");
+      return;
     }
 
-    // Don't render anything if the payload is falsey.
-    function renderer(
-        config: IComponent | null,
-    ): React.ReactNode {
-        if (!config) return null;
-
-        return createComponent(config);
+    case "track": {
+      ctx.track?.(action.event, action.props);
+      return;
     }
 
-    return renderer(data);
+    case "log": {
+      (ctx.log ?? console.log)(action.message, action.data);
+      return;
+    }
+
+    case "call": {
+      const method = action.method ?? "GET";
+      if (ctx.request) {
+        return ctx.request({ url: action.url, method, body: action.body });
+      }
+
+      const res = await fetch(action.url, {
+        method,
+        headers: action.body
+          ? { "Content-Type": "application/json" }
+          : undefined,
+        body: action.body ? JSON.stringify(action.body) : undefined,
+      });
+
+      const contentType = res.headers.get("content-type") ?? "";
+      if (contentType.includes("application/json")) return res.json();
+      return res.text();
+    }
+
+    default: {
+      const _never: never = action;
+      return _never;
+    }
+  }
 }
 ```
 
-This function creates all the components that we receive in the payload and recursively calls the renderer function to create all the children if available. 
+The exhaustiveness check at the bottom ensures that if you add a new action type to the union but forget to handle it here, TypeScript will catch it at compile time.
+
+Components like `Button` use the dispatcher to execute their action on click:
+
+```tsx
+// Button.tsx (simplified)
+import type { Action, ActionContext } from "../../actions/actions.types";
+import { dispatchAction } from "../../actions/actions.dispatch";
+
+interface BtnProps {
+  title: string;
+  action?: Action;
+  actionContext?: ActionContext;
+}
+
+export default function Button({ title, action, actionContext, ...rest }: BtnProps) {
+  const onClick = async () => {
+    try {
+      const result = await dispatchAction(action, actionContext);
+      if (result !== undefined) console.log("Action result:", result);
+    } catch (e) {
+      console.error("Action failed:", e);
+    }
+  };
+
+  return (
+    <button {...rest} onClick={onClick}>
+      {title}
+    </button>
+  );
+}
+```
+
+## Recursive Renderer
+
+Now we wire it all together. The `createPage` function takes the JSON payload and an optional `actionContext`, then recursively walks the tree creating React elements:
+
+```ts
+// dynamic-rendering.service.ts
+import React from "react";
+import type { ActionContext } from "../actions/actions.types";
+import { Components } from "./dynamic-rendering.constants";
+import type { IComponent } from "./dynamic-rendering.interfaces";
+
+export function createPage(
+  data?: IComponent,
+  options?: { actionContext?: ActionContext }
+): React.ReactNode {
+  if (!data) return null;
+
+  const actionContext = options?.actionContext;
+
+  function createComponent(item: IComponent): React.ReactNode {
+    const { data, type } = item;
+    const { items, embeddedView, id, ...rest } = data;
+
+    const props = {
+      ...rest,
+      key: id,
+      ...(type === "Button" && actionContext ? { actionContext } : null),
+    };
+
+    const Component = Components[type];
+    return React.createElement(
+      Component,
+      props,
+      Array.isArray(items)
+        ? items.map(renderer)
+        : renderer(embeddedView ?? null)
+    );
+  }
+
+  function renderer(config: IComponent | null): React.ReactNode {
+    if (!config) return null;
+    return createComponent(config);
+  }
+
+  return renderer(data);
+}
+```
+
+Key points:
+
+- **`createComponent`** destructures `items`, `embeddedView`, and `id` from the data, then spreads everything else as props.
+- **`actionContext`** is injected into components that need it (like `Button`). This keeps the JSON payload clean — it doesn't need to know about the host app's capabilities.
+- **`renderer`** is called recursively for each child, whether it comes from the `items` array or the `embeddedView` field.
+
+## Full Implementation
+
+In the app entry point, you provide the action context and call `createPage`:
+
+```tsx
+// App.tsx
+import mockResponse from "./dynamic-rendering/dynamic-rendering.mock";
+import { createPage } from "./dynamic-rendering";
+
+function App() {
+  const actionContext = {
+    track: (event: string, props?: Record<string, unknown>) => {
+      console.log("[track]", event, props);
+    },
+    log: (msg: string, data?: unknown) => console.log("[log]", msg, data),
+  };
+
+  return (
+    <div className="my-3">
+      <h1>All the items below are dynamically rendered</h1>
+      {createPage(mockResponse, { actionContext })}
+    </div>
+  );
+}
+
+export default App;
+```
+
+That's it. The JSON defines the layout, the component map resolves types to real components, the recursive renderer builds the tree, and the action dispatch system handles interactions.
 
 ## Final Thoughts
 
-This is an awesome way to create youw own service, called it cms or whatever you want, to be able to create a payload that your react application can consume and create dynamic content based on it, of course there are some things that still need some thinkering, like UI interaction with buttons or inputs, but of course you can create your custom components that will handle all that functionality and just call them using the payload.
+This pattern gives you a clean way to build server-driven or CMS-driven UIs in React. The JSON payload defines the component tree, and your React app interprets it at runtime.
 
-I created a sweet example in [code sandbox](https://codesandbox.io/s/dynamic-renderer-react-jean182-10zbb) if you want to check the result, also this is the GitHub [repo](https://github.com/jean182/dynamic-rendering-example-react) if you want to download the code.
+The action dispatch system is what makes this practical for real applications. Without it, you can render UI but can't handle interactions. With typed actions and an injected context, your components stay decoupled and testable.
 
-Also huge kudos to [Daniel](https://github.com/dalvarado98) and [Jose](https://github.com/josebedoya) who helped doing this in the project we are working on.
+I created a working example in [code sandbox](https://codesandbox.io/s/dynamic-renderer-react-jean182-10zbb) if you want to see the result, and here is the [GitHub repo](https://github.com/jean182/dynamic-rendering-example-react) to download the code.
+
+Huge kudos to [Daniel](https://github.com/dalvarado98) and [Jose](https://github.com/josebedoya) who helped build the original version of this in production.
 
 ![Final Result](./final-result.png)
+
+## Related React Guides
+
+- [React without JSX](https://react.dev/reference/react/createElement) — Deep dive into `createElement`.
+- [TypeScript discriminated unions](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions) — The pattern behind the action types.
+- [React infinite scrolling example](/infinite-scroll-with-redux-and-sagas-part-i/)
+- [Accessible modal patterns](/bootstrap-modal-with-react/)
