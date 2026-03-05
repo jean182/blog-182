@@ -35,7 +35,7 @@ type GetSeoQuery = {
 
 const GET_SEO = graphql`
   query GetSeo {
-    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+    avatar: file(absolutePath: { regex: "/blog-icon.png/" }) {
       publicURL
     }
     site {
@@ -80,7 +80,7 @@ function SEO({
   console.log(site)
 
   const metaDescription = description || site.siteMetadata.description
-  const pic = data.avatar.publicURL
+  const pic = site.siteMetadata.siteUrl + data.avatar.publicURL
   const twitterUser = "@".concat(site.siteMetadata.social.twitter)
   const finalMeta: MetaTag[] = [
     {
