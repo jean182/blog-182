@@ -10,6 +10,7 @@ export interface Props {
       siteMetadata: {
         author: string
         title: string
+        siteUrl: string
       }
     }
   }

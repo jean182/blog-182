@@ -28,7 +28,8 @@ function BlogPostTemplate({ data, pageContext }: Props) {
   const post = data.markdownRemark
   const { previous, next, slug, translatedLinks } = pageContext
   let { translations } = pageContext
-  const lang = post.fields.langKey || ""
+  console.log(post.fields)
+  const lang = post.fields.langKey || "en"
 
   // Replace original links with translated when available.
   let { html } = post
@@ -62,9 +63,11 @@ function BlogPostTemplate({ data, pageContext }: Props) {
     <Layout currentLanguage={lang}>
       <PageLayout>
         <SEO
+          isBlogPost
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
           lang={lang}
+          pathname={slug}
         />
         <div>
           <PostTitle>{post.frontmatter.title}</PostTitle>

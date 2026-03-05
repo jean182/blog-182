@@ -1,7 +1,7 @@
 ---
-title: How to Render React Components Dynamically from a JSON Payload
+title: Render React Components Dynamically from JSON (React.createElement Guide)
 date: "2021-06-24T04:04:44.427Z"
-description: Learn how to render React components dynamically from JSON using React.createElement, recursive rendering, and a typed action dispatch system.
+description: Learn how to render React components dynamically from a JSON payload using React.createElement, recursive rendering, and a typed action dispatch system.
 ---
 
 > **Update — March 4, 2026:** This post has been revised to reflect the current state of the [dynamic renderer repo](https://github.com/jean182/dynamic-rendering-example-react). Major additions include a typed action dispatch system, an `ActionContext` for dependency injection, and updated code examples throughout.

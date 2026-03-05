@@ -7,12 +7,19 @@ import Layout from "@components/layout/layout"
 import { PageLayout } from "@components/layout/layout.styled"
 import { AboutStyled, TitleContainer } from "@components/shared/about.styled"
 import { rhythm } from "@utils/typography"
+import SEO from "@components/seo/seo"
 
 const About = ({ data, pageContext }) => {
   const { author } = data.site.siteMetadata
   return (
     <Layout currentLanguage={pageContext.langKey}>
       <PageLayout>
+        <SEO
+          title="About"
+          description={`Learn more about ${author}`}
+          lang={pageContext.langKey}
+          pathname="/about"
+        />
         <AboutStyled>
           <TitleContainer>
             <h1>Me myself and Irene</h1>

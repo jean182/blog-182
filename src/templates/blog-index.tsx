@@ -14,14 +14,23 @@ import { PageLayout } from "../components/layout/layout.styled"
 function BlogIndex({ data, pageContext }: Props) {
   const { langKey } = pageContext
   const posts = data.allMarkdownRemark.edges
+  const pathname = data.site.siteMetadata.siteUrl + "/"
 
   return (
     <Layout currentLanguage={langKey}>
       <PageLayout>
         <SEO
           title="All posts"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+          keywords={[
+            `blog`,
+            `gatsby`,
+            `javascript`,
+            `react`,
+            `typescript`,
+            `frontend`,
+          ]}
           lang={langKey}
+          pathname=""
         />
         <Bio currentLanguage={langKey} />
         {posts.map(({ node }) => {
@@ -57,6 +66,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     allMarkdownRemark(

@@ -18,7 +18,7 @@ function NotFoundPage({ pageContext }) {
   return (
     <VoidWrapper>
       <Layout currentLanguage={pageContext.langKey}>
-        <SEO title="404: Not Found" />
+        <SEO title="404: Not Found" pathname="/404" description="Welcome to the void" lang={pageContext.langKey} />
         <div>
           <NotFound>404</NotFound>
           <VoidText>You&apos;ve entered the void</VoidText>
