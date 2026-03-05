@@ -77,7 +77,6 @@ function SEO({
   const [theme] = useDarkTheme()
   const { site } = data
   const canonical = site.siteMetadata.siteUrl + pathname
-  console.log(site)
 
   const metaDescription = description || site.siteMetadata.description
   const pic = site.siteMetadata.siteUrl + data.avatar.publicURL
@@ -128,6 +127,14 @@ function SEO({
       content: pic,
     },
     {
+      property: `og:image:width`,
+      content: `396`,
+    },
+    {
+      property: `og:image:height`,
+      content: `398`,
+    },
+    {
       name: `twitter:image`,
       content: pic,
     },
@@ -139,7 +146,6 @@ function SEO({
         }
       : []
   )
-  console.log(finalMeta)
   return (
     <Helmet
       htmlAttributes={{
