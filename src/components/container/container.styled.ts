@@ -22,7 +22,7 @@ export const StyledContainer = styled.div`
   }
 
   ${p => p.theme.breakpoints.up("xl")} {
-    max-width: ${MAX_WIDTH_VALUES.lg};
+    max-width: ${MAX_WIDTH_VALUES.xl};
   }
 
   ${p => p.theme.breakpoints.down("lg")} {

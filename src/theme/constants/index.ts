@@ -6,4 +6,5 @@ export const MAX_WIDTH_VALUES: MaxWidthValues = {
   sm: "540px",
   md: "720px",
   lg: "860px",
+  xl: "1040px",
 }
